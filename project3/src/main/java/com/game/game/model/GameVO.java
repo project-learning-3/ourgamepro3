@@ -1,16 +1,15 @@
 package com.game.game.model;
 
 import java.sql.Timestamp;
-
 public class GameVO {
 
-	private int g_no;
-	private String gname;
-	private int price;
-	private Timestamp gdate;
-	private String gtext;
-	private String notice;
-	private int number;
+	private int g_no;/* 게임번호 */
+	private String gname; /* 게임명 */
+	private int price;/* 가격 */
+	private Timestamp gdate;/* 등록일시 */
+	private String gtext; /* 게임설명 */
+	private String notice; /* 공지사항 */
+	private int number;/* 개발자번호 */
 	
 	public GameVO() {
 		super();
