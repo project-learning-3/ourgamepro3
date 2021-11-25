@@ -101,6 +101,7 @@ public class ConnectionPoolMgr {
 	}
 	
 	//Connection 10개만 유지해주는 메서드
+	
 	public void removeConnection() throws SQLException{
 		Connection con=null;
 		Iterator<Connection> iterKeys=hmap.keySet().iterator();

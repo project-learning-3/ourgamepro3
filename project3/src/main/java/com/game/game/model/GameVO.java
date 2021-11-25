@@ -11,6 +11,7 @@ public class GameVO {
 	private String gtext;
 	private String notice;
 	private int number;
+	
 	public GameVO() {
 		super();
 		// TODO Auto-generated constructor stub
