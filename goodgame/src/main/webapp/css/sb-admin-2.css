@@ -9806,6 +9806,10 @@ a:focus {
   flex: 1 0 auto;
 }
 
+#wrapper #content-wrapper #content1 {
+	flex: 0 auto;
+}
+
 .container,
 .container-fluid,
 .container-sm,

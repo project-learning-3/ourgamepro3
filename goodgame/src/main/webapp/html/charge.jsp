@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -21,7 +23,7 @@
 
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-/* 
+
 window.onload=function(){
 	onlyNumber(document.getElementById("chargeMoney"));
 }
@@ -32,39 +34,7 @@ function onlyNumber(o) {
 		var v = this.value;
 		this.value=v.replace(num,'');
 	}	
-} */
-
-function regbtn(){
-	var charge=$('#chargeMoney').val();
-	
-	if(charge.val().length<1){
-		alert("충전금액을 입력하세요");
-	    $('#chargeMoney').focus();
-	    event.preventDefault();
-	}else if(charge.val()<10000){
-		alert("최소 충전금액은 10,000원입니다.");
-		charge.focus();
-		event.preventDefault();
-	}else if(charge.val()>200001){
-		alert("최대 충전금액은 200,000원입니다.");
-		charge.focus();
-		event.preventDefault();
-	}else if($('#exampleInputPassword').val().length<1){
-		alert("비밀번호을(를) 입력하세요");
-	    $('#exampleInputPassword').focus();
-	    event.preventDefault();
-	}else if($('#exampleRepeatPassword').val().length<1){
-		alert("비밀번호확인을(를) 입력하세요");
-	    $('#exampleRepeatPassword').focus();
-	    event.preventDefault();
-	}else if($('#exampleRepeatPassword').val()!=$('#exampleInputPassword').val()){
-		alert("비밀번호가 일치하지 않습니다.");
-	    event.preventDefault();
-	}
-}
-
-
-
+} 
 
 </script>
 </head>
@@ -85,7 +55,8 @@ function regbtn(){
                             		* 최소 충전 금액은 10,000원 입니다.
                             	</p>
                             </div>
-							<form class="user" action="../charge_ok.jsp" name="charge" method="post">
+							<form class="user" action="charge_ok.jsp" name="charge"
+								method="post">
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="password" class="form-control form-control-user"
@@ -93,27 +64,24 @@ function regbtn(){
 									</div>
 									<div class="col-sm-6">
 										<input type="password" class="form-control form-control-user"
-											id="exampleRepeatPassword" placeholder="비밀번호 확인">
+											id="exampleRepeatPassword" name="ch_pwd" placeholder="비밀번호 확인">
 									</div>
 
 								</div>
-									<div class="form-group">
-										<input type="text" class="form-control form-control-user"
-											id="chargeMoney" name="chargeMoney" placeholder="충전금액">
-									</div>
-
-								<a id="regbtn" href="MainMenu.html"
-									class="btn btn-primary btn-user btn-block" onclick="regbtn()">
-									충전하기 </a>
+								<div class="form-group">
+									<input type="text" class="form-control form-control-user"
+										id="chargeMoney" name="m_money" placeholder="충전금액">
+								</div>
+           							 <input type="submit" value="충전하기" class="btn btn-primary btn-user btn-block" onclick="regbtn()">
 
 
 							</form>
 							<hr>
                             <div class="text-center">
-                                <a class="small" href="charge_before.html">이용약관</a>
+                                <a class="small" href="charge_before.jsp">이용약관</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="MainMenu.html">메인으로 돌아가기</a>
+                                <a class="small" href="MainMenu.jsp">메인으로 돌아가기</a>
                             </div>
                         </div>
                     </div>

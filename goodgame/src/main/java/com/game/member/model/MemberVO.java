@@ -8,12 +8,12 @@ public class MemberVO {
 	private String m_pwd; /* 비밀번호 */
 	private String m_name; /* 이름 */
 	private Timestamp m_birth; /* 생년월 */
-	private int m_phone; /* 연락처 */
+	private String m_phone; /* 연락처 */
 	public MemberVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MemberVO(int m_no, String m_email, String m_pwd, String m_name, Timestamp m_birth, int m_phone) {
+	public MemberVO(int m_no, String m_email, String m_pwd, String m_name, Timestamp m_birth, String m_phone) {
 		this.m_no = m_no;
 		this.m_email = m_email;
 		this.m_pwd = m_pwd;
@@ -51,10 +51,10 @@ public class MemberVO {
 	public void setM_birth(Timestamp m_birth) {
 		this.m_birth = m_birth;
 	}
-	public int getM_phone() {
+	public String getM_phone() {
 		return m_phone;
 	}
-	public void setM_phone(int m_phone) {
+	public void setM_phone(String m_phone) {
 		this.m_phone = m_phone;
 	}
 	@Override

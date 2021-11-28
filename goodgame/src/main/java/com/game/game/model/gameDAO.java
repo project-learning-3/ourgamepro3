@@ -14,7 +14,7 @@ public class gameDAO {
 	private ConnectionPoolMgr pool;
 
 	public gameDAO() {
-		pool=new ConnectionPoolMgr();
+		pool=ConnectionPoolMgr.getInstance();
 	}
 	/*게임등록 메서드*/
 	public int insertGame(gameVO vo) throws SQLException{
