@@ -1,6 +1,6 @@
 <%@page import="java.sql.SQLException"%>
-<%@page import="com.game.developer.model.developerVO"%>
-<%@page import="com.game.developer.model.developerDAO"%>
+<%@page import="com.game.developer.model.DeveloperVO"%>
+<%@page import="com.game.developer.model.DeveloperDAO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -25,32 +25,34 @@
 <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
 <%
-	String no=request.getParameter("no");
+String no=request.getParameter("no");
 	
-/*	if(no==null || no.isEmpty()){ %>
+/*	if(no==null || no.isEmpty()){
+%>
 		<script type="text/javascript">
 			alert("잘못된 url입니다.");
 			location.href="main.jsp";
 		</script> 
-	<%	return;
-	}*/
-	developerDAO dao = new developerDAO();
-	developerVO vo = null;
-	try{
-		vo=dao.selectDByNo(Integer.parseInt(no));
-	}catch(SQLException e){
-		e.printStackTrace();
-	}
-	/* if문으로 해서 개발자랑 회원 구분하게 하자 
-	ex :
-		String name=""; 그래서 이걸 value값에 넣게
-		if(){
-			name = vo.getSeler();
-		}else{
-			name = vo.getName();
-		}
-	*/
-%>
+	<%
+ 	return;
+ 	 		}*/
+ 	 		DeveloperDAO dao = new DeveloperDAO();
+ 	 		DeveloperVO vo = null;
+ 	 		try{
+ 	 			vo=dao.selectDByNo(Integer.parseInt(no));
+ 	 		}catch(SQLException e){
+ 	 			e.printStackTrace();
+ 	 		}
+ 	 		/* if문으로 해서 개발자랑 회원 구분하게 하자 
+ 	 		ex :
+ 	 			String name=""; 그래서 이걸 value값에 넣게
+ 	 			if(){
+ 	 		name = vo.getSeler();
+ 	 			}else{
+ 	 		name = vo.getName();
+ 	 			}
+ 	 		*/
+ 	%>
 
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">

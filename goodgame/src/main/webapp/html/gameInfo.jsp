@@ -1,6 +1,6 @@
 <%@page import="java.sql.SQLException"%>
-<%@page import="com.game.game.model.gameVO"%>
-<%@page import="com.game.game.model.gameDAO"%>
+<%@page import="com.game.game.model.GameVO"%>
+<%@page import="com.game.game.model.GameDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,22 +32,24 @@
 <style>
 </style>
 <%
-	String no=request.getParameter("no");
-	if(no==null || no.isEmpty()){ %>
+String no=request.getParameter("no");
+	if(no==null || no.isEmpty()){
+%>
 		<script type="text/javascript">
 			alert("잘못된 url입니다.");
 			location.href="list.jsp";
 		</script>
-	<%	return;
-	}
-	gameDAO dao = new gameDAO();
-	gameVO vo = null;
-	try{
+	<%
+	return;
+			}
+			GameDAO dao = new GameDAO();
+			GameVO vo = null;
+			try{
 		vo=dao.selectByNo(Integer.parseInt(no));
-	}catch(SQLException e){
+			}catch(SQLException e){
 		e.printStackTrace();
-	}
-%>
+			}
+	%>
 <body id="page-top">
 
 	<!-- Page Wrapper -->

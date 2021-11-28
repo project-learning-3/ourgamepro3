@@ -16,12 +16,12 @@
 	String m_pwd=request.getParameter("m_pwd");
 	String ch_pwd=request.getParameter("ch_pwd");
 
-//	System.out.println(m_pwd);
-//	System.out.println(ch_pwd);
+	System.out.println(m_pwd);
+	System.out.println(ch_pwd);
 	
 	String s_charge=request.getParameter("m_money");
 
-//	System.out.println(s_charge);
+	System.out.println(s_charge);
 
 	int charge=Integer.parseInt(s_charge);
 	
@@ -42,7 +42,7 @@
 		history.back();
 		</script>
 <%	}
-	else {	
+	else if(m_pwd.equals(ch_pwd)) {	
 
 			MemberDAO m_dao=new MemberDAO();
 			boolean check=m_dao.checkPwd(m_pwd);

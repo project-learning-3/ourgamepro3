@@ -12,18 +12,18 @@ import javax.xml.transform.Result;
 
 import com.game.db.ConnectionPoolMgr;
 
-public class developerDAO {
+public class DeveloperDAO {
 	private ConnectionPoolMgr pool;
 	
-	public developerDAO() {
+	public DeveloperDAO() {
 		pool=ConnectionPoolMgr.getInstance();
 	}
 	
-	public List<developerVO> select() throws SQLException{
+	public List<DeveloperVO> select() throws SQLException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<developerVO> list = new ArrayList<developerVO>();
+		List<DeveloperVO> list = new ArrayList<DeveloperVO>();
 		
 		try {
 			con = pool.getConnection();
@@ -39,7 +39,7 @@ public class developerDAO {
 				String seller_phone = rs.getString("seller_phone");
 				String business_no = rs.getString("business_no");
 				
-				developerVO vo = new developerVO(d_no, seller_email,seller, d_pwd,seller_phone,business_no);
+				DeveloperVO vo = new DeveloperVO(d_no, seller_email,seller, d_pwd,seller_phone,business_no);
 				list.add(vo);
 			}
 			System.out.println("list결과 : "+list);
@@ -72,7 +72,7 @@ public class developerDAO {
 		}
 	}
 	
-	public int insertDeveloper(developerVO vo) throws SQLException {
+	public int insertDeveloper(DeveloperVO vo) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 
@@ -103,7 +103,7 @@ public class developerDAO {
 		}
 
 	}
-	public int updateDeveloper(developerVO vo) throws SQLException {
+	public int updateDeveloper(DeveloperVO vo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -127,11 +127,11 @@ public class developerDAO {
 		}
 	}
 	
-	public developerVO selectDByNo(int no) throws SQLException {
+	public DeveloperVO selectDByNo(int no) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		developerVO vo = new developerVO();
+		DeveloperVO vo = new DeveloperVO();
 		try {
 			con=pool.getConnection();
 			String sql = "select * from developer where d_no=?";
@@ -161,7 +161,7 @@ public class developerDAO {
 		}
 	}
 	
-    public boolean checkPwd(developerVO vo) throws SQLException {
+    public boolean checkPwd(DeveloperVO vo) throws SQLException {
     	Connection con =null;
     	PreparedStatement ps = null;
     	ResultSet rs=null;

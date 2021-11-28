@@ -1,5 +1,5 @@
-<%@page import="com.game.developer.model.developerVO"%>
-<%@page import="com.game.developer.model.developerDAO"%>
+<%@page import="com.game.developer.model.DeveloperVO"%>
+<%@page import="com.game.developer.model.DeveloperDAO"%>
 <%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -11,7 +11,7 @@
 </head>
 <body>
 <%
-	request.setCharacterEncoding("utf-8");
+request.setCharacterEncoding("utf-8");
 	
 	
 	String pwd=request.getParameter("pwd");
@@ -22,9 +22,9 @@
 	String no = request.getParameter("no");
 	
 	
-	developerDAO dao = new developerDAO(); 
+	DeveloperDAO dao = new DeveloperDAO(); 
 	try{
-		developerVO	vo = new developerVO();
+		DeveloperVO	vo = new DeveloperVO();
 		vo.setD_pwd(pwd);
 		vo.setSeller(name);
 		vo.setSeller_phone(phone);
@@ -32,9 +32,10 @@
 		vo.setD_no(Integer.parseInt(no));
 		
 		if(dao.checkPwd(vo)){
-			int cnt= dao.updateDeveloper(vo);
-			
-			if(cnt>0){ %>
+	int cnt= dao.updateDeveloper(vo);
+	
+	if(cnt>0){
+%>
 				<script type="text/javascript">
 					alert("회원정보가 수정되었습니다.");
 					location.href="Profile.jsp?no=<%=no%>";

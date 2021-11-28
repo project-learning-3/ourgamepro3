@@ -1,6 +1,6 @@
 <%@page import="java.sql.SQLException"%>
-<%@page import="com.game.developer.model.developerVO"%>
-<%@page import="com.game.developer.model.developerDAO"%>
+<%@page import="com.game.developer.model.DeveloperVO"%>
+<%@page import="com.game.developer.model.DeveloperDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -47,23 +47,25 @@
 }
 </style>
 <%
-	String no=request.getParameter("no");
+String no=request.getParameter("no");
 
-	if(no==null || no.isEmpty()){ %>
+	if(no==null || no.isEmpty()){
+%>
 	<script type="text/javascript">
 		alert("잘못된 url입니다.");
 		location.href="main.jsp";
 	</script>
-	<%	return;
-	}
-	developerDAO dao = new developerDAO();
-	developerVO vo = null;
-	try{
+	<%
+	return;
+			}
+			DeveloperDAO dao = new DeveloperDAO();
+			DeveloperVO vo = null;
+			try{
 		vo=dao.selectDByNo(Integer.parseInt(no));
-	}catch(SQLException e){
+			}catch(SQLException e){
 		e.printStackTrace();
-	}
-%>
+			}
+	%>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	function regbtn() {

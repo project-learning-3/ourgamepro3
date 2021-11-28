@@ -1,8 +1,8 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.Timestamp"%>
-<%@page import="com.game.developer.model.developerVO"%>
+<%@page import="com.game.developer.model.DeveloperVO"%>
 <%@page import="com.game.member.model.MemberVO"%>
-<%@page import="com.game.developer.model.developerDAO"%>
+<%@page import="com.game.developer.model.DeveloperDAO"%>
 <%@page import="com.game.member.model.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -14,7 +14,7 @@
 </head>
 <body>
 <%
-	//1. 요청 파라미터 읽어오기
+//1. 요청 파라미터 읽어오기
 	String no=request.getParameter("no");
 	String email=request.getParameter("email");
 	String pwd=request.getParameter("pwd");
@@ -29,29 +29,30 @@
 	try{
 		int cnt=0;
 		if(no=="1"){
-			MemberDAO dao = new MemberDAO();
-			MemberVO vo = new MemberVO();
-			vo.setM_email(email);
-			vo.setM_pwd(pwd);
-			vo.setM_name(name);
-			vo.setM_phone(phone);
-			vo.setM_birth(Timestamp.valueOf(birth));
-			
-			cnt=dao.insertMember(vo);
+	MemberDAO dao = new MemberDAO();
+	MemberVO vo = new MemberVO();
+	vo.setM_email(email);
+	vo.setM_pwd(pwd);
+	vo.setM_name(name);
+	vo.setM_phone(phone);
+	vo.setM_birth(Timestamp.valueOf(birth));
+	
+	cnt=dao.insertMember(vo);
 		}else if(no=="2"){
-			developerDAO dao = new developerDAO();
-			developerVO vo = new developerVO();
-			vo.setSeller_email(email);
-			vo.setD_pwd(pwd);
-			vo.setSeller(name);
-			vo.setSeller_phone(phone);
-			vo.setBusiness_no(businessNo);
-			
-			cnt=dao.insertDeveloper(vo);
+	DeveloperDAO dao = new DeveloperDAO();
+	DeveloperVO vo = new DeveloperVO();
+	vo.setSeller_email(email);
+	vo.setD_pwd(pwd);
+	vo.setSeller(name);
+	vo.setSeller_phone(phone);
+	vo.setBusiness_no(businessNo);
+	
+	cnt=dao.insertDeveloper(vo);
 		}
-			
+	
 		//3. 결과 처리  
-		if(cnt>0){ %>
+		if(cnt>0){
+%>
 			<script type="text/javascript">
 				alert("글쓰기 처리되었습니다.");
 				location.href="list.jsp";
