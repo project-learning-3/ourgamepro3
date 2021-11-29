@@ -45,7 +45,7 @@ String no=request.getParameter("no");
  	 		}
  	 		/* 공통된 테이블에 들어가서 찾고, 수정같은 경운 공통 테이블을 통해서 개별 테이블도 수정
  	 		ex :
- 	 			String name="" ,,그래서  이걸 value값에 넣게
+ 	 			String name="" , (just)그래서  이걸 value값에 넣게
  	 			if(){
  	 		name = vo.getSeler();llll
  	 			}else{
