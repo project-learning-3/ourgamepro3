@@ -45,7 +45,7 @@
 		$('.collapse-item1').on("click",function() {
 			alert('로그아웃 하시겠습니까?');
 			if(bool == true){
-			location.href = "login.html";
+			location.href = "login.jsp";
 			};
 		});
    });
@@ -218,7 +218,7 @@
 						<a class="collapse-item" href="blank.html">프로필 수정</a>
 						<!-- 계정변경 html로 연결 -->
 						<a class="collapse-item" href="blank.html">프로필 정보</a> <a
-							class="collapse-item1" href="login.html">로그아웃</a>
+							class="collapse-item1" href="login.jsp">로그아웃</a>
 					</div>
 				</div></li>
 

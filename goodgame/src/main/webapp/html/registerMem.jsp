@@ -1,59 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <title>sing up for member</title>
-    
-    <!-- Custom fonts for this template-->
-    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+<title>sing up for member</title>
 
-    <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-    
+<!-- Custom fonts for this template-->
+<link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="../css/sb-admin-2.min.css" rel="stylesheet">
+
 <style type="text/css">
 #test_btn1 {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	margin-right: -4px;
-	width:50%;
-	opacity:0.5;
+	width: 50%;
 }
 
 #test_btn2 {
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
 	margin-left: -3px;
-	width:50%;
+	width: 50%;
+	opacity: 0.5;
 }
 
-.opa {opacity:0.5;}
-
+.opa {
+	opacity: 0.5;
+}
 </style>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -114,91 +101,97 @@
 </head>
 </head>
 <body class="bg-gradient-primary">
-    <div class="container">
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
-                <!-- Nested Row within Card Body -->
-                <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                    <div class="col-lg-7">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                            </div>
-                            <form class="user">             
-                            <input type="hidden" name="no" value="<%=1%>">               	
+	<div class="container">
+		<div class="card o-hidden border-0 shadow-lg my-5">
+			<div class="card-body p-0">
+				<!-- Nested Row within Card Body -->
+				<div class="row">
+					<div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+					<div class="col-lg-7">
+						<div class="p-5">
+							<div class="text-center">
+								<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+							</div>
+							<form class="user">
+								<input type="hidden" name="no" value="<%=1%>">
 								<div class="form-group">
-									<a id="test_btn1" class="btn btn-primary btn-user" onclick="selbtn1()">for member</a>
-									<a id="test_btn2" href="register2.jsp" class="btn btn-primary btn-user">for developer</a>
+									<a id="test_btn1" class="btn btn-primary btn-user"
+										onclick="selbtn1()">for member</a> <a id="test_btn2"
+										href="registerDev.jsp" class="btn btn-primary btn-user">for
+										developer</a>
 								</div>
 
-                                <!-- 이메일 -->
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address" name="email" value="G-">
-                                </div>
-                                
-                                <!-- 비밀번호, 비밀번호확인 -->
-                                <div class="form-group row">-
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password" name="pwd">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
-                                </div>
-                                
+								<!-- 이메일 -->
+								<div class="form-group">
+									<input type="email" class="form-control form-control-user"
+										id="exampleInputEmail" placeholder="Email Address"
+										name="email" value="G-">
+								</div>
+
+								<!-- 비밀번호, 비밀번호확인 -->
+								<div class="form-group row">
+									-
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<input type="password" class="form-control form-control-user"
+											id="exampleInputPassword" placeholder="Password" name="pwd">
+									</div>
+									<div class="col-sm-6">
+										<input type="password" class="form-control form-control-user"
+											id="exampleRepeatPassword" placeholder="Repeat Password">
+									</div>
+								</div>
+
 								<!-- 이름 -->
 								<div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="name"
-                                            placeholder="Name" name="name">
-                                </div>
-                                
-                                <!-- 연락처 -->
-                                <div class="form-group">
-                                    <input type="number" class="form-control form-control-user" id="phoneNumber"
-                                            placeholder="Phone Number" name="phone">
-                                </div>
-                                
-                                <!-- 생일 -->
-                                <div class="form-group">
-                                    <input type="number" class="form-control form-control-user" id="birth"
-                                            placeholder="Date of Birth" name="birth">
-                                </div>
-                                
-                                <!-- 등록버튼 -->
-                                <a id="regbtn" href="register_ok.jsp" class="btn btn-primary btn-user btn-block" onclick="regbtn()">
-                                    Register Account
-                                </a>
-                                
-                                
-                            </form>
-                            <hr>
-                            <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+									<input type="text" class="form-control form-control-user"
+										id="name" placeholder="Name" name="name">
+								</div>
 
-    </div>
+								<!-- 연락처 -->
+								<div class="form-group">
+									<input type="number" class="form-control form-control-user"
+										id="phoneNumber" placeholder="Phone Number" name="phone">
+								</div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+								<!-- 생일 -->
+								<div class="form-group">
+									<input type="number" class="form-control form-control-user"
+										id="birth" placeholder="Date of Birth" name="birth">
+								</div>
 
-    <!-- Core plugin JavaScript-->
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+								<!-- 등록버튼 -->
+								<a id="regbtn" href="register_ok.jsp"
+									class="btn btn-primary btn-user btn-block" onclick="regbtn()">
+									Register Account </a>
 
-    <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin-2.min.js"></script>
+
+							</form>
+							<hr>
+							<div class="text-center">
+								<a class="small" href="forgot-password.jsp">Forgot
+									Password?</a>
+							</div>
+							<div class="text-center">
+								<a class="small" href="login.jsp">Already have an account?
+									Login!</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="../vendor/jquery/jquery.min.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="../js/sb-admin-2.min.js"></script>
 
 </body>
 
