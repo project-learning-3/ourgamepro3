@@ -47,9 +47,9 @@ String no=request.getParameter("no");
  	 		ex :
  	 			String name=""; 그래서 이걸 value값에 넣게
  	 			if(){
- 	 		name = vo.getSeler();
+ 	 		name = vo.getSeler();llll
  	 			}else{
- 	 		name = vo.getName();;
+ 	 		name = vo.getName();
  	 			}
  	 		*/
  	%>
