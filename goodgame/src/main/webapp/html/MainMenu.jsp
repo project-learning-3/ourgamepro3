@@ -62,9 +62,9 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="MainMenu.jsp">
+                <a class="nav-link" href="Proflie.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>메인페이지</span></a>
+                    <span>마이페이지</span></a>
             </li>
              <!-- Divider -->
             <hr class="sidebar-divider">

@@ -6912,6 +6912,10 @@ button.bg-dark:focus {
 .justify-content-center {
   justify-content: center !important;
 }
+.justify-content-center1 {
+  justify-content: center !important;
+  margin-top: 150px;
+}
 
 .justify-content-between {
   justify-content: space-between !important;
