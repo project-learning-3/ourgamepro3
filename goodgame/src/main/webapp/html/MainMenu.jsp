@@ -17,7 +17,7 @@
 			if(bool == true){
 			location.href = "login.jsp";
 			};
-		}); */
+		}); a*/
    });
 </script>
 <head>
