@@ -249,3 +249,36 @@ ALTER TABLE order
 		REFERENCES game (
 			g_no
 		);
+		
+		
+		
+select * from member;
+
+/*테스트용 멤버*/
+insert into member(m_no,m_email,m_pwd,m_name,m_birth,m_phone)
+ VALUES (member_seq.nextval,'bb@naver.com','bb123','bb','2002-12-21','010-2515-8888');
+ 
+select m_pwd from member where m_pwd='ee123';
+ 
+/*멤버 시퀀스*/
+create sequence member_seq
+increment by 1
+start with 1
+nocache;
+
+select * from member;
+
+select * from payment;
+
+select m_no from member where m_pwd='ee123';
+select m_pwd from member where m_pwd='ee123';
+
+/* payment 시퀀스*/ 
+create sequence payment_seq
+increment by 1
+start with 1
+nocache;
+
+/*payment 테스트를 위한 인서트*/
+insert into payment(payno,paydate,balance,m_no) 
+ values(payment_seq.nextval,sysdate,'10000','2');
