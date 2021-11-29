@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp" %>
 <!-- 내용추가 -->
-<!--test  -->
+<!--test11  -->
 <%@ include file="../inc/bottom.jsp"%> 
