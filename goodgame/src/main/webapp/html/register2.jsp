@@ -83,7 +83,7 @@
 		}
 	}
 	
-	/* function selbtn2(){
+	/* function selbtn2(){ 
 		location.href="register1.html"; */
 		/* $('#bn').attr('disabled', true); */
 		/* $('#bn').hide(); */
