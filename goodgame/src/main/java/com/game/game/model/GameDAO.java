@@ -142,6 +142,12 @@ public class GameDAO {
 		}
 	}
 	
+	/**
+	 * 게임 삭제
+	 * @param vo
+	 * @return
+	 * @throws SQLException
+	 */
 	public int deletGame(GameVO vo) throws SQLException{
 		Connection con=null;
 		PreparedStatement ps=null;

@@ -8,7 +8,7 @@ public class MemberVO {
 	private String m_pwd; /* 비밀번호 */
 	private String m_name; /* 이름 */
 	private Timestamp m_birth; /* 생년월 */
-	private String m_phone; /* 연락처 */
+	private String m_phone; /* 연락처  */
 	public MemberVO() {
 		super();
 		// TODO Auto-generated constructor stub

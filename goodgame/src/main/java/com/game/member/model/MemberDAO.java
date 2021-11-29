@@ -142,7 +142,7 @@ public class MemberDAO {
 	}
 	
 	/**
-	 * 고객번호 추출
+	 * 고객번호 추출 ->비밀번호로
 	 * @param m_pwd
 	 * @return
 	 * @throws SQLException

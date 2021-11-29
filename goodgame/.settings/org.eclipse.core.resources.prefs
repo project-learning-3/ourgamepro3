@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/game/db/ConnectionPoolMgr.java=UTF-8
+encoding//src/main/java/com/game/developer/model/DeveloperDAO.java=UTF-8
+encoding//src/main/java/com/game/developer/model/DeveloperVO.java=UTF-8
+encoding//src/main/java/com/game/game/model/GameDAO.java=UTF-8
+encoding//src/main/java/com/game/game/model/GameVO.java=UTF-8
+encoding//src/main/java/com/game/member/model/MemberDAO.java=UTF-8
+encoding//src/main/java/com/game/member/model/MemberVO.java=UTF-8
+encoding//src/main/webapp/html/membershipTerms.jsp=UTF-8

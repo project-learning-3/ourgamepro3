@@ -9,7 +9,7 @@ public class GameVO {
 	private Timestamp gdate; /*등록일시*/
 	private String gtext; /*게임설명*/
 	private String notice; /*게임공지사항*/
-	private int d_no; /*개발자 번호*/
+	private int d_no; /*개발자 번호 */
 	
 	public GameVO() {
 		super();

@@ -6,7 +6,7 @@ public class DeveloperVO {
 	private String seller; /* 판매자명 */
 	private String d_pwd; /* 비밀번호 */
 	private String seller_phone; /* 연락처 */
-	private String business_no; /* 사업자번호 */
+	private String business_no; /* 사업자번호  */
 	public DeveloperVO() {
 		super();
 		// TODO Auto-generated constructor stub
