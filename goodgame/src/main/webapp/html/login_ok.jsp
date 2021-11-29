@@ -29,7 +29,7 @@
 		session.setAttribute("name", name);
 		System.out.println(name);
 		%>
-		<jsp:forward page="home.jsp">
+		<jsp:forward page="MainMenu.jsp">
 			<jsp:param value="<%=name%>" name="name"/>
 		</jsp:forward>
 		<%	

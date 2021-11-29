@@ -2,7 +2,22 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -120,11 +135,11 @@
                                 <!-- 이메일 -->
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address" name="email">
+                                        placeholder="Email Address" name="email" value="G-">
                                 </div>
                                 
                                 <!-- 비밀번호, 비밀번호확인 -->
-                                <div class="form-group row">
+                                <div class="form-group row">-
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
                                             id="exampleInputPassword" placeholder="Password" name="pwd">
