@@ -11,6 +11,9 @@
 </head>
 <body>
 <%
+
+// 비밀번호를 세션에 담아서가져와야 로그인상태인 사람의 비밀번호랑 비교를 할 수 있을것같음,.
+// jsp usebean 잘몰라서 물어보기 ㅠ
 	request.setCharacterEncoding("utf-8");
 	
 	String m_pwd=request.getParameter("m_pwd");

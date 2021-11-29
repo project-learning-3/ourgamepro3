@@ -65,14 +65,15 @@ ALTER TABLE game
 			g_no
 		);
 
+DROP TABLE PAYMENT;
 /* 결제수단 */
 CREATE TABLE payment (
 	payno NUMBER NOT NULL, /* 결제수단고유번 */
-	payprice NUMBER, /* 결제금 */
-	paydate DATE, /* 결제일 */
-	balance NUMBER, /* 보유금 */
-	cancle VARCHAR2(10), /* 결제취소여부 */
-	cancledate DATE, /* 결제취소일 */
+	payprice NUMBER  DEFAULT 0, /* 결제금 */
+	paydate DATE DEFAULT SYSDATE, /* 결제일 */
+	balance NUMBER DEFAULT 0, /* 보유금 */
+	cancle VARCHAR2(10) DEFAULT 'N', /* 결제취소여부 */
+	--cancledate DATE, /* 결제취소일 */
 	m_no NUMBER NOT NULL /* 회원번호 */
 );
 
@@ -249,36 +250,3 @@ ALTER TABLE order
 		REFERENCES game (
 			g_no
 		);
-		
-		
-		
-select * from member;
-
-/*테스트용 멤버*/
-insert into member(m_no,m_email,m_pwd,m_name,m_birth,m_phone)
- VALUES (member_seq.nextval,'bb@naver.com','bb123','bb','2002-12-21','010-2515-8888');
- 
-select m_pwd from member where m_pwd='ee123';
- 
-/*멤버 시퀀스*/
-create sequence member_seq
-increment by 1
-start with 1
-nocache;
-
-select * from member;
-
-select * from payment;
-
-select m_no from member where m_pwd='ee123';
-select m_pwd from member where m_pwd='ee123';
-
-/* payment 시퀀스*/ 
-create sequence payment_seq
-increment by 1
-start with 1
-nocache;
-
-/*payment 테스트를 위한 인서트*/
-insert into payment(payno,paydate,balance,m_no) 
- values(payment_seq.nextval,sysdate,'10000','2');
