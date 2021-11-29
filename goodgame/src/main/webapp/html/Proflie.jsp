@@ -43,7 +43,7 @@ String no=request.getParameter("no");
  	 		}catch(SQLException e){
  	 			e.printStackTrace();
  	 		}
- 	 		/* if문으로 해서 개발자랑 회원 구분하게 하자 
+ 	 		/* 공통된 테이블에 들어가서 찾고, 수정같은 경운 공통 테이블을 통해서 개별 테이블도 수정
  	 		ex :
  	 			String name=""; 그래서 이걸 value값에 넣게
  	 			if(){
