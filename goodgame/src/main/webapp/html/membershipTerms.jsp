@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 <meta charset="utf-8">
-<title>Good game-회원약관</title>
+<title>Good game - 회원약관</title>
 
 	<!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
