@@ -29,9 +29,10 @@
 		session.setAttribute("name", name);
 		System.out.println(name);
 		%>
-		<jsp:forward page="MainMenu.jsp">
-			<jsp:param value="<%=name%>" name="name"/>
-		</jsp:forward>
+		<script type="text/javascript">
+			alert('로그인');
+			location.href='home.jsp';
+		</script>
 		<%	
 	}
 %>

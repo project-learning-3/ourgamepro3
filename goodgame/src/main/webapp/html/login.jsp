@@ -84,7 +84,6 @@ $(function(){
 										<a class="small" href="registerMem.jsp">회원가입</a>
 										<!--  -->
 										<!--  -->
-										<!-- register1.jsp? register2.jps? -->
 										<!--  -->									
 										<!--  -->
 									</div>
