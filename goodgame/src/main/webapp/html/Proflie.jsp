@@ -49,7 +49,7 @@ String no=request.getParameter("no");
  	 			if(){
  	 		name = vo.getSeler();
  	 			}else{
- 	 		name = vo.getName();
+ 	 		name = vo.getName();;
  	 			}
  	 		*/
  	%>
