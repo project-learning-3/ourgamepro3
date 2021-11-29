@@ -52,7 +52,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="MainMenu.jsp">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <img alt="메인이미지" src="../img/goodgame.png" style="width: 59px; height: 59px;">
+                    <img alt="메인이미지" src="../img/Gg.png" style="width: 59px; height: 59px;">
                 </div>
                 <div class="sidebar-brand-text mx-3">G <sup>ood </sup>G <sup>ame</sup></div>
             </a>
@@ -365,7 +365,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">[아이디]</span>
                                 <img class="img-profile rounded-circle"
-                                    src="../img/goodgame.png">
+                                    src="../img/Gg.png">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
