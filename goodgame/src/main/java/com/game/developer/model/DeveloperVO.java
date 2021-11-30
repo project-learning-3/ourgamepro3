@@ -1,12 +1,12 @@
 package com.game.developer.model;
 
 public class DeveloperVO {
-	private int d_no; /* ê°œë°œìë²ˆí˜¸ */
-	private String seller_email; /* ì´ë©”ì¼ */
-	private String seller; /* íŒë§¤ìëª… */
-	private String d_pwd; /* ë¹„ë°€ë²ˆí˜¸ */
-	private String seller_phone; /* ì—°ë½ì²˜ */
-	private String business_no; /* ì‚¬ì—…ìë²ˆí˜¸ */
+	private int d_no; /* °³¹ßÀÚ¹øÈ£ */
+	private String seller_email; /* ÀÌ¸ŞÀÏ */
+	private String seller; /* ÆÇ¸ÅÀÚ¸í */
+	private String d_pwd; /* ºñ¹Ğ¹øÈ£ */
+	private String seller_phone; /* ¿¬¶ôÃ³ */
+	private String business_no; /* »ç¾÷ÀÚ¹øÈ£ */
 	public DeveloperVO() {
 		super();
 		// TODO Auto-generated constructor stub

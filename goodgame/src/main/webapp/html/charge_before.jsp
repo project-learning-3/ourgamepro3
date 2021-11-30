@@ -78,7 +78,7 @@ Good game에서 사용할 수 있는 충전금을 충전합니다.
                                 
                             </form>
                              <div class="text-center">
-                                <a class="small" href="MainMenu.jsp">메인으로 돌아가기</a>
+                                <a class="small" href="home.jsp">메인으로 돌아가기</a>
                             </div>
                         </div>
                     </div>

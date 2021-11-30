@@ -2,7 +2,11 @@ package com.game.payment.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.game.db.ConnectionPoolMgr;
 
@@ -14,7 +18,7 @@ public class PaymentDAO {
 	}
 	
 	/**
-	 * ì”ì•¡ë”í•˜ê¸°
+	 * ÀÜ¾×´õÇÏ±â
 	 * @param m_no
 	 * @throws SQLException 
 	 */
@@ -32,12 +36,51 @@ public class PaymentDAO {
 			ps.setInt(2, m_no);
 			
 			int cnt=ps.executeUpdate();
-			System.out.println("ì”ì•¡ ë“±ë¡ ê²°ê³¼ cnt="+cnt+", balance="+charge+"ê³ ê°ë²ˆí˜¸="+m_no);
+			System.out.println("ÀÜ¾× µî·Ï °á°ú cnt="+cnt+", balance="+charge+"°í°´¹øÈ£="+m_no);
 			
 			return cnt;
 			
 		}finally {
 			pool.dbClose(ps, con);
+		}
+	}
+	
+	/**
+	 * °í°´¹øÈ£·Î ÀüÃ¼ °Å·¡Á¶È¸
+	 * @throws SQLException 
+	 */
+	public List<PaymentVO> selectbyNo(int m_no) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		
+		List<PaymentVO> list = new ArrayList<PaymentVO>();
+		try {
+			con=pool.getConnection();
+			String sql="select * from payment where m_no=?";
+			ps=con.prepareStatement(sql);
+			
+			ps.setInt(1, m_no);
+			
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				int payno=rs.getInt("payno");
+				int payprice=rs.getInt("payprice");
+				Timestamp paydate=rs.getTimestamp("paydate");
+				int balance =rs.getInt("balance");
+				String cancle=rs.getString("cancle");
+				
+				//³Î°ªÀÏ¶§ Ã³¸®...?...->Å×ÀÌºí°íÄ§
+				PaymentVO vo =new PaymentVO(payno,payprice,paydate,
+						balance,cancle,m_no);
+				list.add(vo);
+			}
+			System.out.println("list°á°ú : "+list);
+			return list;
+			
+		}finally {
+			pool.dbClose(rs, ps, con);
 		}
 	}
 }

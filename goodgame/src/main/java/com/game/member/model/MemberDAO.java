@@ -42,7 +42,7 @@ public class MemberDAO {
 				MemberVO vo = new MemberVO(m_no, m_email, m_pwd, m_name, m_birth, m_phone);
 				list.add(vo);
 			}
-			System.out.println("listê²°ê³¼ : "+list);
+			System.out.println("list°á°ú : "+list);
 			return list;
 		} finally {
 			pool.dbClose(rs, ps, con);
@@ -94,7 +94,7 @@ public class MemberDAO {
 
 			//4
 			int cnt = ps.executeUpdate();
-			System.out.println("ë“±ë¡ê²°ê³¼ cnt=" + cnt + "vo=" +vo);
+			System.out.println("µî·Ï°á°ú cnt=" + cnt + "vo=" +vo);
 
 			return cnt;
 
@@ -106,7 +106,7 @@ public class MemberDAO {
 
 	
 	/**
-	 * ë¹„ë°€ë²ˆí˜¸ ë§ëŠ”ì§€ ì²´í¬ ë§ìœ¼ë©´ true
+	 * ºñ¹Ğ¹øÈ£ ¸Â´ÂÁö Ã¼Å© ¸ÂÀ¸¸é true
 	 * @param m_pwd
 	 * @return
 	 * @throws SQLException
@@ -142,7 +142,7 @@ public class MemberDAO {
 	}
 	
 	/**
-	 * ê³ ê°ë²ˆí˜¸ ì¶”ì¶œ
+	 * °í°´¹øÈ£ ÃßÃâ
 	 * @param m_pwd
 	 * @return
 	 * @throws SQLException
@@ -189,7 +189,7 @@ public class MemberDAO {
 			ps.setInt(6, vo.getM_no());
 			
 			int cnt = ps.executeUpdate();
-			System.out.println("ìˆ˜ì •ê²°ê³¼ cnt="+cnt+", vo="+vo);
+			System.out.println("¼öÁ¤°á°ú cnt="+cnt+", vo="+vo);
 			return cnt;
 		}finally {
 			pool.dbClose(ps, con);
@@ -223,7 +223,7 @@ public class MemberDAO {
 				vo.setM_phone(phone);
 				vo.setM_birth(birth);
 			}
-			System.out.println("íšŒì›ì •ë³´ ê²°ê³¼ vo="+vo+", ë§¤ê°œë³€ìˆ˜ no="+no);
+			System.out.println("È¸¿øÁ¤º¸ °á°ú vo="+vo+", ¸Å°³º¯¼ö no="+no);
 			return vo;
 		}finally {
 			pool.dbClose(rs, ps, con);

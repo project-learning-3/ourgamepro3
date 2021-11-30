@@ -3,25 +3,24 @@ package com.game.payment.model;
 import java.sql.Timestamp;
 
 public class PaymentVO {
-	private int payno; /* ê²°ì œìˆ˜ë‹¨ê³ ìœ ë²ˆ */
-	private int payprice; /* ê²°ì œê¸ˆ */
-	private Timestamp paydate; /* ê²°ì œì¼ */
-	private int balance; /* ë³´ìœ ê¸ˆ */
-	private String cancle;  /* ê²°ì œì·¨ì†Œì—¬ë¶€ */
-	private Timestamp cancledate;/* ê²°ì œì·¨ì†Œì¼ */
-	private int m_no; /* íšŒì›ë²ˆí˜¸ */
+	private int payno; /* °áÁ¦¼ö´Ü°íÀ¯¹ø */
+	private int payprice; /* °áÁ¦±İ */
+	private Timestamp paydate; /* °áÁ¦ÀÏ */
+	private int balance; /* º¸À¯±İ */
+	private String cancle;  /* °áÁ¦Ãë¼Ò¿©ºÎ */
+	//private Timestamp cancledate;/* °áÁ¦Ãë¼ÒÀÏ */
+	private int m_no; /* È¸¿ø¹øÈ£ */
 	public PaymentVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PaymentVO(int payno, int payprice, Timestamp paydate, int balance, String cancle, Timestamp cancledate,
-			int m_no) {
+	public PaymentVO(int payno, int payprice, Timestamp paydate, int balance, String cancle, int m_no) {
+		super();
 		this.payno = payno;
 		this.payprice = payprice;
 		this.paydate = paydate;
 		this.balance = balance;
 		this.cancle = cancle;
-		this.cancledate = cancledate;
 		this.m_no = m_no;
 	}
 	public int getPayno() {
@@ -54,12 +53,6 @@ public class PaymentVO {
 	public void setCancle(String cancle) {
 		this.cancle = cancle;
 	}
-	public Timestamp getCancledate() {
-		return cancledate;
-	}
-	public void setCancledate(Timestamp cancledate) {
-		this.cancledate = cancledate;
-	}
 	public int getM_no() {
 		return m_no;
 	}
@@ -69,7 +62,7 @@ public class PaymentVO {
 	@Override
 	public String toString() {
 		return "PaymentVO [payno=" + payno + ", payprice=" + payprice + ", paydate=" + paydate + ", balance=" + balance
-				+ ", cancle=" + cancle + ", cancledate=" + cancledate + ", m_no=" + m_no + "]";
+				+ ", cancle=" + cancle + ", m_no=" + m_no + "]";
 	}
 	
 }

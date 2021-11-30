@@ -3,12 +3,12 @@ package com.game.member.model;
 import java.sql.Timestamp;
 
 public class MemberVO {
-	private int m_no; /* íšŒì›ë²ˆí˜¸ */
-	private String m_email; /* ì´ë©”ì¼ */
-	private String m_pwd; /* ë¹„ë°€ë²ˆí˜¸ */
-	private String m_name; /* ì´ë¦„ */
-	private Timestamp m_birth; /* ìƒë…„ì›” */
-	private String m_phone; /* ì—°ë½ì²˜ */
+	private int m_no; /* È¸¿ø¹øÈ£ */
+	private String m_email; /* ÀÌ¸ŞÀÏ */
+	private String m_pwd; /* ºñ¹Ğ¹øÈ£ */
+	private String m_name; /* ÀÌ¸§ */
+	private Timestamp m_birth; /* »ı³â¿ù */
+	private String m_phone; /* ¿¬¶ôÃ³  */
 	public MemberVO() {
 		super();
 		// TODO Auto-generated constructor stub

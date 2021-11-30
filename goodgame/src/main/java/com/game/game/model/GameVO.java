@@ -3,13 +3,13 @@ package com.game.game.model;
 import java.sql.Timestamp;
 
 public class GameVO {
-	private int g_no; /*ê²Œì„ë²ˆí˜¸*/
-	private String gname; /*ê²Œì„ì´ë¦„*/
-	private int price; /*ê²Œì„ê°€ê²©*/
-	private Timestamp gdate; /*ë“±ë¡ì¼ì‹œ*/
-	private String gtext; /*ê²Œì„ì„¤ëª…*/
-	private String notice; /*ê²Œì„ê³µì§€ì‚¬í•­*/
-	private int d_no; /*ê°œë°œì ë²ˆí˜¸*/
+	private int g_no; /*°ÔÀÓ¹øÈ£*/
+	private String gname; /*°ÔÀÓÀÌ¸§*/
+	private int price; /*°ÔÀÓ°¡°İ*/
+	private Timestamp gdate; /*µî·ÏÀÏ½Ã*/
+	private String gtext; /*°ÔÀÓ¼³¸í*/
+	private String notice; /*°ÔÀÓ°øÁö»çÇ×*/
+	private int d_no; /*°³¹ßÀÚ ¹øÈ£*/
 	
 	public GameVO() {
 		super();

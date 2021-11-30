@@ -16,7 +16,7 @@ public class GameDAO {
 	public GameDAO() {
 		pool=ConnectionPoolMgr.getInstance();
 	}
-	/*ê²Œì„ë“±ë¡ ë©”ì„œë“œ*/
+	/*°ÔÀÓµî·Ï ¸Ş¼­µå*/
 	public int insertGame(GameVO vo) throws SQLException{
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -35,14 +35,14 @@ public class GameDAO {
 			ps.setInt(5, vo.getD_no());
 
 			int cnt=ps.executeUpdate();
-			System.out.println("ê²Œì„ë“±ë¡ ê²°ê³¼ cnt="+cnt+", ë§¤ê°œë³€ìˆ˜ vo="+vo);
+			System.out.println("°ÔÀÓµî·Ï °á°ú cnt="+cnt+", ¸Å°³º¯¼ö vo="+vo);
 
 			return cnt;
 		}finally {
 			pool.dbClose(ps, con);
 		}
 	}
-	/*ê²Œì„ ëª©ë¡ ë©”ì„œë“œ*/
+	/*°ÔÀÓ ¸ñ·Ï ¸Ş¼­µå*/
 	public List<GameVO> selectAll() throws SQLException{
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -67,7 +67,7 @@ public class GameDAO {
 						notice, d_no);
 				list.add(vo);
 			}
-			System.out.println("ê²Œì„ë“±ë¡ ê²°ê³¼ list.size="+list.size());
+			System.out.println("°ÔÀÓµî·Ï °á°ú list.size="+list.size());
 
 			return list;
 		}finally {
@@ -75,7 +75,7 @@ public class GameDAO {
 		}
 	}
 
-	/*ê²Œì„ìƒì„¸ë³´ê¸° - ë²ˆí˜¸ë¡œ ì¡°íšŒ*/
+	/*°ÔÀÓ»ó¼¼º¸±â - ¹øÈ£·Î Á¶È¸*/
 	public GameVO selectByNo(int g_no) throws SQLException{
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -107,7 +107,7 @@ public class GameDAO {
 				vo.setGdate(gdate);
 				vo.setNotice(notice);
 			}
-			System.out.println("ê²Œì„ìƒì„¸ë³´ê¸° vo="+vo+ ", ë§¤ê°œë³€ìˆ˜ g_no="+g_no);
+			System.out.println("°ÔÀÓ»ó¼¼º¸±â vo="+vo+ ", ¸Å°³º¯¼ö g_no="+g_no);
 
 			return vo;
 		}finally {
@@ -134,7 +134,7 @@ public class GameDAO {
 			ps.setInt(5, vo.getD_no());
 			
 			int cnt=ps.executeUpdate();
-			System.out.println("ê²Œì„ëª©ë¡ ìˆ˜ì • ê²°ê³¼ cnt="+cnt+", ë§¤ê°œë³€ìˆ˜ vo="+vo);
+			System.out.println("°ÔÀÓ¸ñ·Ï ¼öÁ¤ °á°ú cnt="+cnt+", ¸Å°³º¯¼ö vo="+vo);
 
 			return cnt;
 		}finally {
@@ -155,7 +155,7 @@ public class GameDAO {
 			ps.setInt(1, vo.getG_no());
 			
 			int cnt=ps.executeUpdate();
-			System.out.println("ê²Œì„ ì‚­ì œ ê²°ê³¼ cnt="+cnt+", ë§¤ê°œë³€ìˆ˜ vo"+vo);
+			System.out.println("°ÔÀÓ »èÁ¦ °á°ú cnt="+cnt+", ¸Å°³º¯¼ö vo"+vo);
 			
 			return cnt;
 		}finally {

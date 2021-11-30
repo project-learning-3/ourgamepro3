@@ -42,7 +42,7 @@ public class DeveloperDAO {
 				DeveloperVO vo = new DeveloperVO(d_no, seller_email,seller, d_pwd,seller_phone,business_no);
 				list.add(vo);
 			}
-			System.out.println("listê²°ê³¼ : "+list);
+			System.out.println("list°á°ú : "+list);
 			return list;
 		} finally {
 			pool.dbClose(rs, ps, con);
@@ -94,7 +94,7 @@ public class DeveloperDAO {
 
 			//4
 			int cnt = ps.executeUpdate();
-			System.out.println("ë“±ë¡ê²°ê³¼ cnt=" + cnt + "vo=" +vo);
+			System.out.println("µî·Ï°á°ú cnt=" + cnt + "vo=" +vo);
 
 			return cnt;
 
@@ -120,7 +120,7 @@ public class DeveloperDAO {
 			ps.setInt(6, vo.getD_no());
 			
 			int cnt = ps.executeUpdate();
-			System.out.println("ìˆ˜ì •ê²°ê³¼ cnt="+cnt+", vo="+vo);
+			System.out.println("¼öÁ¤°á°ú cnt="+cnt+", vo="+vo);
 			return cnt;
 		}finally {
 			pool.dbClose(ps, con);
@@ -154,7 +154,7 @@ public class DeveloperDAO {
 				vo.setSeller_phone(phone);
 				vo.setBusiness_no(b_no);
 			}
-			System.out.println("íšŒì›ì •ë³´ ê²°ê³¼ vo="+vo+", ë§¤ê°œë³€ìˆ˜ no="+no);
+			System.out.println("È¸¿øÁ¤º¸ °á°ú vo="+vo+", ¸Å°³º¯¼ö no="+no);
 			return vo;
 		}finally {
 			pool.dbClose(rs, ps, con);
@@ -179,7 +179,7 @@ public class DeveloperDAO {
     				bool=true;
     			}
     		}
-    		System.out.print("ë¹„ë°€ë²ˆí˜¸ ì²´í¬ ê²°ê³¼ bool="+bool+", ë§¤ê°œë³€ìˆ˜ vo="+vo);
+    		System.out.print("ºñ¹Ğ¹øÈ£ Ã¼Å© °á°ú bool="+bool+", ¸Å°³º¯¼ö vo="+vo);
     		return bool;
     	}finally {
     		pool.dbClose(rs, ps, con);

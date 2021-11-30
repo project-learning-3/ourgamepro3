@@ -9,112 +9,112 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Iterator;
 
-//ì‹±ê¸€í†¤ìœ¼ë¡œ ì•ˆí•˜ë©´ ìƒˆë¡œê³ ì¹¨í• ë•Œë„ ì“°ë ˆë“œë¥¼ ê°€ì ¸ë‹¤ê°€ ë¨¼ì €ì˜¨ì‚¬ìš©ìê°€ ì¨ë²„ë¦¬ê¸°ë•Œë¬¸ì—.ì¢‹ì§€ì•ŠìŒ
+//½Ì±ÛÅæÀ¸·Î ¾ÈÇÏ¸é »õ·Î°íÄ§ÇÒ¶§µµ ¾²·¹µå¸¦ °¡Á®´Ù°¡ ¸ÕÀú¿Â»ç¿ëÀÚ°¡ ½á¹ö¸®±â¶§¹®¿¡.ÁÁÁö¾ÊÀ½
 
-//singleton íŒ¨í„´ ì´ìš© - ì»¨í…Œì´ë„ˆë‹¹ í•˜ë‚˜ì˜ ì»¤ë„¥ì…˜ í’€ë§Œ ì´ìš©ë˜ë„ë¡
-public class ConnectionPoolMgr { //ì‹±ê¸€í†¤ íŒ¨í„´ìœ¼ë¡œ ë§Œë“¤ì–´ì¤˜ì•¼í•œë‹¤.
+//singleton ÆĞÅÏ ÀÌ¿ë - ÄÁÅ×ÀÌ³Ê´ç ÇÏ³ªÀÇ Ä¿³Ø¼Ç Ç®¸¸ ÀÌ¿ëµÇµµ·Ï
+public class ConnectionPoolMgr { //½Ì±ÛÅæ ÆĞÅÏÀ¸·Î ¸¸µé¾îÁà¾ßÇÑ´Ù.
 	private String url,user,pwd;
 	private HashMap<Connection, Boolean> hmap;
-	private int increment; //ì¦ê°€ì¹˜
+	private int increment; //Áõ°¡Ä¡
 	
-	//static ë³€ìˆ˜
+	//static º¯¼ö
 	private static ConnectionPoolMgr instance;
 	
-	// private ìƒì„±ì
+	// private »ı¼ºÀÚ
 	private ConnectionPoolMgr(){
-		increment=5;//5ë§Œí¼ì”© ì¦ê°€
+		increment=5;//5¸¸Å­¾¿ Áõ°¡
 		hmap=new HashMap<Connection,Boolean>(10);	
 		Connection con=null;	
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("ë“œë¼ì´ë²„ ë¡œë”© ì„±ê³µ!");
+			System.out.println("µå¶óÀÌ¹ö ·Îµù ¼º°ø!");
 			url="jdbc:oracle:thin:@localhost:1521:xe";	
 			user="pro3"; 	
 			pwd="pro3";
 			
-			//ì»¤ë„¥ì…˜ ê°ì²´ë¥¼ ë¯¸ë¦¬ ìƒì„±í•´ ë†“ê¸° - 10ê°œ
+			//Ä¿³Ø¼Ç °´Ã¼¸¦ ¹Ì¸® »ı¼ºÇØ ³õ±â - 10°³
 			for(int i=0;i<10;i++){	
 				con=DriverManager.getConnection(url,user,pwd);		
-				//í•´ì‹œë§µì˜ keyì— ì»¤ë„¥ì…˜ ì €ì¥
+				//ÇØ½Ã¸ÊÀÇ key¿¡ Ä¿³Ø¼Ç ÀúÀå
 				
 				hmap.put(con, Boolean.FALSE);		
-				//í•´ì‹œë§µì˜ valueì— true, false ì €ì¥, false - ì‰¬ëŠ” ì»¤ë„¥ì…˜ì´ë¼ëŠ” í‘œì‹œ	
+				//ÇØ½Ã¸ÊÀÇ value¿¡ true, false ÀúÀå, false - ½¬´Â Ä¿³Ø¼ÇÀÌ¶ó´Â Ç¥½Ã	
 			}//for
 			
-			System.out.println("ConnectionPool ìƒì„±!");
+			System.out.println("ConnectionPool »ı¼º!");
 		}catch (ClassNotFoundException e) {			
 			e.printStackTrace();
 			System.out.println("Class Not Found!"); 
 		}catch (SQLException e) {			
 			e.printStackTrace();
-			System.out.println("sql ì˜ˆì™¸ë°œìƒ!"); 
+			System.out.println("sql ¿¹¿Ü¹ß»ı!"); 
 		}
-	}//ìƒì„±ì
+	}//»ı¼ºÀÚ
 		
-	//static ë©”ì„œë“œ
+	//static ¸Ş¼­µå
 	public static ConnectionPoolMgr getInstance() {
 		if(instance==null) {
 			instance=new ConnectionPoolMgr();
 		}
 		return instance;
 	}
-	public synchronized Connection getConnection() //jsp - ìš”ì²­ì‹œ Threadë¡œ ì²˜ë¦¬
+	public synchronized Connection getConnection() //jsp - ¿äÃ»½Ã Thread·Î Ã³¸®
 			throws SQLException{
 		Iterator<Connection> iterKeys=hmap.keySet().iterator();	
 		Connection con=null;	
-		while(iterKeys.hasNext() ){ //hmapì— keyê°€ ìˆëŠ” ë™ì•ˆ ë°˜ë³µ	
-			con=iterKeys.next();//keyê°’	
-			Boolean b=hmap.get(con);//valueê°’	
-			//ë§Œì•½ ì‰¬ê³ ìˆëŠ” ì»¨ë„¥ì…˜ì´ë¼ë©´ ì¼í•˜ëŠ” ì»¨ë„¥ì…˜ìœ¼ë¡œ í‘œì‹œí•´ì£¼ê³  ë°˜í™˜í•œë‹¤.	
+		while(iterKeys.hasNext() ){ //hmap¿¡ key°¡ ÀÖ´Â µ¿¾È ¹İº¹	
+			con=iterKeys.next();//key°ª	
+			Boolean b=hmap.get(con);//value°ª	
+			//¸¸¾à ½¬°íÀÖ´Â ÄÁ³Ø¼ÇÀÌ¶ó¸é ÀÏÇÏ´Â ÄÁ³Ø¼ÇÀ¸·Î Ç¥½ÃÇØÁÖ°í ¹İÈ¯ÇÑ´Ù.	
 			if(b==Boolean.FALSE){	
-				hmap.put(con, Boolean.TRUE);//ì¼í•œë‹¤ê³  í‘œì‹œ		
-				return con; //ì¼í•˜ëŸ¬ ë‚˜ê°	
+				hmap.put(con, Boolean.TRUE);//ÀÏÇÑ´Ù°í Ç¥½Ã		
+				return con; //ÀÏÇÏ·¯ ³ª°¨	
 			}//if	
 		}//while
 		
-		//ì‰¬ê³  ìˆëŠ” ì»¨ë„¥ì…˜ì´ ì—†ìœ¼ë©´ ì¼í•  Connectionì„ 5ê°œ ì¦ê°€ì‹œí‚¨ë‹¤	
+		//½¬°í ÀÖ´Â ÄÁ³Ø¼ÇÀÌ ¾øÀ¸¸é ÀÏÇÒ ConnectionÀ» 5°³ Áõ°¡½ÃÅ²´Ù	
 		for(int i=0;i<increment;i++){	
 			Connection con2=DriverManager.getConnection(url,user,pwd);	
 			hmap.put(con2, Boolean.FALSE);	
 		}//for
 		
-		return getConnection();//ì¬ê·€í˜¸ì¶œ 
+		return getConnection();//Àç±ÍÈ£Ãâ 
 	}
 	
-	//ì»¤ë„¥ì…˜ì„ ì‚¬ìš©í•˜ê³  ë‚œ í›„ ë‹¤ì‹œ ë˜ëŒë ¤ì£¼ëŠ” ë©”ì†Œë“œ	
+	//Ä¿³Ø¼ÇÀ» »ç¿ëÇÏ°í ³­ ÈÄ ´Ù½Ã µÇµ¹·ÁÁÖ´Â ¸Ş¼Òµå	
 	public void returnConnection(Connection returnCon){
 		Iterator<Connection> iterKeys=hmap.keySet().iterator();	
 		Connection con=null;	
 		while(iterKeys.hasNext() ){	
 			con=iterKeys.next();		
-			if(con==returnCon){	//conì˜ ì£¼ì†Œê°’ì´ ì¼ì¹˜í•˜ë©´
-				hmap.put(con, Boolean.FALSE);  //ì‰¬ëŠ” ì»¤ë„¥ì…˜ìœ¼ë¡œ í‘œì‹œ	
+			if(con==returnCon){	//conÀÇ ÁÖ¼Ò°ªÀÌ ÀÏÄ¡ÇÏ¸é
+				hmap.put(con, Boolean.FALSE);  //½¬´Â Ä¿³Ø¼ÇÀ¸·Î Ç¥½Ã	
 				break;
 			}//if
 		}//while
 		
 		try{	
-			removeConnection(); //ì‰¬ê³ ìˆëŠ” ì»¤ë„¥ì…˜ 10ê°œë¥¼ ìœ ì§€í•´ì£¼ëŠ” ë©”ì†Œë“œ	
+			removeConnection(); //½¬°íÀÖ´Â Ä¿³Ø¼Ç 10°³¸¦ À¯ÁöÇØÁÖ´Â ¸Ş¼Òµå	
 		}catch(SQLException e){	
 			e.printStackTrace();	
 			System.out.println("sqlerror:" + e.getMessage());
 		}
 	}
 	
-	//Connection 10ê°œë§Œ ìœ ì§€í•´ì£¼ëŠ” ë©”ì„œë“œ
+	//Connection 10°³¸¸ À¯ÁöÇØÁÖ´Â ¸Ş¼­µå
 	public void removeConnection() throws SQLException{
 		Connection con=null;
 		Iterator<Connection> iterKeys=hmap.keySet().iterator();
-		int count=0;//falseì¸ ì»¤ë„¥ì…˜ ê°œìˆ˜
+		int count=0;//falseÀÎ Ä¿³Ø¼Ç °³¼ö
 		while(iterKeys.hasNext() ){ 	
 			con=iterKeys.next();	
 			Boolean b=hmap.get(con);
 			boolean b_pre=b.booleanValue();
-			if(!b_pre){//ì‰¬ê³ ìˆëŠ” ì»¤ë„¥ì…˜ ê°œìˆ˜ ì„¸ê¸° - falseì¸ ê²½ìš°
+			if(!b_pre){//½¬°íÀÖ´Â Ä¿³Ø¼Ç °³¼ö ¼¼±â - falseÀÎ °æ¿ì
 				count++;
-				if(count>10){ //ì‰¬ê³  ìˆëŠ” ì»¤ë„¥ì…˜ì´ 10ê°œê°€ ë„˜ì–´ê°€ë©´
-					//í•´ì‹œë§µì—ì„œ ì‚­ì œ
+				if(count>10){ //½¬°í ÀÖ´Â Ä¿³Ø¼ÇÀÌ 10°³°¡ ³Ñ¾î°¡¸é
+					//ÇØ½Ã¸Ê¿¡¼­ »èÁ¦
 					hmap.remove(con);
 					con.close();
 				}
@@ -122,7 +122,7 @@ public class ConnectionPoolMgr { //ì‹±ê¸€í†¤ íŒ¨í„´ìœ¼ë¡œ ë§Œë“¤ì–´ì¤˜ì•¼í•œë‹¤.
 		}//while
 	}
 	
-	//ëª¨ë“  ì»¤ë„¥ì…˜ closeí•˜ëŠ” ë©”ì„œë“œ
+	//¸ğµç Ä¿³Ø¼Ç closeÇÏ´Â ¸Ş¼­µå
 	public void closeAll() throws SQLException{
 		Iterator<Connection> iterKeys=hmap.keySet().iterator();	
 		Connection con=null;	
@@ -133,7 +133,7 @@ public class ConnectionPoolMgr { //ì‹±ê¸€í†¤ íŒ¨í„´ìœ¼ë¡œ ë§Œë“¤ì–´ì¤˜ì•¼í•œë‹¤.
 	}
 	
 	
-	//ìì›í•´ì œí•˜ëŠ” ë©”ì„œë“œ
+	//ÀÚ¿øÇØÁ¦ÇÏ´Â ¸Ş¼­µå
 	public void dbClose(PreparedStatement ps,  Connection con) throws SQLException{
 		if(ps!=null) ps.close();
 		if(con!=null)returnConnection(con);
