@@ -65,14 +65,15 @@ ALTER TABLE game
 			g_no
 		);
 
+DROP TABLE PAYMENT;
 /* 결제수단 */
 CREATE TABLE payment (
 	payno NUMBER NOT NULL, /* 결제수단고유번 */
-	payprice NUMBER, /* 결제금 */
-	paydate DATE, /* 결제일 */
-	balance NUMBER, /* 보유금 */
-	cancle VARCHAR2(10), /* 결제취소여부 */
-	cancledate DATE, /* 결제취소일 */
+	payprice NUMBER  DEFAULT 0, /* 결제금 */
+	paydate DATE DEFAULT SYSDATE, /* 결제일 */
+	balance NUMBER DEFAULT 0, /* 보유금 */
+	cancle VARCHAR2(10) DEFAULT 'N', /* 결제취소여부 */
+	--cancledate DATE, /* 결제취소일 */
 	m_no NUMBER NOT NULL /* 회원번호 */
 );
 

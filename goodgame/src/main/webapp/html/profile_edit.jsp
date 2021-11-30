@@ -3,6 +3,7 @@
 <%@page import="com.game.developer.model.DeveloperDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!-- jsp:usebean -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,25 +48,21 @@
 }
 </style>
 <%
-String no=request.getParameter("no");
-
-	if(no==null || no.isEmpty()){
-%>
-	<script type="text/javascript">
-		alert("잘못된 url입니다.");
-		location.href="main.jsp";
-	</script>
-	<%
-	return;
-			}
-			DeveloperDAO dao = new DeveloperDAO();
-			DeveloperVO vo = null;
-			try{
-		vo=dao.selectDByNo(Integer.parseInt(no));
-			}catch(SQLException e){
+	String m_email = (String) session.getAttribute("m_email");
+	String d_email = (String) session.getAttribute("d_email");
+	
+	DeveloperDAO dao = new DeveloperDAO();
+	DeveloperVO vo = null;
+	try {
+		if (m_email != null && !m_email.isEmpty()) {
+			//vo=
+		} else if (d_email != null && !d_email.isEmpty()) {
+	
+		}
+	} catch (SQLException e) {
 		e.printStackTrace();
-			}
-	%>
+	}
+%>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	function regbtn() {
@@ -104,26 +101,29 @@ String no=request.getParameter("no");
 								<!-- 이메일 -->
 								<div class="form-group">
 									<input type="email" class="form-control form-control-user"
-										id="exampleInputEmail" name="email" value="<%=vo.getSeller_email()%>" disabled>
+										id="exampleInputEmail" name="email"
+										value="<%=vo.getSeller_email()%>" disabled>
 								</div>
 
 								<!-- 비밀번호, 비밀번호확인 -->
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="password" class="form-control form-control-user"
-											id="exampleInputPassword" name="pwd" value="<%=vo.getD_pwd()%>">
+											id="exampleInputPassword" name="pwd"
+											value="<%=vo.getD_pwd()%>">
 									</div>
 									<div class="col-sm-6">
 										<input type="password" class="form-control form-control-user"
 											id="exampleRepeatPassword" name="pwdRepeat"
-											placeholder="Repeat Password" >
+											placeholder="Repeat Password">
 									</div>
 								</div>
 
 								<!-- 이름 -->
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user"
-										id="name" placeholder="Name" name="name" value="<%=vo.getSeller()%>">
+										id="name" placeholder="Name" name="name"
+										value="<%=vo.getSeller()%>">
 								</div>
 
 								<!-- 연락처 -->

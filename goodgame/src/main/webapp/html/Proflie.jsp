@@ -3,6 +3,7 @@
 <%@page import="com.game.developer.model.DeveloperDAO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<!-- jsp:usebean으로 서비스 가져오기 -->
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">
@@ -25,34 +26,24 @@
 <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
 <%
-String no=request.getParameter("no");
-	
-/*	if(no==null || no.isEmpty()){
+	String m_email = (String) session.getAttribute("m_email");
+	String d_email = (String) session.getAttribute("d_email");
+
+/*  공통된 테이블에 들어가서 찾고, 수정같은 경운 공통 테이블을 통해서 개별 테이블도 수정 */
+
+	DeveloperDAO dao = new DeveloperDAO();
+	DeveloperVO vo = null;
+	try {
+		if (m_email != null && !m_email.isEmpty()) {
+		//	vo = dao.selectDByNo(m_email);
+		}else if(d_email != null && !d_email.isEmpty()){
+		//	vo = dao.selectDByNo(d_email);
+			
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
 %>
-		<script type="text/javascript">
-			alert("잘못된 url입니다.");
-			location.href="main.jsp";
-		</script> 
-	<%
- 	return;
- 	 		}*/
- 	 		DeveloperDAO dao = new DeveloperDAO();
- 	 		DeveloperVO vo = null;
- 	 		try{
- 	 			vo=dao.selectDByNo(Integer.parseInt(no));
- 	 		}catch(SQLException e){
- 	 			e.printStackTrace();
- 	 		}
- 	 		/* 공통된 테이블에 들어가서 찾고, 수정같은 경운 공통 테이블을 통해서 개별 테이블도 수정
- 	 		ex :
- 	 			String name="" , (just)그래서  이걸 value값에 넣게
- 	 			if(){
- 	 		name = vo.getSeler();llll
- 	 			}else{
- 	 		name = vo.getName();
- 	 			}
- 	 		*/
- 	%>
 
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -90,23 +81,24 @@ String no=request.getParameter("no");
 							<form class="user">
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user"
-										id="name" value="<%=vo.getSeller() %>" disabled>
+										id="name" value="<%=vo.getSeller()%>" disabled>
 									<!-- 이름 -->
 								</div>
 								<div class="form-group">
 									<input type="email" class="form-control form-control-user"
-										id="exampleInputEmail" placeholder="<%=vo.getSeller_email() %>"
-										disabled>
+										id="exampleInputEmail"
+										placeholder="<%=vo.getSeller_email()%>" disabled>
 									<!-- 이메일 -->
 								</div>
 								<div class="form-group">
 									<input type="number" class="form-control form-control-user"
-										id="birth" placeholder="<%=vo.getBusiness_no() %>" disabled>
+										id="birth" placeholder="<%=vo.getBusiness_no()%>" disabled>
 									<!-- 생년월일 -->
 								</div>
 								<div class="form-group">
 									<input type="number" class="form-control form-control-user"
-										id="phoneNumber" placeholder="<%=vo.getSeller_phone() %>" disabled>
+										id="phoneNumber" placeholder="<%=vo.getSeller_phone()%>"
+										disabled>
 									<!-- 핸드폰번호 -->
 								</div>
 								<div class="form-group">
@@ -123,7 +115,7 @@ String no=request.getParameter("no");
 
 									</div>
 									<div class="col-sm-6">
-										<a id="regbtn" href="profile_edit.jsp?no=<%=vo.getD_no() %>"
+										<a id="regbtn" href="profile_edit.jsp?no=<%=vo.getD_no()%>"
 											class="btn btn-primary btn-user btn-block" onclick="regbtn()">
 											Edit-Profile </a>
 									</div>
