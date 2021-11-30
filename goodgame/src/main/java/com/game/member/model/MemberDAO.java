@@ -180,36 +180,6 @@ public class MemberDAO {
 		}
 	}
 	
-	/**
-	 * 고객번호 추출 ->비밀번호로
-	 * @param m_pwd
-	 * @return
-	 * @throws SQLException
-	 */
-	public int checkM_no(String m_pwd) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
-		ResultSet rs=null;
-		
-		MemberVO vo=new MemberVO();
-		try {
-			int m_no=0;
-			con= pool.getConnection();
-			String sql="select m_no from member where m_pwd=?";
-			
-			ps=con.prepareStatement(sql);
-			ps.setString(1, m_pwd);
-			
-			rs=ps.executeQuery();
-			if(rs.next()) {
-				m_no=Integer.parseInt(rs.getString(1));
-			}
-			return m_no;
-			
-		}finally {
-			pool.dbClose(ps, con);
-		}
-	}
 	
 	public int updateMember(MemberVO vo) throws SQLException {
 		Connection con = null;
