@@ -71,12 +71,16 @@ public class PaymentDAO {
 				int balance =rs.getInt("balance");
 				String cancle=rs.getString("cancle");
 				
-				//널값일때 처리...?...->테이블고침
-				PaymentVO vo =new PaymentVO(payno,payprice,paydate,
-						balance,cancle,m_no);
+				PaymentVO vo=new PaymentVO();
+				vo.setPayno(payno);
+				vo.setBalance(balance);
+				vo.setCancle(cancle);
+				vo.setPaydate(paydate);
+				vo.setPayprice(payprice);
+
 				list.add(vo);
 			}
-			System.out.println("list결과 : "+list);
+			System.out.println("list결과 : "+list.size());
 			return list;
 			
 		}finally {

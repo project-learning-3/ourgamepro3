@@ -1,7 +1,7 @@
 package com.game.payment.model;
 
 import java.sql.Timestamp;
-
+//
 public class PaymentVO {
 	private int payno; /* 결제수단고유번 */
 	private int payprice; /* 결제금 */

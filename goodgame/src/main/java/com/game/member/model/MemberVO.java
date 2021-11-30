@@ -1,7 +1,7 @@
 package com.game.member.model;
 
 import java.sql.Timestamp;
-
+//
 public class MemberVO {
 	private int m_no; /* 회원번호 */
 	private String m_email; /* 이메일 */
