@@ -246,15 +246,12 @@
 						<h6 class="collapse-header">Login</h6>
 						<a class="collapse-item" href="blank.html">프로필 수정</a>
 						<!-- 계정변경 html로 연결 -->
-<<<<<<< HEAD
 						<a class="collapse-item" href="blank.html">프로필 정보</a> <a
 							class="collapse-item1" href="logout.jsp">로그아웃</a>
-=======
 						<a class="collapse-item" href="blank.html">프로필 정보</a> 
 						<a class="collapse-item1" href="login.jsp" data-toggle="modal" data-target="#logoutModal">
                         	<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         로그아웃</a>
->>>>>>> branch 'master' of https://github.com/project-learning-3/ourgamepro3.git
 					</div>
 				</div></li>
 
