@@ -81,33 +81,32 @@ CREATE UNIQUE INDEX PK_payment
 		payno ASC
 	);
 
+
 ALTER TABLE payment
 	ADD
 		CONSTRAINT PK_payment
 		PRIMARY KEY (
 			payno
 		);
+		
+/*카테고리-게임=>table8을 c_game으로 테이블 이름 변경을위해 drop*/
+DROP TABLE table8;
 
 /* 카테고리-게임 */
-CREATE TABLE TABLE8 (
+CREATE TABLE c_game (
 	g_no NUMBER NOT NULL, /* 게임번호 */
 	cat_no NUMBER NOT NULL /* 카테고리번호 */
 );
 
-CREATE UNIQUE INDEX PK_TABLE8
-	ON TABLE8 (
-		g_no ASC,
-		cat_no ASC
-	);
 
-ALTER TABLE TABLE8
+ALTER TABLE c_game
 	ADD
-		CONSTRAINT PK_TABLE8
+		CONSTRAINT PK_c_game
 		PRIMARY KEY (
 			g_no,
 			cat_no
 		);
-
+		
 /* 구매자-게임(평점) */
 CREATE TABLE grade (
 	m_no NUMBER NOT NULL, /* 회원번호 */
@@ -170,6 +169,50 @@ ALTER TABLE category
 			cat_no
 		);
 
+/* 게임(이미지, 영상) */
+CREATE TABLE g_url (
+	g_no NUMBER NOT NULL, /* 게임번호 */
+	image VARCHAR2(100) NOT NULL, /* 이미지url */
+	video VARCHAR2(100) NOT NULL /* 영상url(유튜브) */
+);
+
+ALTER TABLE g_url
+	ADD
+		CONSTRAINT PK_g_url
+		PRIMARY KEY (
+			g_no
+		);
+		
+ALTER TABLE g_url
+	ADD
+		CONSTRAINT FK_game_TO_g_url
+		FOREIGN KEY (
+			g_no
+		)
+		REFERENCES game (
+			g_no
+		);
+
+ALTER TABLE c_game
+	ADD
+		CONSTRAINT FK_game_TO_c_game
+		FOREIGN KEY (
+			g_no
+		)
+		REFERENCES game (
+			g_no
+		);
+
+ALTER TABLE c_game
+	ADD
+		CONSTRAINT FK_category_TO_c_game
+		FOREIGN KEY (
+			cat_no
+		)
+		REFERENCES category (
+			cat_no
+		);
+		
 ALTER TABLE game
 	ADD
 		CONSTRAINT FK_developer_TO_game
@@ -190,25 +233,6 @@ ALTER TABLE payment
 			m_no
 		);
 
-ALTER TABLE TABLE8
-	ADD
-		CONSTRAINT FK_game_TO_TABLE8
-		FOREIGN KEY (
-			g_no
-		)
-		REFERENCES game (
-			g_no
-		);
-
-ALTER TABLE TABLE8
-	ADD
-		CONSTRAINT FK_category_TO_TABLE8
-		FOREIGN KEY (
-			cat_no
-		)
-		REFERENCES category (
-			cat_no
-		);
 
 ALTER TABLE grade
 	ADD
