@@ -42,7 +42,7 @@ ALTER TABLE member
 			m_no
 		);
 
-/* 게임 */
+/* 게임  */
 CREATE TABLE game (
 	g_no NUMBER NOT NULL, /* 게임번호 */
 	gname VARCHAR2(20) NOT NULL, /* 게임명 */
