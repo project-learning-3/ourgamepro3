@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인 페이지</title>
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -26,7 +26,7 @@ $(function(){
 });
 </script>
 <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-
+<!-- 테스트 -->
 </head>
 
 <body class="bg-gradient-primary">
@@ -99,15 +99,7 @@ $(function(){
 
 	</div>
 
-	<!-- Bootstrap core JavaScript-->
 
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Core plugin JavaScript-->
-	<script src="../jquery/jquery.easing.min.js"></script>
-
-	<!-- Custom scripts for all pages-->
-	<script src="js/sb-admin-2.min.js"></script>
 
 </body>
 
