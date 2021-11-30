@@ -40,7 +40,7 @@ public class ConnectionPoolMgr { //싱글톤 패턴으로 만들어줘야한다.
 				
 				hmap.put(con, Boolean.FALSE);		
 				//해시맵의 value에 true, false 저장, false - 쉬는 커넥션이라는 표시	
-			}//for
+			}// for
 			
 			System.out.println("ConnectionPool 생성!");
 		}catch (ClassNotFoundException e) {			

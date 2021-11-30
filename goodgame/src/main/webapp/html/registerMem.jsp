@@ -1,12 +1,7 @@
-<%@page import="java.sql.SQLException"%>
-<%@page import="com.game.developer.model.DeveloperVO"%>
-<%@page import="com.game.developer.model.DeveloperDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- jsp:usebean -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>sign up for developer</title>
+<title>sing up for member</title>
 
 <!-- Custom fonts for this template-->
 <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -47,42 +42,71 @@
 	opacity: 0.5;
 }
 </style>
-<%
-	String m_email = (String) session.getAttribute("m_email");
-	String d_email = (String) session.getAttribute("d_email");
-	
-	DeveloperDAO dao = new DeveloperDAO();
-	DeveloperVO vo = null;
-	try {
-		if (m_email != null && !m_email.isEmpty()) {
-			//vo=
-		} else if (d_email != null && !d_email.isEmpty()) {
-	
-		}
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-%>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+ 
 	function regbtn() {
-		$('.user input').each(function() {
-			if ($(this).val() == "") {
-				alert($(this).attr("name") + "을(를) 입력하세요");
-				$(this).focus();
-				event.preventDefault();
-			}
-		})
-		var pwd1 = $('#exampleInputPassword').val();
-		var pwd2 = $('#exampleRepeatPassword').val();
-		if (pwd1 != pwd2) {
-			alert("비밀번호가 일치하지 않습니다");
+		if ($('#name').val().length < 1) {
+			alert("이름을(를) 입력하세요");
+			$('#name').focus();
+			event.preventDefault();
+		} else if ($('#exampleInputEmail').val().length < 1) {
+			alert("이메일을(를) 입력하세요");
+			$('#exampleInputEmail').focus();
+			event.preventDefault();
+		} else if ($('#birth').val().length < 1) {
+			alert("생일을(를) 입력하세요");
+			$('#birth').focus();
+			event.preventDefault();
+		} else if ($('#birth').val().length != 6) {
+			alert("생일은 6자리입니다");
+			$('#birth').focus();
+			event.preventDefault();
+		} else if ($('#phoneNumber').val().length < 1) {
+			alert("휴대폰번호을(를) 입력하세요");
+			$('#phoneNumber').focus();
+			event.preventDefault();
+		} else if ($('#phoneNumber').val().length != 11) {
+			alert("휴대폰번호는 11자리입니다");
+			$('#phoneNumber').focus();
+			event.preventDefault();
+		} else if ($('#exampleInputPassword').val().length < 1) {
+			alert("비밀번호을(를) 입력하세요");
+			$('#exampleInputPassword').focus();
+			event.preventDefault();
+		} else if ($('#exampleRepeatPassword').val().length < 1) {
+			alert("비밀번호확인을(를) 입력하세요");
+			$('#exampleRepeatPassword').focus();
+			event.preventDefault();
+		} else if ($('#exampleRepeatPassword').val() != $(
+				'#exampleInputPassword').val()) {
+			alert("비밀번호가 일치하지 않습니다.");
 			event.preventDefault();
 		}
 	}
+	
+	/* function selbtn1(){
+		location.href="register2.html"; */
+		/* $("test_btn1").addClass("opa"); */
+		/* $('#bn').attr('disabled', true); */
+		/* $('#bn').hide(); */
+		/* $('#bn').css('display','none'); */
+		/* $('#bn').css('display','block'); */
+		/* $("#bn").hide(); */
+		/* document.getElementById("bn").style.display = "none"; */
+	/* } */
+	
+	
 </script>
 </head>
 </head>
+
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
+<!-- test -->
 <body class="bg-gradient-primary">
 	<div class="container">
 		<div class="card o-hidden border-0 shadow-lg my-5">
@@ -96,47 +120,50 @@
 								<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
 							</div>
 							<form class="user">
-								<input type="hidden" name="no" value="<%=2%>">
-								<!-- 기본적으로 본인의 정보가 입력된 상태에서 수정 하게끔 -->
+								<input type="hidden" name="no" value="<%=1%>">
+								<div class="form-group">
+									<a id="test_btn1" class="btn btn-primary btn-user"
+										onclick="selbtn1()">for member</a> <a id="test_btn2"
+										href="registerDev.jsp" class="btn btn-primary btn-user">for
+										developer</a>
+								</div>
+
 								<!-- 이메일 -->
 								<div class="form-group">
 									<input type="email" class="form-control form-control-user"
-										id="exampleInputEmail" name="email"
-										value="<%=vo.getSeller_email()%>" disabled>
+										id="exampleInputEmail" placeholder="Email Address"
+										name="email" value="G-">
 								</div>
 
 								<!-- 비밀번호, 비밀번호확인 -->
 								<div class="form-group row">
+									-
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="password" class="form-control form-control-user"
-											id="exampleInputPassword" name="pwd"
-											value="<%=vo.getD_pwd()%>">
+											id="exampleInputPassword" placeholder="Password" name="pwd">
 									</div>
 									<div class="col-sm-6">
 										<input type="password" class="form-control form-control-user"
-											id="exampleRepeatPassword" name="pwdRepeat"
-											placeholder="Repeat Password">
+											id="exampleRepeatPassword" placeholder="Repeat Password">
 									</div>
 								</div>
 
 								<!-- 이름 -->
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user"
-										id="name" placeholder="Name" name="name"
-										value="<%=vo.getSeller()%>">
+										id="name" placeholder="Name" name="name">
 								</div>
 
 								<!-- 연락처 -->
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user"
-										id="phoneNumber" placeholder="Phone Number" name="phone"
-										value="<%=vo.getSeller_phone()%>">
+									<input type="number" class="form-control form-control-user"
+										id="phoneNumber" placeholder="Phone Number" name="phone">
 								</div>
-								<!-- 사업자번호 -->
-								<div class="form-group" id="bn">
-									<input type="text" class="form-control form-control-user"
-										id="businessNumber" placeholder="Business Number"
-										name="businessNo" value="<%=vo.getBusiness_no()%>">
+
+								<!-- 생일 -->
+								<div class="form-group">
+									<input type="number" class="form-control form-control-user"
+										id="birth" placeholder="Date of Birth" name="birth">
 								</div>
 
 								<!-- 등록버튼 -->
@@ -148,11 +175,11 @@
 							</form>
 							<hr>
 							<div class="text-center">
-								<a class="small" href="forgot-password.html">Forgot
+								<a class="small" href="forgot-password.jsp">Forgot
 									Password?</a>
 							</div>
 							<div class="text-center">
-								<a class="small" href="login.html">Already have an account?
+								<a class="small" href="login.jsp">Already have an account?
 									Login!</a>
 							</div>
 						</div>

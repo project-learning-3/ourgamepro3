@@ -8,7 +8,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.transform.Result;
 
 import com.game.db.ConnectionPoolMgr;
 
@@ -16,7 +15,7 @@ public class MemberDAO {
 	private ConnectionPoolMgr pool;
 	
 	public MemberDAO() {
-		pool=ConnectionPoolMgr.getInstance();
+		pool = ConnectionPoolMgr.getInstance();
 	}
 	
 	public List<MemberVO> select() throws SQLException{
@@ -49,28 +48,68 @@ public class MemberDAO {
 		}
 	}
 	
-	public String loginCheck(String m_email, String m_pwd) throws SQLException {
+	public int loginCheck(String m_email, String m_pwd) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
-		String m_name = "";
+		int result = 0;
 		try {
 			con = pool.getConnection();
-			String sql = "select m_name from member "
-					+ "where m_email = ? and m_pwd = ?";
+			String sql = "select m_pwd from member "
+					+ "where m_email = ?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, m_email);
-			ps.setString(2, m_pwd);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				m_name = rs.getString(1);
+				if(m_pwd.equals(rs.getString(1))){
+					result = MemberService.LOGIN_OK;
+				} else {
+					result = MemberService.DISAGREE_PWD;
+				}
+			} else {
+				result = MemberService.USERID_NONE;
 			}
-			return m_name;
+			return result;
 		} finally {
 			pool.dbClose(rs, ps, con);
 		}
 	}
+	
+	public MemberVO selectByEmail(String m_email) throws SQLException {
+        Connection con=null;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        
+        MemberVO vo = new MemberVO();
+        try {
+           con=pool.getConnection();
+           
+           String sql="select * from member where m_email=?";
+           ps=con.prepareStatement(sql);
+           ps.setString(1, m_email);
+           
+           rs=ps.executeQuery();
+           while(rs.next()) {
+              int no=rs.getInt("m_no");
+              String m_name=rs.getString("m_name");
+              String m_pwd=rs.getString("m_pwd");
+              String m_phone=rs.getString("m_phone");
+              Timestamp m_birth=rs.getTimestamp("m_birth");
+              
+              vo.setM_birth(m_birth);
+              vo.setM_email(m_email);
+              vo.setM_name(m_name);
+              vo.setM_no(no);
+              vo.setM_phone(m_phone);
+              vo.setM_pwd(m_pwd);
+              
+              vo = new MemberVO(no, m_email, m_pwd, m_name, m_birth, m_phone);
+           }
+           return vo;
+        }finally {
+           pool.dbClose(rs, ps, con);
+        }
+     }
 	
 	public int insertMember(MemberVO vo) throws SQLException {
 		Connection con=null;
@@ -141,36 +180,6 @@ public class MemberDAO {
 		}
 	}
 	
-	/**
-	 * 고객번호 추출
-	 * @param m_pwd
-	 * @return
-	 * @throws SQLException
-	 */
-	public int checkM_no(String m_pwd) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
-		ResultSet rs=null;
-		
-		MemberVO vo=new MemberVO();
-		try {
-			int m_no=0;
-			con= pool.getConnection();
-			String sql="select m_no from member where m_pwd=?";
-			
-			ps=con.prepareStatement(sql);
-			ps.setString(1, m_pwd);
-			
-			rs=ps.executeQuery();
-			if(rs.next()) {
-				m_no=Integer.parseInt(rs.getString(1));
-			}
-			return m_no;
-			
-		}finally {
-			pool.dbClose(ps, con);
-		}
-	}
 	
 	public int updateMember(MemberVO vo) throws SQLException {
 		Connection con = null;

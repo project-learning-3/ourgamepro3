@@ -2,9 +2,9 @@
 <%@page import="com.game.game.model.GameVO"%>
 <%@page import="com.game.game.model.GameDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
 <meta charset="utf-8">
@@ -26,30 +26,72 @@
 <!-- Custom styles for this template-->
 <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 <style type="text/css">
+/* 틀 다 잡히면 집어 넣을거에요~~ */
+div#game-video iframe {
+	width: inherit;
+	height: inherit;
+	border: 0;
+}
 
+div#game-video {
+	height: 427px;
+	width: 667px;
+}
+
+div#game-image {
+	margin-top: 13px;
+	width: 667px;
+	height: 296px;
+}
+
+div#game-image div:first-child img {
+	float: left;
+}
+
+aside.gameInfo>* {
+	border: 1px solid green;
+}
+
+aside.gameInfo {
+	margin-top: -736px;
+	margin-left: 682px;
+	width: 329px;
+	height: 428px;
+}
+
+aside.gameInfo div p {
+	height: 37px;
+}
+
+input#noticeM {
+	margin-left: 4px;
+	margin-block: 4px;
+	width: 320px;
+	height: 221px;
+}
+
+table#comment {
+    clear: both;
+    width: 667px;
+}
+
+#comment tbody tr td:last-child {
+    width: 16%;
+}
+
+#comment tbody tr >* {border: 1px solid blue;}
+
+
+#comment tbody tr td:first-child {
+    width: 15%;
+}
 </style>
 </head>
 <style>
 </style>
 <%
-String no=request.getParameter("no");
-	if(no==null || no.isEmpty()){
+//게임 동영상, 이미지 테이블에서 가져오기
 %>
-		<script type="text/javascript">
-			alert("잘못된 url입니다.");
-			location.href="list.jsp";
-		</script>
-	<%
-	return;
-			}
-			GameDAO dao = new GameDAO();
-			GameVO vo = null;
-			try{
-		vo=dao.selectByNo(Integer.parseInt(no));
-			}catch(SQLException e){
-		e.printStackTrace();
-			}
-	%>
 <body id="page-top">
 
 	<!-- Page Wrapper -->
@@ -380,10 +422,11 @@ String no=request.getParameter("no");
 						</div>
 						<div id="game-image">
 							<div>
-								<img alt="임시이미지" src="../img/witcher1.jpg"> <img
-									alt="임시이미지" src="../img/witcher2.jpg">
+								<img alt="임시이미지" src="../img/witcher1.jpg">
 							</div>
-
+							<div>
+								<img alt="임시이미지" src="../img/witcher2.jpg">
+							</div>
 						</div>
 					</section>
 					<aside class="gameInfo">
@@ -397,7 +440,7 @@ String no=request.getParameter("no");
 						<div>
 							<p>등록일시자리 넣어주세요</p>
 						</div>
-						
+
 						<div id="notice">
 							<input type=text id="noticeM" value="게임설명">
 						</div>
@@ -405,7 +448,7 @@ String no=request.getParameter("no");
 							<input type="submit" value="구매하기">
 						</div>
 					</aside>
-					<table>
+					<table id="comment">
 						<!-- 여기에 반복 for문 넣어주세요 -->
 						<tr>
 							<td>아이디</td>
@@ -418,9 +461,9 @@ String no=request.getParameter("no");
 							<th></th>
 						</tr>
 					</table>
-						<div class= rating>
-							<p>별점 넣는곳 근데 어떻게 넣을꺼에요??</p>
-						</div>
+					<div class=rating>
+						<p>별점 넣는곳 근데 어떻게 넣을꺼에요??</p>
+					</div>
 				</div>
 				<!-- /.container-fluid -->
 

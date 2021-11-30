@@ -161,6 +161,12 @@ public class DeveloperDAO {
 		}
 	}
 	
+	/**
+	 * 비밀번호 체크
+	 * @param vo
+	 * @return
+	 * @throws SQLException
+	 */
     public boolean checkPwd(DeveloperVO vo) throws SQLException {
     	Connection con =null;
     	PreparedStatement ps = null;

@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-
+<!-- 테스트 -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -52,16 +52,16 @@
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="아이디(이메일) 입력...">
                                         </div>
-                                        <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                        <a href="pwdReset.jsp" class="btn btn-primary btn-user btn-block">
                                             비밀번호 초기화!
                                         </a>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">회원가입</a>
+                                        <a class="small" href="registerMem.jsp">회원가입</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="login.html">계정이 이미 있으신가요? 로그인 하세요!</a>
+                                        <a class="small" href="login.jsp">계정이 이미 있으신가요? 로그인 하세요!</a>
                                     </div>
                                 </div>
                             </div>

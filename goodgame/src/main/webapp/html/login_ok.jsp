@@ -1,3 +1,4 @@
+<%@page import="com.game.member.model.MemberService"%>
 <%@page import="javax.script.ScriptContext"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.game.member.model.MemberVO"%>
@@ -12,28 +13,33 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:useBean id="ms" class="com.game.member.model.MemberService" scope="session"></jsp:useBean>
 <%	
 	request.setCharacterEncoding("utf-8");
 	
 	String m_email = request.getParameter("m_email");
 	String m_pwd = request.getParameter("m_pwd");
-	MemberDAO m_dao = new MemberDAO();
-	String name = m_dao.loginCheck(m_email, m_pwd);
-	
-	if(name == null || name == "" || name.isEmpty()){ 	%>
-		<script type="text/javascript">
-			alert('아이디와 패스워드를 확인하세요.');
-			history.back();
-		</script>
-<%	} else {
-		session.setAttribute("name", name);
-		System.out.println(name);
-		%>
-		<jsp:forward page="MainMenu.jsp">
-			<jsp:param value="<%=name%>" name="name"/>
-		</jsp:forward>
-		<%	
+	String msg = "로그인 실패", url ="login.jsp";
+	try{
+		int result = ms.loginCheck(m_email, m_pwd);
+		if(result == MemberService.LOGIN_OK){
+			MemberVO vo = ms.selectByEmail(m_email);
+			session.setAttribute("m_email", m_email);
+			session.setAttribute("m_name", vo.getM_name());
+			
+			msg = vo.getM_name()+"님 환영합니다.";
+			url = "home.jsp";
+		} else if(result == MemberService.DISAGREE_PWD){
+			msg = "패스워드가 다릅니다.";
+		} else if(result == MemberService.USERID_NONE){
+			msg = "아이디가 존재하지 않습니다.";
+		}
+	} catch(SQLException e){
+		e.printStackTrace();
 	}
+	request.setAttribute("msg", msg);
+	request.setAttribute("url", url);
 %>
+<jsp:forward page="../common/message.jsp"></jsp:forward>
 </body>
 </html>

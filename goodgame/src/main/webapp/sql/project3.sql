@@ -20,3 +20,5 @@ grant connect,resource to pro3;
 grant create view to pro3;
 
 grant unlimited tablespace to pro3;  --테이블스페이스에 대한 권한 부여
+
+/*사용자계정 및 테이블스페이스*/

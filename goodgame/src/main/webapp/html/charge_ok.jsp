@@ -31,7 +31,7 @@
 		alert('패스워드를 입력하세요.');
 		history.back();
 	</script>
-<%	}else if(m_pwd != ch_pwd){ //같은거 입력해도 이거뜸 확인해보기..	%>
+<%	}else if(!m_pwd.equals(ch_pwd)){	%>
 		<script type="text/javascript">
 		alert('패스워드가 다릅니다. 다시 확인해주세요.');
 		history.back();
@@ -42,16 +42,19 @@
 		history.back();
 		</script>
 <%	}
-	else if(m_pwd.equals(ch_pwd)) {	
+	else if(m_pwd.equals(ch_pwd)) {	//비밀번호같음
 
 			MemberDAO m_dao=new MemberDAO();
 			boolean check=m_dao.checkPwd(m_pwd);
 	
 			if(check){ //비밀번호 맞으면
-				int m_no=m_dao.checkM_no(m_pwd); //고객번호추출
+				String m_no=(String)session.getAttribute(m_no); 
+				System.out.print(m_no);
+				int member_no=Integer.parseInt(m_no);
 				
 				PaymentDAO p_dao=new PaymentDAO();
-				int cnt=p_dao.AddBalance(m_no,charge); //잔액충전
+				int cnt=p_dao.AddBalance(member_no,charge); //잔액충전
+				//balance 도 유동적으로 바뀌게 만들어야함
 			%>
 	<script type="text/javascript">
 		alter('충전이 완료되었습니다.');
