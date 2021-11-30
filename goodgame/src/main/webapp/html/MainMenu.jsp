@@ -179,7 +179,7 @@
                         <a class="collapse-item" href="blank.html">프로필 수정</a>
                         <a class="collapse-item1" href="login.jsp" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    로그아웃</a>
+  <!-- 테스트 -->                                  로그아웃</a>
                     </div>
                 </div>
             </li>
