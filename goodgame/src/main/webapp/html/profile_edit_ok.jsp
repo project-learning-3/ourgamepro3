@@ -3,7 +3,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- jsp:usebean -->
+<jsp:useBean id="memberService" class="com.game.member.model.MemberService" scope="session"></jsp:useBean> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,25 +12,24 @@
 </head>
 <body>
 	<%
-	request.setCharacterEncoding("utf-8");
-	
-	
-	String pwd = request.getParameter("pwd");
-	String pwdRepeat = request.getParameter("pwdRepeat");
-	String name = request.getParameter("name");
-	String phone = request.getParameter("phone");
-	String businessNo = request.getParameter("businessNo"); //이거 개발자랑, 회원이랑 구분 해야함
-	String no = request.getParameter("no");
+	String m_email=(String) session.getAttribute("m_email");
+	String d_email=(String) session.getAttribute("d_email");
 
-	DeveloperDAO dao = new DeveloperDAO();
+	
+	
+	/* DeveloperDAO dao = new DeveloperDAO(); */
+	//라라라 졸려서 진도가 안나가~
 	try {
-		DeveloperVO vo = new DeveloperVO();
+		if(m_email !=null && !m_email.isEmpty()){
+				
+		DeveloperVO vo1 = new DeveloperVO();
 		vo.setD_pwd(pwd);
 		vo.setSeller(name);
 		vo.setSeller_phone(phone);
 		vo.setBusiness_no(businessNo);
 		vo.setD_no(Integer.parseInt(no));
-
+		
+		}
 		if (dao.checkPwd(vo)) {
 			int cnt = dao.updateDeveloper(vo);
 
