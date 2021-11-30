@@ -29,7 +29,7 @@ public class ConnectionPoolMgr { //싱글톤 패턴으로 만들어줘야한다.
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			System.out.println("드라이버 로딩 성공!");
-			url="jdbc:oracle:thin:@115.21.135.66:1521:xe";	
+			url="jdbc:oracle:thin:@localhost:1521:xe";	
 			user="pro3"; 	
 			pwd="pro3";
 			

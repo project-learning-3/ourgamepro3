@@ -11,7 +11,7 @@ import java.util.List;
 import javax.xml.transform.Result;
 
 import com.game.db.ConnectionPoolMgr;
-
+//
 public class MemberDAO {
 	private ConnectionPoolMgr pool;
 	
