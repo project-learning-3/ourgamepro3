@@ -4,10 +4,20 @@
 
 <%
 
-	String re = (String)session.getAttribute("name");
-
-	if(re==null){
-		response.sendRedirect("login.jsp");
+	String m_name = (String)session.getAttribute("m_name");
+	
+	/* int m_no = (int)session.getAttribute("m_no");
+	System.out.print(m_no); */
+	//사용자번호 불러오는 방법 로그인 안하고 사용자넘버 불러올경우 널포인트 에러 뜸 
+	//=> 인트값에 널이 들어갈 수 없어서 if로 처리 불가능
+	System.out.print(m_name);
+	if(m_name==null){	
+		m_name = "";	%>
+		<script type="text/javascript">
+			alert('로그인 후 이용가능한 페이지입니다.');
+			location.href="login.jsp";	
+		</script>	
+<%		
 	}
 
 	request.setCharacterEncoding("utf-8");
@@ -45,7 +55,7 @@
 		$('.collapse-item1').on("click",function() {
 			alert('로그아웃 하시겠습니까?');
 			if(bool == true){
-			location.href = "login.jsp";
+			location.href = "logout.jsp";
 			};
 		});
    });
@@ -162,7 +172,7 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header"><%=re %></h6>
+						<h6 class="collapse-header"><%=m_name %></h6>
 						<!-- 로그인 하면 이름 나오게 -->
 						<a class="collapse-item" href="">환경 설정</a>
 						<!-- 환경설정 페이지 나오게 -->
@@ -180,7 +190,7 @@
 				<div id="collapseUtilities" class="collapse"
 					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header"><%=re %> 님, 무엇을 도와드릴까요?</h6>
+						<h6 class="collapse-header"><%=m_name %> 님, 무엇을 도와드릴까요?</h6>
 						<a class="collapse-item" id="CSupport1"
 							href="utilities-color.html">고객지원</a>
 						<div id="CSupport2">
@@ -218,7 +228,7 @@
 						<a class="collapse-item" href="blank.html">프로필 수정</a>
 						<!-- 계정변경 html로 연결 -->
 						<a class="collapse-item" href="blank.html">프로필 정보</a> <a
-							class="collapse-item1" href="login.jsp">로그아웃</a>
+							class="collapse-item1" href="logout.jsp">로그아웃</a>
 					</div>
 				</div></li>
 
@@ -406,7 +416,7 @@
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"><%=re %></span>
+								class="mr-2 d-none d-lg-inline text-gray-600 small"><%=m_name %></span>
 								<img class="img-profile rounded-circle"
 								src="../img/undraw_profile.svg">
 						</a> <!-- Dropdown - User Information -->
