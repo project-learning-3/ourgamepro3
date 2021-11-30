@@ -2,19 +2,19 @@ package com.game.game.model;
 
 import java.sql.Timestamp;
 
-public class gameVO {
+public class GameVO {
 	private int g_no; /*게임번호*/
 	private String gname; /*게임이름*/
 	private int price; /*게임가격*/
 	private Timestamp gdate; /*등록일시*/
 	private String gtext; /*게임설명*/
 	private String notice; /*게임공지사항*/
-	private int d_no; /*개발자 번호*/
+	private int d_no; /*개발자 번호 */
 	
-	public gameVO() {
+	public GameVO() {
 		super();
 	}
-	public gameVO(int g_no, String gname, int price, Timestamp gdate,
+	public GameVO(int g_no, String gname, int price, Timestamp gdate,
 			String gtext, String notice, int d_no){
 		super();
 		this.g_no=g_no;

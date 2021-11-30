@@ -15,7 +15,7 @@ public class MemberDAO {
 	private ConnectionPoolMgr pool;
 	
 	public MemberDAO() {
-		pool=ConnectionPoolMgr.getInstance();
+		pool = ConnectionPoolMgr.getInstance();
 	}
 	
 	public List<MemberVO> select() throws SQLException{

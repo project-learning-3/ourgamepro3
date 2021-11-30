@@ -14,7 +14,6 @@
 </head>
 <body>
 <jsp:useBean id="ms" class="com.game.member.model.MemberService" scope="session"></jsp:useBean>
-
 <%	
 	request.setCharacterEncoding("utf-8");
 	

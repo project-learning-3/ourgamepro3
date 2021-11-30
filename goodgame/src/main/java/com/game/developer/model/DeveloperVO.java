@@ -1,17 +1,17 @@
 package com.game.developer.model;
 
-public class developerVO {
+public class DeveloperVO {
 	private int d_no; /* 개발자번호 */
 	private String seller_email; /* 이메일 */
 	private String seller; /* 판매자명 */
 	private String d_pwd; /* 비밀번호 */
 	private String seller_phone; /* 연락처 */
-	private String business_no; /* 사업자번호 */
-	public developerVO() {
+	private String business_no; /* 사업자번호  */
+	public DeveloperVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public developerVO(int d_no, String seller_email, String seller, String d_pwd, String seller_phone,
+	public DeveloperVO(int d_no, String seller_email, String seller, String d_pwd, String seller_phone,
 			String business_no) {
 		this.d_no = d_no;
 		this.seller_email = seller_email;

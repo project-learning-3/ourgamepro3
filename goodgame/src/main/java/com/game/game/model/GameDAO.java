@@ -10,14 +10,14 @@ import java.util.List;
 
 import com.game.db.ConnectionPoolMgr;
 
-public class gameDAO {
+public class GameDAO {
 	private ConnectionPoolMgr pool;
 
-	public gameDAO() {
-		pool=new ConnectionPoolMgr();
+	public GameDAO() {
+		pool=ConnectionPoolMgr.getInstance();
 	}
 	/*게임등록 메서드*/
-	public int insertGame(gameVO vo) throws SQLException{
+	public int insertGame(GameVO vo) throws SQLException{
 		Connection con=null;
 		PreparedStatement ps=null;
 
@@ -43,11 +43,11 @@ public class gameDAO {
 		}
 	}
 	/*게임 목록 메서드*/
-	public List<gameVO> selectAll() throws SQLException{
+	public List<GameVO> selectAll() throws SQLException{
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
-		List<gameVO> list=new ArrayList<gameVO>();
+		List<GameVO> list=new ArrayList<GameVO>();
 
 		try {
 			String sql="select * from game";
@@ -63,7 +63,7 @@ public class gameDAO {
 				String notice=rs.getString("notice");
 				int d_no=rs.getInt("d_no");
 
-				gameVO vo = new gameVO(g_no, gname, price, gdate, gtext, 
+				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, 
 						notice, d_no);
 				list.add(vo);
 			}
@@ -76,12 +76,12 @@ public class gameDAO {
 	}
 
 	/*게임상세보기 - 번호로 조회*/
-	public gameVO selectByNo(int g_no) throws SQLException{
+	public GameVO selectByNo(int g_no) throws SQLException{
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 
-		gameVO vo=new gameVO();
+		GameVO vo=new GameVO();
 
 		try {
 			con=pool.getConnection();
@@ -115,7 +115,7 @@ public class gameDAO {
 		}
 	}
 
-	public int updateGame(gameVO vo) throws SQLException{
+	public int updateGame(GameVO vo) throws SQLException{
 		Connection con=null;
 		PreparedStatement ps=null;
 
@@ -142,7 +142,13 @@ public class gameDAO {
 		}
 	}
 	
-	public int deletGame(gameVO vo) throws SQLException{
+	/**
+	 * 게임 삭제
+	 * @param vo
+	 * @return
+	 * @throws SQLException
+	 */
+	public int deletGame(GameVO vo) throws SQLException{
 		Connection con=null;
 		PreparedStatement ps=null;
 		
