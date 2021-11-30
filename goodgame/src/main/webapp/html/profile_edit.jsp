@@ -92,7 +92,7 @@
 		var pwd2 = $('#exampleRepeatPassword').val();
 		if (pwd1 != pwd2) {
 			alert("비밀번호가 일치하지 않습니다");
-			event.preventDefault();
+			event.preventDefault();  
 		}
 	}
 </script>

@@ -29,7 +29,7 @@
 		vo.setBusiness_no(businessNo);
 		vo.setD_no(Integer.parseInt(no));
 		
-		}
+		}  
 		if (dao.checkPwd(vo)) {
 			int cnt = dao.updateDeveloper(vo);
 
