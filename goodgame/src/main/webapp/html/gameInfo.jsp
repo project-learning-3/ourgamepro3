@@ -32,23 +32,23 @@
 <style>
 </style>
 <%
-String no=request.getParameter("no");
-	if(no==null || no.isEmpty()){
+ /* String no=request.getParameter("no"); 
+	if(no==null || no.isEmpty()){ */
 %>
-		<script type="text/javascript">
+<!-- 		 <script type="text/javascript">
 			alert("잘못된 url입니다.");
-			location.href="list.jsp";
-		</script>
+			
+		</script>  -->
 	<%
-	return;
-			}
-			GameDAO dao = new GameDAO();
+/* 	return;
+			} */
+/* 			GameDAO dao = new GameDAO();
 			GameVO vo = null;
 			try{
 		vo=dao.selectByNo(Integer.parseInt(no));
 			}catch(SQLException e){
 		e.printStackTrace();
-			}
+			} */
 	%>
 <body id="page-top">
 
