@@ -89,7 +89,7 @@ ALTER TABLE payment
 			payno
 		);
 		
-/*카테고리-게임=>table8을 c_game으로 테이블 이름 변경을위해 drop*/
+/*카테고리-게임=>table8를 c_game으로 테이블 이름 변경을위해 drop*/
 DROP TABLE table8;
 
 /* 카테고리-게임 */
