@@ -170,7 +170,7 @@ ALTER TABLE category
 			cat_no
 		);
 
-/* 게임(이미지,  영상) */
+/* 게임(이미지, 영상) */
 CREATE TABLE gameurl (
 	g_no NUMBER NOT NULL, /* 게임번호 */
 	image VARCHAR2(100) NOT NULL, /* 이미지url */
