@@ -5,6 +5,7 @@ extent management local
 uniform size 64k
 segment space management auto;
 
+
 alter session set "_ORACLE_SCRIPT"=true; 
 
 --사용자 계정 생성
