@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+#container {
+	width: auto;
+	height: auto;
+}
+
+#container:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+#container .ng {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background-color: #cbcbcb;
+  text-align: center;
+  line-height: 100px;
+}
