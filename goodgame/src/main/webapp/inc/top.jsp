@@ -4,8 +4,9 @@
 
 <%
 	String name = "";
-	boolean ck = (boolean)session.getAttribute("ck");
-	if(ck == true){
+	String ck = (String)session.getAttribute("ck");
+	if(ck == null) ck ="";
+	if(ck.equals("t") && ck != null && !ck.isEmpty()){
 		name = (String)session.getAttribute("seller");
 	} else {
 		name = (String)session.getAttribute("m_name");
