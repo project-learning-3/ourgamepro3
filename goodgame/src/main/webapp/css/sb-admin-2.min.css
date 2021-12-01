@@ -513,6 +513,10 @@ pre.agreement {
     height: 490px;
 }
 
+pre.question{
+	font-size: 74%;
+    white-space: pre-wrap;
+}
 
 pre code {
 	font-size: inherit;
