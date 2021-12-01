@@ -10,9 +10,9 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>sign up for developer</title>
+<title>개발자 회원가입</title>
 
-<!-- Custom fonts for this template-->
+<!-- Custom fonts for this template -->
 <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
 	type="text/css">
 <link
@@ -24,16 +24,16 @@
 
 <style type="text/css">
 #test_btn1 {
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	margin-right: -4px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	margin-left: -3px;
 	width: 50%;
 }
 
 #test_btn2 {
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-	margin-left: -3px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-right: -4px;
 	width: 50%;
 	opacity: 0.5;
 }
@@ -109,70 +109,67 @@
 					<div class="col-lg-7">
 						<div class="p-5">
 							<div class="text-center">
-								<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+								<h1 class="h4 text-gray-900 mb-4" style="font-weight: bold;">개 발 자 회 원 가 입</h1>
 							</div>
 							<form class="user">
 								<input type="hidden" name="no" value="<%=2%>">
 								<div class="form-group">
-									<a id="test_btn1" href="registerMem.jsp"
-										class="btn btn-primary btn-user">for member</a> <a
-										id="test_btn2" class="btn btn-primary btn-user">for
-										developer</a>
+									<a id="test_btn2" href="registerMem.jsp"
+										class="btn btn-primary btn-user" >유저</a> <a
+										id="test_btn1" class="btn btn-primary btn-user">개발자</a>
 								</div>
 
 								<!-- 이메일 -->
 								<div class="form-group">
 									<input type="email" class="form-control form-control-user"
-										id="exampleInputEmail" placeholder="Email Address"
-										name="email">
+										id="exampleInputEmail" placeholder="이메일 입력..."
+										name="email" value = "">
 								</div>
-
+								
 								<!-- 비밀번호, 비밀번호확인 -->
 								<div class="form-group row">
+									
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="password" class="form-control form-control-user"
-											id="exampleInputPassword" placeholder="Password" name="pwd">
+											id="exampleInputPassword" placeholder="비밀번호" name="pwd">
 									</div>
 									<div class="col-sm-6">
 										<input type="password" class="form-control form-control-user"
-											id="exampleRepeatPassword" placeholder="Repeat Password">
+											id="exampleRepeatPassword" placeholder="비밀번호 재입력">
 									</div>
 								</div>
 
 								<!-- 이름 -->
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user"
-										id="name" placeholder="Name" name="name">
+										id="name" placeholder="이름" name="name">
 								</div>
 
 								<!-- 연락처 -->
 								<div class="form-group">
 									<input type="number" class="form-control form-control-user"
-										id="phoneNumber" placeholder="Phone Number" name="phone">
+										id="phoneNumber" placeholder="휴대폰 번호" name="phone">
 								</div>
 
-
-								<!-- 사업자번호 -->
-								<div class="form-group" id="bn">
+								<!-- 생일 -->
+								<div class="form-group">
 									<input type="number" class="form-control form-control-user"
-										id="businessNumber" placeholder="Business Number"
-										name="businessNo">
+										id="birth" placeholder="생년월일" name="birth">
 								</div>
 
 								<!-- 등록버튼 -->
 								<a id="regbtn" href="register_ok.jsp"
 									class="btn btn-primary btn-user btn-block" onclick="regbtn()">
-									Register Account </a>
+									회원가입하기! </a>
 
 
 							</form>
 							<hr>
 							<div class="text-center">
-								<a class="small" href="forgot-password.jsp">Forgot Password?</a>
+								<a class="small" href="login.jsp">로그인 화면</a>
 							</div>
 							<div class="text-center">
-								<a class="small" href="login.jsp">Already have an account?
-									Login!</a>
+								<a class="small" href="forgot-password.jsp">비밀번호 찾기</a>
 							</div>
 						</div>
 					</div>

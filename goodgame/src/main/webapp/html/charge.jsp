@@ -81,7 +81,7 @@ function onlyNumber(o) {
                                 <a class="small" href="charge_before.jsp">이용약관</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="MainMenu.jsp">메인으로 돌아가기</a>
+                                <a class="small" href="home.jsp">메인으로 돌아가기</a>
                             </div>
                         </div>
                     </div>

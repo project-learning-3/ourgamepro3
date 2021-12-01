@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-<!-- 테스트 -->
+<!-- 테스트  -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,7 +29,7 @@
     <div class="container">
 
         <!-- Outer Row -->
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-top: 150px;">
 
             <div class="col-xl-10 col-lg-12 col-md-9">
 
@@ -58,10 +58,10 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="registerMem.jsp">회원가입</a>
+                                        <a class="small" href="login.jsp">로그인 화면</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="login.jsp">계정이 이미 있으신가요? 로그인 하세요!</a>
+                                        <a class="small" href="registerMem.jsp">회원가입</a>
                                     </div>
                                 </div>
                             </div>
