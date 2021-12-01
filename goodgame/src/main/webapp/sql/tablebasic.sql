@@ -171,22 +171,22 @@ ALTER TABLE category
 		);
 
 /* 게임(이미지, 영상) */
-CREATE TABLE g_url (
+CREATE TABLE gameurl (
 	g_no NUMBER NOT NULL, /* 게임번호 */
 	image VARCHAR2(100) NOT NULL, /* 이미지url */
 	video VARCHAR2(100) NOT NULL /* 영상url(유튜브) */
 );
 
-ALTER TABLE g_url
+ALTER TABLE gameurl
 	ADD
-		CONSTRAINT PK_g_url
+		CONSTRAINT PK_gameurl
 		PRIMARY KEY (
 			g_no
 		);
 		
-ALTER TABLE g_url
+ALTER TABLE gameurl
 	ADD
-		CONSTRAINT FK_game_TO_g_url
+		CONSTRAINT FK_game_TO_gameurl
 		FOREIGN KEY (
 			g_no
 		)
