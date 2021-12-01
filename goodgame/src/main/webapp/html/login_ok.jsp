@@ -19,6 +19,7 @@
 	
 	String m_email = request.getParameter("m_email");
 	String m_pwd = request.getParameter("m_pwd");
+	String m_no = (String)request.getAttribute("m_no");
 	String msg = "로그인 실패", url ="login.jsp";
 	try{
 		int result = ms.loginCheck(m_email, m_pwd);
@@ -28,7 +29,7 @@
 			session.setAttribute("m_name", vo.getM_name());
 			
 			msg = vo.getM_name()+"님 환영합니다.";
-			url = "home.jsp";
+			url = "home.jsp?"+vo.getM_no();
 		} else if(result == MemberService.DISAGREE_PWD){
 			msg = "패스워드가 다릅니다.";
 		} else if(result == MemberService.USERID_NONE){

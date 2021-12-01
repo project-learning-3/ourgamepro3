@@ -42,7 +42,7 @@
 	String Sm_no=request.getParameter("m_no");
 	int m_no=Integer.parseInt(Sm_no);	
 
-	PaymentDAO dao=new PaymentDAO();
+	PaymentDAO dao = new PaymentDAO();
  
 //	int m_no = 2;//테스트용
 	List<PaymentVO> list=null;

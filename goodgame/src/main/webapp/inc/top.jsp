@@ -3,9 +3,9 @@
 	pageEncoding="UTF-8"%>
 
 <%
-
-	String m_name = (String)session.getAttribute("m_name");
 	
+	String m_name = (String)session.getAttribute("m_name");
+	String m_no = (String)request.getParameter("m_no");
 	/* int m_no = (int)session.getAttribute("m_no");
 	System.out.print(m_no); */
 	//사용자번호 불러오는 방법 로그인 안하고 사용자넘버 불러올경우 널포인트 에러 뜸 
@@ -15,7 +15,7 @@
 		m_name = "";	%>
 		<script type="text/javascript">
 			alert('로그인 후 이용가능한 페이지입니다.');
-			location.href="login.jsp";	
+			location.href="../html/login.jsp";	
 		</script>	
 <%		
 	}
@@ -246,9 +246,7 @@
 						<h6 class="collapse-header">Login</h6>
 						<a class="collapse-item" href="blank.html">프로필 수정</a>
 						<!-- 계정변경 html로 연결 -->
-						<a class="collapse-item" href="blank.html">프로필 정보</a> <a
-							class="collapse-item1" href="logout.jsp">로그아웃</a>
-						<a class="collapse-item" href="blank.html">프로필 정보</a> 
+						<a class="collapse-item" href="blank.html">프로필 정보</a>
 						<a class="collapse-item1" href="login.jsp" data-toggle="modal" data-target="#logoutModal">
                         	<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         로그아웃</a>
@@ -457,7 +455,7 @@
 									class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> 포인트 충전
 								</a> <a class="dropdown-item" href="#"> <i
 									class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 라이브러리
-								</a><a class="dropdown-item" href="../html/mypay.jsp"><i
+								</a><a class="dropdown-item" href="../html/mypay.jsp?<%=m_no%>"><i
 									class="fas fa-bell fa-fw text-gray-400"></i>&nbsp;&nbsp;&nbsp;거래내역
 								</a>
 								<div class="dropdown-divider"></div>
