@@ -1,11 +1,11 @@
-/* ������ */
+/* 개발자 */
 CREATE TABLE developer (
-	d_no NUMBER NOT NULL, /* �����ڹ�ȣ */
-	seller_email VARCHAR2(30) NOT NULL, /* �̸��� */
-	seller VARCHAR2(30) NOT NULL, /* �Ǹ��ڸ� */
-	d_pwd VARCHAR2(20) NOT NULL, /* ��й�ȣ */
-	seller_phone VARCHAR2(30), /* ����ó */
-	business_no VARCHAR2(30) /* ����ڹ�ȣ */
+	d_no NUMBER NOT NULL, /* 개발자번호 */
+	seller_email VARCHAR2(30) NOT NULL, /* 이메일 */
+	seller VARCHAR2(30) NOT NULL, /* 판매자명 */
+	d_pwd VARCHAR2(20) NOT NULL, /* 비밀번호 */
+	seller_phone VARCHAR2(30), /* 연락처 */
+	business_no VARCHAR2(30) /* 사업자번호 */
 );
 
 CREATE UNIQUE INDEX PK_developer
@@ -20,14 +20,14 @@ ALTER TABLE developer
 			d_no
 		);
 
-/* ȸ��(������) */
+/* 회원(구매자) */
 CREATE TABLE member (
-	m_no NUMBER NOT NULL, /* ȸ����ȣ */
-	m_email VARCHAR2(20) NOT NULL, /* �̸��� */
-	m_pwd VARCHAR2(20) NOT NULL, /* ��й�ȣ */
-	m_name VARCHAR2(20) NOT NULL, /* �̸� */
-	m_birth DATE, /* ����� */
-	m_phone VARCHAR2(20) /* ����ó */
+	m_no NUMBER NOT NULL, /* 회원번호 */
+	m_email VARCHAR2(20) NOT NULL, /* 이메일 */
+	m_pwd VARCHAR2(20) NOT NULL, /* 비밀번호 */
+	m_name VARCHAR2(20) NOT NULL, /* 이름 */
+	m_birth DATE, /* 생년월 */
+	m_phone VARCHAR2(20) /* 연락처 */
 );
 
 CREATE UNIQUE INDEX PK_member
@@ -42,15 +42,15 @@ ALTER TABLE member
 			m_no
 		);
 
-/* ���� */
+/* 게임  */
 CREATE TABLE game (
-	g_no NUMBER NOT NULL, /* ���ӹ�ȣ */
-	gname VARCHAR2(20) NOT NULL, /* ���Ӹ� */
-	price NUMBER, /* ���� */
-	gdate DATE, /* ����Ͻ� */
-	gtext VARCHAR2(200), /* ���Ӽ��� */
-	notice VARCHAR2(200), /* �������� */
-	d_no NUMBER /* �����ڹ�ȣ */
+	g_no NUMBER NOT NULL, /* 게임번호 */
+	gname VARCHAR2(20) NOT NULL, /* 게임명 */
+	price NUMBER, /* 가격 */
+	gdate DATE, /* 등록일시 */
+	gtext VARCHAR2(200), /* 게임설명 */
+	notice VARCHAR2(200), /* 공지사항 */
+	d_no NUMBER /* 개발자번호 */
 );
 
 CREATE UNIQUE INDEX PK_game
@@ -66,15 +66,15 @@ ALTER TABLE game
 		);
 
 DROP TABLE PAYMENT;
-/* �������� */
+/* 결제수단 */
 CREATE TABLE payment (
-	payno NUMBER NOT NULL, /* �������ܰ����� */
-	payprice NUMBER  DEFAULT 0, /* ������ */
-	paydate DATE DEFAULT SYSDATE, /* ������ */
-	balance NUMBER DEFAULT 0, /* ������ */
-	cancle VARCHAR2(10) DEFAULT 'N', /* ������ҿ��� */
-	--cancledate DATE, /* ��������� */
-	m_no NUMBER NOT NULL /* ȸ����ȣ */
+	payno NUMBER NOT NULL, /* 결제수단고유번 */
+	payprice NUMBER  DEFAULT 0, /* 결제금 */
+	paydate DATE DEFAULT SYSDATE, /* 결제일 */
+	balance NUMBER DEFAULT 0, /* 보유금 */
+	cancle VARCHAR2(10) DEFAULT 'N', /* 결제취소여부 */
+	--cancledate DATE, /* 결제취소일 */
+	m_no NUMBER NOT NULL /* 회원번호 */
 );
 
 CREATE UNIQUE INDEX PK_payment
@@ -82,40 +82,39 @@ CREATE UNIQUE INDEX PK_payment
 		payno ASC
 	);
 
+
 ALTER TABLE payment
 	ADD
 		CONSTRAINT PK_payment
 		PRIMARY KEY (
 			payno
 		);
+		
+/*카테고리-게임=>table8을 c_game으로 테이블 이름 변경을위해 drop*/
+DROP TABLE table8;
 
-/* ī�װ���-���� */
-CREATE TABLE TABLE8 (
-	g_no NUMBER NOT NULL, /* ���ӹ�ȣ */
-	cat_no NUMBER NOT NULL /* ī�װ�����ȣ */
+/* 카테고리-게임 */
+CREATE TABLE c_game (
+	g_no NUMBER NOT NULL, /* 게임번호 */
+	cat_no NUMBER NOT NULL /* 카테고리번호 */
 );
 
-CREATE UNIQUE INDEX PK_TABLE8
-	ON TABLE8 (
-		g_no ASC,
-		cat_no ASC
-	);
 
-ALTER TABLE TABLE8
+ALTER TABLE c_game
 	ADD
-		CONSTRAINT PK_TABLE8
+		CONSTRAINT PK_c_game
 		PRIMARY KEY (
 			g_no,
 			cat_no
 		);
-
-/* ������-����(����) */
+		
+/* 구매자-게임(평점) */
 CREATE TABLE grade (
-	m_no NUMBER NOT NULL, /* ȸ����ȣ */
-	g_no NUMBER NOT NULL, /* ���ӹ�ȣ */
-	review VARCHAR2(200) NOT NULL, /* ���� */
-	grade NUMBER NOT NULL, /* ���� */
-	r_date DATE DEFAULT sysdate /* ����� */
+	m_no NUMBER NOT NULL, /* 회원번호 */
+	g_no NUMBER NOT NULL, /* 게임번호 */
+	review VARCHAR2(200) NOT NULL, /* 리뷰 */
+	grade NUMBER NOT NULL, /* 평점 */
+	r_date DATE DEFAULT sysdate /* 등록일 */
 );
 
 CREATE UNIQUE INDEX PK_grade
@@ -132,13 +131,13 @@ ALTER TABLE grade
 			g_no
 		);
 
-/* �ֹ� */
+/* 주문 */
 CREATE TABLE order (
-	o_no NUMBER NOT NULL, /* �ֹ���ȣ */
-	odate DATE, /* �����Ͻ� */
-	m_no NUMBER, /* ȸ����ȣ */
-	g_no NUMBER, /* ���ӹ�ȣ */
-	return VARCHAR2(10) /* ��ǰ���� */
+	o_no NUMBER NOT NULL, /* 주문번호 */
+	odate DATE, /* 결제일시 */
+	m_no NUMBER, /* 회원번호 */
+	g_no NUMBER, /* 게임번호 */
+	return VARCHAR2(10) /* 반품여부 */
 );
 
 CREATE UNIQUE INDEX PK_order
@@ -153,10 +152,10 @@ ALTER TABLE order
 			o_no
 		);
 
-/* ī�װ��� */
+/* 카테고리 */
 CREATE TABLE category (
-	cat_no NUMBER NOT NULL, /* ī�װ�����ȣ */
-	cat_name VARCHAR2(30) /* ī�װ����� */
+	cat_no NUMBER NOT NULL, /* 카테고리번호 */
+	cat_name VARCHAR2(30) /* 카테고리명 */
 );
 
 CREATE UNIQUE INDEX PK_category
@@ -171,6 +170,50 @@ ALTER TABLE category
 			cat_no
 		);
 
+/* 게임(이미지, 영상) */
+CREATE TABLE gameurl (
+	g_no NUMBER NOT NULL, /* 게임번호 */
+	image VARCHAR2(100) NOT NULL, /* 이미지url */
+	video VARCHAR2(100) NOT NULL /* 영상url(유튜브) */
+);
+
+ALTER TABLE gameurl
+	ADD
+		CONSTRAINT PK_gameurl
+		PRIMARY KEY (
+			g_no
+		);
+		
+ALTER TABLE gameurl
+	ADD
+		CONSTRAINT FK_game_TO_gameurl
+		FOREIGN KEY (
+			g_no
+		)
+		REFERENCES game (
+			g_no
+		);
+
+ALTER TABLE c_game
+	ADD
+		CONSTRAINT FK_game_TO_c_game
+		FOREIGN KEY (
+			g_no
+		)
+		REFERENCES game (
+			g_no
+		);
+
+ALTER TABLE c_game
+	ADD
+		CONSTRAINT FK_category_TO_c_game
+		FOREIGN KEY (
+			cat_no
+		)
+		REFERENCES category (
+			cat_no
+		);
+		
 ALTER TABLE game
 	ADD
 		CONSTRAINT FK_developer_TO_game
@@ -191,25 +234,6 @@ ALTER TABLE payment
 			m_no
 		);
 
-ALTER TABLE TABLE8
-	ADD
-		CONSTRAINT FK_game_TO_TABLE8
-		FOREIGN KEY (
-			g_no
-		)
-		REFERENCES game (
-			g_no
-		);
-
-ALTER TABLE TABLE8
-	ADD
-		CONSTRAINT FK_category_TO_TABLE8
-		FOREIGN KEY (
-			cat_no
-		)
-		REFERENCES category (
-			cat_no
-		);
 
 ALTER TABLE grade
 	ADD

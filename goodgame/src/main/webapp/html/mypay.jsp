@@ -11,11 +11,11 @@
 <jsp:useBean id="payDao" class="com.game.payment.model.PaymentDAO" scope="page"/>
 <%
 	//charge_ok 에서 get방식으로 이동 -> 고객넘 세션이용해서 불러오기
-//	int m_no=(int)session.getAttribute("m_no");
+	int m_no=(int)session.getAttribute("m_no");
 
 	PaymentDAO dao=new PaymentDAO();
  
-	int m_no = 2;//테스트용
+	//int m_no = 2;//테스트용
 	List<PaymentVO> list=null;
 	try{
 		list=payDao.selectbyNo(m_no);
@@ -45,7 +45,6 @@
 							<tr>
 								<th>거래순서</th>
 								<th>거래금액</th>
-								<th>잔액</th>
 								<th>거래일자</th>
 								<th>취소여부</th>
 							</tr>
@@ -54,7 +53,6 @@
 							<tr>
 								<th>거래순서</th>
 								<th>거래금액</th>
-								<th>잔액</th>
 								<th>거래일자</th>
 								<th>취소여부</th>
 							</tr>
@@ -65,15 +63,15 @@
 								payVo =list.get(i);
 						%>
 							<tr>
-								<td><%=payVo.getPayno() %></td>
+								<td><%=list.size()-i%></td>
 								<td><%=payVo.getPayprice() %></td> 
-								<td><%=payVo.getBalance() %></td>
 								<td><%=payVo.getPaydate() %></td>
 								<td><%=payVo.getCancle() %></td>
 							</tr>
 						<%} %>
 						</tbody>
 					</table>
+					<p>잔액 : <%=payVo.getBalance() %></p>
 				</div>
 			</div>
 		</div>

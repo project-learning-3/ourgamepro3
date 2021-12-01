@@ -30,12 +30,12 @@ public class PaymentDAO {
 		try { 
 		 con=pool.getConnection(); 
 		 String sql="update payment set balance=(select sum(payprice) from payment)\r\n"
-		 		+ "    where m_no=? and payno=?"; 
+		 		+ "    where m_no=?"; 
 		 
 		 //전체 거래수 필요
 		 List<PaymentVO> list= new ArrayList<PaymentVO>();
 		 list=this.selectbyNo(m_no);
-		 int payno=list.size()+1;
+		 int payno=list.size();
 		 
 		 ps=con.prepareStatement(sql);
 		 
@@ -100,14 +100,12 @@ public class PaymentDAO {
 			rs=ps.executeQuery();
 			
 			while(rs.next()) {
-				int payno=rs.getInt("payno");
 				int payprice=rs.getInt("payprice");
 				Timestamp paydate=rs.getTimestamp("paydate");
 				int balance =rs.getInt("balance");
 				String cancle=rs.getString("cancle");
 				
 				PaymentVO vo=new PaymentVO();
-				vo.setPayno(payno);
 				vo.setBalance(balance);
 				vo.setCancle(cancle);
 				vo.setPaydate(paydate);
