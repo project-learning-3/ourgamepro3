@@ -1,5 +1,5 @@
 package com.game.gameUrl.model;
-
+/*test*/
 public class GameUrlVO {
 	private int g_no;
 	private String image;
