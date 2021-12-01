@@ -26,6 +26,7 @@
 			MemberVO vo = ms.selectByEmail(m_email);
 			session.setAttribute("m_email", m_email);
 			session.setAttribute("m_name", vo.getM_name());
+			session.setAttribute("m_no",vo.getM_no());
 			
 			msg = vo.getM_name()+"님 환영합니다.";
 			url = "home.jsp";

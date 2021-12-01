@@ -18,6 +18,41 @@ public class PaymentDAO {
 	}
 	
 	/**
+	 * 전체 잔액 +- 하는거
+	 * @return
+	 * @throws SQLException 
+	 */
+	
+	 public int updateBalance(int m_no) throws SQLException { 
+		Connection con=null;
+	 	PreparedStatement ps= null;
+	  
+		try { 
+		 con=pool.getConnection(); 
+		 String sql="update payment set balance=(select sum(payprice) from payment)\r\n"
+		 		+ "    where m_no=? and payno=?"; 
+		 
+		 //전체 거래수 필요
+		 List<PaymentVO> list= new ArrayList<PaymentVO>();
+		 list=this.selectbyNo(m_no);
+		 int payno=list.size()+1;
+		 
+		 ps=con.prepareStatement(sql);
+		 
+		 ps.setInt(1, m_no);
+		 ps.setInt(2, payno);
+		 
+		 int cnt=ps.executeUpdate();
+		 System.out.println("전체잔액더하기결과="+cnt);
+		 return cnt;
+		 
+		}finally {
+			 pool.dbClose(ps,con); 
+		 } 
+	 }
+	 
+	
+	/**
 	 * 잔액더하기
 	 * @param m_no
 	 * @throws SQLException 

@@ -8,6 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>충전확인</title>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../js/sb-admin-2.min.js"></script>
 </head>
 <body>
 <%
@@ -42,30 +44,35 @@
 		history.back();
 		</script>
 <%	}
-	else if(m_pwd.equals(ch_pwd)) {	//비밀번호같음
+	else {	//비밀번호같음 
 
 			MemberDAO m_dao=new MemberDAO();
 			boolean check=m_dao.checkPwd(m_pwd);
 	
-			if(check){ //비밀번호 맞으면
-				String m_no=(String)session.getAttribute(m_no); 
-				System.out.print(m_no);
-				int member_no=Integer.parseInt(m_no);
+			if(check){ //비밀번호 맞으면 
+				
+				int m_no=(int)session.getAttribute("m_no");  //세션에서 고객번호받아옴
+				System.out.print(m_no); 
 				
 				PaymentDAO p_dao=new PaymentDAO();
-				int cnt=p_dao.AddBalance(member_no,charge); //잔액충전
+				int cnt=p_dao.AddBalance(m_no,charge); //잔액충전
 				//balance 도 유동적으로 바뀌게 만들어야함
+				int cnt2=p_dao.updateBalance(m_no); //총잔액 바꾸기
+				
 			%>
-	<script type="text/javascript">
-		alter('충전이 완료되었습니다.');
-		location.href('mypay.jsp');
-	</script>
-	<%}else{%>
-	<script type="text/javascript">
-		alter('비밀번호를 다시 확인해주세요');
-		history.back();
-	</script>
-	<%}
+			<script type="text/javascript">
+				alter("충전이 완료되었습니다.");
+				/* location.href("mypay.jsp"); */
+			</script>
+			<%
+			response.sendRedirect("./mypay.jsp"); //거래내역으로 이동
+			
+			}else{%>
+			<script type="text/javascript">
+				alter('비밀번호를 다시 확인해주세요');
+				history.back();
+			</script>
+			<%}
 		
 }
 %>

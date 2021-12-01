@@ -39,8 +39,7 @@
 <body>
 <%
 	//charge_ok 에서 get방식으로 이동 -> 고객넘 세션이용해서 불러오기
-	String Sm_no=request.getParameter("m_no");
-	int m_no=Integer.parseInt(Sm_no);	
+	int m_no=(int)session.getAttribute("m_no");
 
 	PaymentDAO dao=new PaymentDAO();
  
@@ -95,8 +94,8 @@
 						%>
 							<tr>
 								<td><%=payVo.getPayno() %></td>
+								<td><%=payVo.getPayprice() %></td> 
 								<td><%=payVo.getBalance() %></td>
-								<td><%=payVo.getPayprice() %></td> <!-- 잔액테이블만들어서 추가해야함 -->
 								<td><%=payVo.getPaydate() %></td>
 								<td><%=payVo.getCancle() %></td>
 							</tr>
