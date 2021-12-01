@@ -122,8 +122,8 @@ public class DeveloperDAO {
 			con=pool.getConnection();
 
 			//3
-			String sql="insert into developer(no,email,name,pwd,phone,businessno)"
-					+ " values(developer.nextval,?,?,?,?,?)";
+			String sql="insert into developer(d_no,seller_email,seller,d_pwd,seller_phone,business_no)"
+					+ " values(developer_seq.nextval,?,?,?,?,?)";
 			ps=con.prepareStatement(sql);
 
 			ps.setString(1, vo.getSeller_email());
