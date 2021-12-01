@@ -60,7 +60,7 @@
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-				<a class="btn btn-primary" href="login.jsp">로그아웃</a>
+				<a class="btn btn-primary" href="../html/login.jsp">로그아웃</a>
 			</div>
 		</div>
 	</div>
@@ -93,7 +93,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Goodgame-MainMenu</title>
+<title>Goodgame</title>
 
 <!-- Custom fonts for this template-->
 <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -116,7 +116,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="MainMenu.jsp">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../html/home.jsp">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <img alt="메인이미지" src="../img/Gg.png" style="width: 59px; height: 59px;">
                 </div>
@@ -457,9 +457,11 @@
 									class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> 포인트 충전
 								</a> <a class="dropdown-item" href="#"> <i
 									class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 라이브러리
+								</a><a class="dropdown-item" href="../html/mypay.jsp"><i
+									class="fas fa-bell fa-fw text-gray-400"></i>&nbsp;&nbsp;&nbsp;거래내역
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#" data-toggle="modal"
+								<a class="dropdown-item" href="../html/login.jsp" data-toggle="modal"
 									data-target="#logoutModal"> <i
 									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									로그아웃
