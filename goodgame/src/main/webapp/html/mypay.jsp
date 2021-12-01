@@ -71,7 +71,7 @@
 						<%} %>
 						</tbody>
 					</table>
-					<p>잔액 : <%=payVo.getBalance() %></p>
+					<p style="font-size:20px;text-align:right;">잔액 : <%=payVo.getBalance() %></p>
 				</div>
 			</div>
 		</div>

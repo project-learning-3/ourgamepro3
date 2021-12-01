@@ -40,7 +40,6 @@ public class PaymentDAO {
 		 ps=con.prepareStatement(sql);
 		 
 		 ps.setInt(1, m_no);
-		 ps.setInt(2, payno);
 		 
 		 int cnt=ps.executeUpdate();
 		 System.out.println("전체잔액더하기결과="+cnt);
