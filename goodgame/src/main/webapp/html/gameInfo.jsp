@@ -26,95 +26,10 @@
 
 <!-- Custom styles for this template-->
 <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+<link href="../css/gameInfo.css" rel="stylesheet">
 <style type="text/css">
 /* 틀 다 잡히면 집어 넣을거에요~~ */
-div#game-video iframe {
-	width: inherit;
-	height: inherit;
-	border-radius: 34px;
-}
 
-div#game-video {
-	height: 427px;
-	width: 667px;
-}
-
-div#game-image {
-	margin-top: 13px;
-	width: 667px;
-	height: 296px;
-}
-
-div#game-image div:first-child img {
-	float: left;
-	width: inherit;
-	height: inherit;
-}
-
-aside.gameInfo>* {
-	border: 1px solid green;
-	border-radius: 5px;
-}
-
-aside.gameInfo {
-	margin-top: -736px;
-	margin-left: 682px;
-	width: 329px;
-	height: 428px;
-}
-
-aside.gameInfo div p {
-	height: 37px;
-}
-
-input#noticeM {
-	margin-left: 4px;
-	margin-block: 4px;
-	width: 320px;
-	height: 221px;
-	border-radius: 7px;
-}
-
-table#comment {
-    clear: both;
-    width: 667px;
-}
-
-#comment tbody tr td:last-child {
-    width: 16%;
-}
-
-#comment tbody tr >* {border: 1px solid blue;}
-
-
-#comment tbody tr td:first-child {
-    width: 15%;
-}
-
-.rating {
-    border: 1px solid red;
-    width: 329px;
-    height: 329px;
-    margin-left: 682px;
-    margin-top: -269px;
-    border-radius: 100%;
-}
-#game-image div:first-child {width: 330px;height: 80%;}
-
-#game-image div:last-child {
-    width: 330px;
-    height: 80%;
-    float: right;
-    margin-top: -237px;
-}
-
-#game-image div:last-child img {
-    width: inherit;
-    height: inherit;
-}
-
-
-#game-image div img {border-radius: 16px;}
 </style>
 </head>
 <style>
@@ -159,7 +74,7 @@ table#comment {
 							<input type=text id="noticeM" value="게임설명">
 						</div>
 						<div>
-							<input type="button" value="구매하기" href="#">
+							<input type="button" value="게임명구매하기" href="#">
 						</div>
 					</aside>
 					<table id="comment">
