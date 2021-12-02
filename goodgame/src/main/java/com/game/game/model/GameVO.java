@@ -9,13 +9,14 @@ public class GameVO {
 	private Timestamp gdate; /*등록일시*/
 	private String gtext; /*게임설명*/
 	private String notice; /*게임공지사항*/
-	private int d_no; /*개발자 번호 */
+	private int d_no; /* 개발자 번호 */
+	private int c_no; /* 장르번호 */
 	
 	public GameVO() {
 		super();
 	}
 	public GameVO(int g_no, String gname, int price, Timestamp gdate,
-			String gtext, String notice, int d_no){
+			String gtext, String notice, int d_no, int c_no){
 		super();
 		this.g_no=g_no;
 		this.gname=gname;
@@ -24,6 +25,7 @@ public class GameVO {
 		this.gtext=gtext;
 		this.notice=notice;
 		this.d_no=d_no;
+		this.c_no=c_no;
 	}
 	public int getG_no() {
 		return g_no;
@@ -68,10 +70,15 @@ public class GameVO {
 		this.d_no=d_no;
 	}
 	
+	public int getC_no() {
+		return c_no;
+	}
+	public void setC_no(int c_no) {
+		this.c_no = c_no;
+	}
 	@Override
 	public String toString() {
-		return "gameVO [g_no=" + g_no + ", gname=" + gname + ", price=" + price
-				+ ", gdate=" + gdate+", gtext=" + gtext + ", notice=" + notice
-				+", notice=" + notice + ", d_no" + d_no + "]";
+		return "GameVO [g_no=" + g_no + ", gname=" + gname + ", price=" + price + ", gdate=" + gdate + ", gtext="
+				+ gtext + ", notice=" + notice + ", d_no=" + d_no + ", c_no=" + c_no + "]";
 	}
 }

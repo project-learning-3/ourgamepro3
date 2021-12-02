@@ -11,6 +11,7 @@ import java.util.List;
 import javax.xml.transform.Result;
 
 import com.game.db.ConnectionPoolMgr;
+import com.game.member.model.MemberService;
 
 public class DeveloperDAO {
 	private ConnectionPoolMgr pool;
@@ -49,24 +50,63 @@ public class DeveloperDAO {
 		}
 	}
 	
-	public String loginCheck(String m_email, String m_pwd) throws SQLException {
+	public int loginCheck(String seller_email, String d_pwd) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			con = pool.getConnection();
+			String sql = "select d_pwd from developer "
+					+ "where seller_email = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, seller_email);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				if(d_pwd.equals(rs.getString(1))){
+					result = DeveloperService.LOGIN_OK;
+				} else {
+					result = DeveloperService.DISAGREE_PWD;
+				}
+			} else {
+				result = DeveloperService.USERID_NONE;
+			}
+			return result;
+		} finally {
+			pool.dbClose(rs, ps, con);
+		}
+	}
+	
+	public DeveloperVO selectByEmail(String seller_email) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String m_name = "";
+		DeveloperVO vo = new DeveloperVO();
 		try {
 			con = pool.getConnection();
-			String sql = "select m_name from member "
-					+ "where m_email = ? and m_pwd = ?";
+			String sql = "select * from developer where seller_email = ? ";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, m_email);
-			ps.setString(2, m_pwd);
+			ps.setString(1, seller_email);
+			
 			rs = ps.executeQuery();
-			if(rs.next()) {
-				m_name = rs.getString(1);
+			while(rs.next()) {
+				int d_no = rs.getInt("d_no");
+				String seller = rs.getString("seller");
+				String d_pwd = rs.getString("d_no");
+				String seller_phone = rs.getString("seller_phone");
+				String business_no = rs.getString("business_no");
+				
+				vo.setBusiness_no(business_no);
+				vo.setD_no(d_no);
+				vo.setD_pwd(d_pwd);
+				vo.setSeller(seller);
+				vo.setSeller_email(seller_email);
+				vo.setSeller_phone(seller_phone);
+				
+				vo = new DeveloperVO(d_no, seller_email, seller, d_pwd, seller_phone, business_no);
 			}
-			return m_name;
+			return vo;
 		} finally {
 			pool.dbClose(rs, ps, con);
 		}
@@ -82,8 +122,8 @@ public class DeveloperDAO {
 			con=pool.getConnection();
 
 			//3
-			String sql="insert into developer(no,email,name,pwd,phone,businessno)"
-					+ " values(developer.nextval,?,?,?,?,?)";
+			String sql="insert into developer(d_no,seller_email,seller,d_pwd,seller_phone,business_no)"
+					+ " values(developer_seq.nextval,?,?,?,?,?)";
 			ps=con.prepareStatement(sql);
 
 			ps.setString(1, vo.getSeller_email());

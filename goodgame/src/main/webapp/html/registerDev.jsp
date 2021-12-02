@@ -41,25 +41,60 @@
 .opa {
 	opacity: 0.5;
 }
+
+#exampleInputEmail{
+	width: 150%;
+}
+#btnChkEmail{
+vertical-align:middle;
+	float: right;
+	width: 50%;
+	height:100%;
+}
+
 </style>
-<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" 
+	src="<%=request.getContextPath()%>/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
-	function regbtn() {
-		if ($('#name').val().length < 1) {
-			alert("이름을(를) 입력하세요");
-			$('#name').focus();
-			event.preventDefault();
-		} else if ($('#exampleInputEmail').val().length < 1) {
-			alert("이메일을(를) 입력하세요");
-			$('#exampleInputEmail').focus();
-			event.preventDefault();
-		} else if ($('#birth').val().length < 1) {
+	/* function regbtn() { */
+		$(function(){
+			$('#regbtn').click(function(){
+			
+				if ($('#exampleInputEmail').val().length < 1) {
+					alert("이메일을(를) 입력하세요");
+					$('#exampleInputEmail').focus();
+					event.preventDefault();
+					//return;
+				} else if ($('#exampleInputPassword').val().length < 1) {
+					alert("비밀번호을(를) 입력하세요");
+					$('#exampleInputPassword').focus();
+					event.preventDefault();
+				} else if ($('#exampleRepeatPassword').val().length < 1) {
+					alert("비밀번호확인을(를) 입력하세요");
+					$('#exampleRepeatPassword').focus();
+					event.preventDefault();
+				} else if ($('#name').val().length < 1) {
+					alert("이름을(를) 입력하세요");
+					$('#name').focus();
+					event.preventDefault();
+				}else if($('#chkEmail').val()!='Y'){
+					alert('아이디 중복확인을 하세요!');
+					$('#btnChkEmail').focus();
+					event.preventDefault();
+				} else if ($('#exampleRepeatPassword').val() != $(
+						'#exampleInputPassword').val()) {
+					alert("비밀번호가 일치하지 않습니다.");
+					event.preventDefault();
+				}  
+			});
+			//document.getElementById("frm1").submit();
+		/* else{
+			document.getElementById("frm1").submit();
+		}  */
+		
+		/* else if ($('#birth').val().length < 1) {
 			alert("생일을(를) 입력하세요");
-			$('#birth').focus();
-			event.preventDefault();
-		} else if ($('#birth').val().length != 6) {
-			alert("생일은 6자리입니다");
 			$('#birth').focus();
 			event.preventDefault();
 		} else if ($('#phoneNumber').val().length < 1) {
@@ -70,19 +105,19 @@
 			alert("휴대폰번호는 11자리입니다");
 			$('#phoneNumber').focus();
 			event.preventDefault();
-		} else if ($('#exampleInputPassword').val().length < 1) {
-			alert("비밀번호을(를) 입력하세요");
-			$('#exampleInputPassword').focus();
-			event.preventDefault();
-		} else if ($('#exampleRepeatPassword').val().length < 1) {
-			alert("비밀번호확인을(를) 입력하세요");
-			$('#exampleRepeatPassword').focus();
-			event.preventDefault();
-		} else if ($('#exampleRepeatPassword').val() != $(
-				'#exampleInputPassword').val()) {
-			alert("비밀번호가 일치하지 않습니다.");
-			event.preventDefault();
-		}
+		}*/
+	});
+	
+	function emailChk(){
+	    var width = '600';
+	    var height = '400';
+	    var left = Math.ceil(( window.screen.width - width )/2);
+	    var top = Math.ceil(( window.screen.height - height )/2);
+
+		var email=$('#exampleInputEmail').val();
+		open('checkUserid.jsp?email='+email,'dup',
+		 'width='+width+',height='+height+',left='+left+',top='+top+',location=yes,resizable=yes');
+
 	}
 	
 	/* function selbtn2(){ 
@@ -111,20 +146,30 @@
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
 							</div>
-							<form class="user">
+							<form class="user" name="frm1" method="post" action="register_ok.jsp">
 								<input type="hidden" name="no" value="<%=2%>">
 								<div class="form-group">
 									<a id="test_btn1" href="registerMem.jsp"
-										class="btn btn-primary btn-user">for member</a> <a
-										id="test_btn2" class="btn btn-primary btn-user">for
-										developer</a>
+										class="btn btn-primary btn-user">for member</a> 
+									<a id="test_btn2" class="btn btn-primary btn-user">for developer</a>
 								</div>
 
 								<!-- 이메일 -->
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<input type="email" class="form-control form-control-user"
 										id="exampleInputEmail" placeholder="Email Address"
 										name="email">
+								</div> -->
+								
+								<div class="form-group row">
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<input type="email" class="form-control form-control-user"
+										id="exampleInputEmail" placeholder="Email Address" name="email">
+									</div>
+									<div class="col-sm-6">
+										<input type="button" value="check" id="btnChkEmail" 
+									class="btn btn-primary btn-user btn-block" onclick="emailChk()" title="새창열림">
+									</div>
 								</div>
 
 								<!-- 비밀번호, 비밀번호확인 -->
@@ -160,11 +205,11 @@
 								</div>
 
 								<!-- 등록버튼 -->
-								<a id="regbtn" href="register_ok.jsp"
-									class="btn btn-primary btn-user btn-block" onclick="regbtn()">
-									Register Account </a>
-
-
+							 <!-- <a id="regbtn"	class="btn btn-primary btn-user btn-block" >
+									Register Account </a>  -->
+						
+								<input type="submit" class="btn btn-primary btn-user btn-block" id="regbtn" value="Register Account">
+								
 							</form>
 							<hr>
 							<div class="text-center">
@@ -181,7 +226,7 @@
 		</div>
 
 	</div>
-
+	<input type ="hidden" name="chkEmail" id="chkEmail">
 	<!-- Bootstrap core JavaScript-->
 	<script src="../vendor/jquery/jquery.min.js"></script>
 	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

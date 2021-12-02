@@ -3,16 +3,23 @@
 	pageEncoding="UTF-8"%>
 
 <%
-
-	String m_name = (String)session.getAttribute("m_name");
+	String name = "";
+	String ck = (String)session.getAttribute("ck");
+	if(ck == null) ck ="";
+	if(ck.equals("t") && ck != null && !ck.isEmpty()){
+		name = (String)session.getAttribute("seller");
+	} else {
+		name = (String)session.getAttribute("m_name");
+	}
+	//String m_name = (String)session.getAttribute("m_name");
 	
 	/* int m_no = (int)session.getAttribute("m_no");
 	System.out.print(m_no); */
 	//사용자번호 불러오는 방법 로그인 안하고 사용자넘버 불러올경우 널포인트 에러 뜸 
 	//=> 인트값에 널이 들어갈 수 없어서 if로 처리 불가능
-	System.out.print(m_name);
-	if(m_name==null){	
-		m_name = "";	%>
+	System.out.print(name+" ");
+	if(name==null){	
+		name = "";	%>
 		<script type="text/javascript">
 			alert('로그인 후 이용가능한 페이지입니다.');
 			location.href="login.jsp";	
@@ -76,12 +83,17 @@
 		}, function() {
 			$('#CSupport2').hide();
 		});
-		/* $('.collapse-item1').on("click",function() {
-			alert('로그아웃 하시겠습니까?');
-			if(bool == true){
-			location.href = "logout.jsp";
-			};
-		}); */
+	});
+	
+	function add(){
+		$('#container').prepend("<div class='ng'>"+""+"</div>");
+	}
+	
+	$(function(){
+		$('#dev-item').hide();
+<%		if(ck.equals("t")){		%>
+			$('#dev-item').show();
+<%		}	%>
 	});
 </script>
 <head>
@@ -104,6 +116,7 @@
 
 <!-- Custom styles for this template-->
 <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+<link href="../css/ziu.css" rel="stylesheet">
 
 </head>
 
@@ -191,7 +204,7 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header"><%=m_name %></h6>
+						<h6 class="collapse-header"><%=name %></h6>
 						<!-- 로그인 하면 이름 나오게 -->
 						<a class="collapse-item" href="">환경 설정</a>
 						<!-- 환경설정 페이지 나오게 -->
@@ -209,7 +222,7 @@
 				<div id="collapseUtilities" class="collapse"
 					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header"><%=m_name %> 님, 무엇을 도와드릴까요?</h6>
+						<h6 class="collapse-header"><%=name %> 님, 무엇을 도와드릴까요?</h6>
 						<a class="collapse-item" id="CSupport1"
 							href="utilities-color.html">고객지원</a>
 						<div id="CSupport2" style="font-size: 11px; font-family: fantasy; font-style: italic; font-weight: bold;">
@@ -235,29 +248,55 @@
 						<!-- 이건 대충 창으로-->
 					</div>
 				</div> <!--  --></li>
-			<li class="nav-item"><a class="nav-link collapsed" href="#"
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseuser"
-				aria-expanded="true" aria-controls="collapseuser"> <i
-					class="fas fa-fw fa-table"></i> <span>계정</span>
-			</a>
+				aria-expanded="true" aria-controls="collapseuser"> 
+					<i class="fas fa-fw fa-table"></i> 
+					<span>계정</span>
+				</a>
 				<div id="collapseuser" class="collapse"
 					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Login</h6>
 						<a class="collapse-item" href="blank.html">프로필 수정</a>
 						<!-- 계정변경 html로 연결 -->
-						<a class="collapse-item" href="blank.html">프로필 정보</a> <a
-							class="collapse-item1" href="logout.jsp">로그아웃</a>
+						<a class="collapse-item" href="blank.html">프로필 정보</a> 
+						<a class="collapse-item1" href="logout.jsp">로그아웃</a>
 						<a class="collapse-item" href="blank.html">프로필 정보</a> 
 						<a class="collapse-item1" href="login.jsp" data-toggle="modal" data-target="#logoutModal">
                         	<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                        로그아웃</a>
+                        	로그아웃
+                        </a>
 					</div>
-				</div></li>
+				</div>
+			</li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
-
+			
+			<!-- 개발자 메뉴 -->
+			<li class="nav-item" id="dev-item">
+				<a class="nav-link collapsed" href="#"
+					data-toggle="collapse" data-target="#collapsedev"
+					aria-expanded="true" aria-controls="collapsedev"> 
+					<i class="fas fa-fw fa-table"></i> 
+					<span>개발자메뉴</span>
+				</a>
+				<div id="collapsedev" class="collapse"
+				aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">개발자</h6>
+						<a class="collapse-item" href="gameInsert_before.jsp">게임등록</a>
+						<!-- 계정변경 html로 연결 -->
+						<a class="collapse-item" href="#">게임등록 현황</a> 
+						<a class="collapse-item" href="#">넣고싶은 값</a>
+						<a class="collapse-item" href="#">1</a> 
+						<a class="collapse-item" href="#">2</a>
+					</div>
+				</div>
+			</li>
+						
 			<!-- Sidebar Toggler (Sidebar) -->
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -444,7 +483,7 @@
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"><%=m_name %></span>
+								class="mr-2 d-none d-lg-inline text-gray-600 small"><%=name %></span>
 								<img class="img-profile rounded-circle"
 								src="../img/undraw_profile.svg">
 						</a> <!-- Dropdown - User Information -->
