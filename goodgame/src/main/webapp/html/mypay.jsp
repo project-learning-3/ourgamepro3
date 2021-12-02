@@ -23,7 +23,6 @@
 		e.printStackTrace();
 	} 
 	
-	//숫자가 순서대로 안나옴
 	
 %>
 	<!-- Begin Page Content -->

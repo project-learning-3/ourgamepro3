@@ -38,7 +38,7 @@
 		alert('패스워드가 다릅니다. 다시 확인해주세요.');
 		history.back();
 		</script>
-<%	}else if(charge<10000||charge>=200000){ 	%>
+<%	}else if(charge<10000||charge>200000){ 	%>
 		<script type="text/javascript">
 		alert('충전금액은 최소 10,000원 최대 200,000원 입니다.');
 		history.back();
