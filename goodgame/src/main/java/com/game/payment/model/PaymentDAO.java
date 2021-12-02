@@ -91,7 +91,7 @@ public class PaymentDAO {
 		List<PaymentVO> list = new ArrayList<PaymentVO>();
 		try {
 			con=pool.getConnection();
-			String sql="select * from payment where m_no=?";
+			String sql="select * from payment where m_no=? order by payno desc";
 			ps=con.prepareStatement(sql);
 			
 			ps.setInt(1, m_no);
