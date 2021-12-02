@@ -52,7 +52,7 @@
 	$(function(){
 		$("#submit").click(function(){	
 			if($('#email').val().length<1){ 
-				alert("아이디를 입력하세요"); 
+				alert("이메일을 입력하세요"); 
 				$('#email').focus(); 
 				event.preventDefault(); 
 			}
@@ -67,9 +67,6 @@
 		});
 	});
 	
-	function Chk(){
-		alert(email);
-	}
 </script>	
 </head>
 <body>
@@ -78,7 +75,7 @@
 	<form name="frmId" method="post" action="checkUserid.jsp">
 		<input type="email" name="email" id="email" 
 			title="아이디입력" value="<%=email%>">
-		<input type="submit"  id="submit" value="이메일 확인">
+		<input type="submit" id="submit" value="이메일 확인">
 		
 		<%if(result==MemberService.EXIST_ID){%>
 			<p>이미 등록된 이메일입니다. 다른 이메일을 입력하세요</p>	
