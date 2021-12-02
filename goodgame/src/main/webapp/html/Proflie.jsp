@@ -34,7 +34,7 @@
 	String m_email = (String) session.getAttribute("m_email");
 	String d_email = (String) session.getAttribute("d_email");
 
-/*  세션으로 가져온 아이디로 각각 검사하고 int 나오면 그걸로 들어가자   */
+/*  세션으로 가져온 아이디로 각각 검사하고 int 나오면 그걸로 들어가자  */
 
 	SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");		
 
