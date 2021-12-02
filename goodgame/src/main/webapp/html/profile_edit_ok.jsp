@@ -1,9 +1,15 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Formatter"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
+<%@page import="com.game.member.model.MemberVO"%>
 <%@page import="com.game.developer.model.DeveloperVO"%>
 <%@page import="com.game.developer.model.DeveloperDAO"%>
 <%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="memberService" class="com.game.member.model.MemberService" scope="session"></jsp:useBean> 
+<jsp:useBean id="memberService"
+	class="com.game.member.model.MemberService" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,49 +18,46 @@
 </head>
 <body>
 	<%
-	String m_email=(String) session.getAttribute("m_email");
-	String d_email=(String) session.getAttribute("d_email");
+	request.setCharacterEncoding("utf-8");
+	String m_email = (String) session.getAttribute("m_email");
+	String d_email = (String) session.getAttribute("d_email");
 
+	/* 	String email = request.getParameter("email");
+	String pwd = request.getParameter("pwd");
+	String name = request.getParameter("name");
+	String phone = request.getParameter("phone");
+	String no = request.getParameter("m_no");  */
 	
-	
-	/* DeveloperDAO dao = new DeveloperDAO(); */
-	//라라라 졸려서 진도가 안나가~
 	try {
-		if(m_email !=null && !m_email.isEmpty()){
-				
-		DeveloperVO vo1 = new DeveloperVO();
-		vo.setD_pwd(pwd);
-		vo.setSeller(name);
-		vo.setSeller_phone(phone);
-		vo.setBusiness_no(businessNo);
-		vo.setD_no(Integer.parseInt(no));
-		
-		}  
-		if (dao.checkPwd(vo)) {
-			int cnt = dao.updateDeveloper(vo);
-
-			if (cnt > 0) {
+		if (m_email != null && !m_email.isEmpty()) { //멤버일떄
+			MemberVO vo1 = new MemberVO();
+			vo1.setM_pwd(request.getParameter("pwd"));
+			vo1.setM_name(request.getParameter("name"));
+			vo1.setM_phone(request.getParameter("phone"));
+			vo1.setM_email(request.getParameter("email"));	
+			vo1.setM_birth(Timestamp.valueOf(request.getParameter("number")));
+			
+			if (memberService.checkPwd(request.getParameter("pwd"))) {
+		int cnt = memberService.updateMember(vo1);
+		if (cnt > 0) {
 	%>
 	<script type="text/javascript">
-					alert("회원정보가 수정되었습니다.");
-					location.href="profile.jsp"
+		alert("프로필이 수정되었습니다.");
+		location.href = "Proflie.jsp";
 	</script>
 	<%
 	} else {
 	%>
 	<script type="text/javascript">
-		alert("회원정보 수정에 실패했습니다.");
-		history.go(-1);
+		alert("프로필 수정이 실패했습니다");
+		/* history.back(); */
 	</script>
 	<%
 	}
-	} else {
-	%>
-	<script type="text/javascript">
-		alert("비밀번호가 일치하지 않습니다.");
-		history.go(-1);
-	</script>
-	<%
+	/* 	 	}  */
+	} else { //개발자일때
+
+	}
 	}
 	} catch (SQLException e) {
 	e.printStackTrace();

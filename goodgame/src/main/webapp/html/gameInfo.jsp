@@ -91,7 +91,7 @@
 						</tr>
 					</table>
 					<div class=rating>
-						<p>별점 넣는곳 근데 어떻게 넣을꺼에요??</p>
+						<p></p>
 					</div>
 				</div>
 				<!-- /.container-fluid -->

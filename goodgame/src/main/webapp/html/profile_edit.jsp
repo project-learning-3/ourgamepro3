@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="com.game.member.model.MemberService"%>
 <%@page import="com.game.member.model.MemberVO"%>
@@ -6,7 +7,8 @@
 <%@page import="com.game.developer.model.DeveloperDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="memberSevice" class="com.game.member.model.MemberService"scope="session"></jsp:useBean> 
+<jsp:useBean id="memberSevice"
+	class="com.game.member.model.MemberService" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,32 +53,34 @@
 }
 </style>
 <%
-	String m_email = (String) session.getAttribute("m_email");
-	String d_email = (String) session.getAttribute("d_email");
-	
-	MemberVO vo1 = null;
-	DeveloperVO vo2 = null;
-	
-	String email ="";
-	String pwd="";
-	String name="";
-	Timestamp birth;
-	String phone="";
-	try {
-		if (m_email != null && !m_email.isEmpty()) {
-			vo1 = memberSevice.selectByEmail(m_email);
-			
-			email=vo1.getM_email();
-			pwd=vo1.getM_pwd();
-			name=vo1.getM_name();
-			birth=vo1.getM_birth();
-			phone=vo1.getM_phone();
-		} else if (d_email != null && !d_email.isEmpty()) {
-			
-		}
-	} catch (SQLException e) {
-		e.printStackTrace();
+String m_email = (String) session.getAttribute("m_email");
+String d_email = (String) session.getAttribute("d_email");
+
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+MemberVO vo1 = null;
+DeveloperVO vo2 = null;
+
+String email = "";
+String pwd = "";
+String name = "";
+String phone = "";
+String number = ""; //birth or businessNumber
+Timestamp birth=null;
+try {
+	if (m_email != null && !m_email.isEmpty()) {
+		vo1 = memberSevice.selectByEmail(m_email);
+		email = vo1.getM_email();
+		pwd = vo1.getM_pwd();
+		name = vo1.getM_name();
+		birth = vo1.getM_birth();
+		phone = vo1.getM_phone();
+	} else if (d_email != null && !d_email.isEmpty()) {
+
 	}
+} catch (SQLException e) {
+	e.printStackTrace();
+}
 %>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -92,7 +96,7 @@
 		var pwd2 = $('#exampleRepeatPassword').val();
 		if (pwd1 != pwd2) {
 			alert("비밀번호가 일치하지 않습니다");
-			event.preventDefault();  
+			event.preventDefault();
 		}
 	}
 </script>
@@ -110,22 +114,20 @@
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
 							</div>
-							<form class="user">
-								<input type="hidden" name="no" value="<%=2%>">
+							<form class="user" name="wap" method="post" action="profile_edit_ok.jsp">
+							 	<%-- <input type="hidden" name="no" value="<%=2%>">  --%>
 								<!-- 기본적으로 본인의 정보가 입력된 상태에서 수정 하게끔 -->
 								<!-- 이메일 -->
 								<div class="form-group">
 									<input type="email" class="form-control form-control-user"
-										id="exampleInputEmail" name="email"
-										value="<%=email%>" disabled>
+										id="exampleInputEmail" name="email" value="<%=email%>" readonly="readonly">
 								</div>
 
 								<!-- 비밀번호, 비밀번호확인 -->
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="password" class="form-control form-control-user"
-											id="exampleInputPassword" name="pwd"
-											value="<%=pwd%>">
+											id="exampleInputPassword" name="pwd" value="<%=pwd%>" readonly="readonly">
 									</div>
 									<div class="col-sm-6">
 										<input type="password" class="form-control form-control-user"
@@ -137,8 +139,7 @@
 								<!-- 이름 -->
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user"
-										id="name" placeholder="Name" name="name"
-										value="<%=name%>">
+										id="name" placeholder="Name" name="name" value="<%=name%>">
 								</div>
 
 								<!-- 연락처 -->
@@ -151,15 +152,18 @@
 								<div class="form-group" id="bn">
 									<input type="text" class="form-control form-control-user"
 										id="businessNumber" placeholder="Business Number"
-										name="businessNo" value="<%=birth%>">
+										name="number" 
+										value=<%if(m_email != null && !m_email.isEmpty()) {
+											%>"<%=birth %>"<% 
+										}else{
+											%>"<%=number%>"<% 
+										}%>>
 								</div>
 
 								<!-- 등록버튼 -->
-								<a id="regbtn" href="register_ok.jsp"
+								<input type="submit" id="regbtn" value="Profile Edit"
 									class="btn btn-primary btn-user btn-block" onclick="regbtn()">
-									Register Account </a>
-
-
+									
 							</form>
 							<hr>
 							<div class="text-center">
