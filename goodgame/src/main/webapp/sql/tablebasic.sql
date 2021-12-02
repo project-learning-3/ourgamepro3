@@ -192,7 +192,8 @@ ALTER TABLE gameurl
 		)
 		REFERENCES game (
 			g_no
-		);
+		)
+		ON DELETE CASCADE;
 
 ALTER TABLE c_game
 	ADD
@@ -202,7 +203,8 @@ ALTER TABLE c_game
 		)
 		REFERENCES game (
 			g_no
-		);
+		)
+		ON DELETE CASCADE;
 
 ALTER TABLE c_game
 	ADD
@@ -212,7 +214,8 @@ ALTER TABLE c_game
 		)
 		REFERENCES category (
 			cat_no
-		);
+		)
+		ON DELETE CASCADE;
 		
 ALTER TABLE game
 	ADD
@@ -222,7 +225,8 @@ ALTER TABLE game
 		)
 		REFERENCES developer (
 			d_no
-		);
+		)
+		ON DELETE CASCADE;
 
 ALTER TABLE payment
 	ADD
@@ -232,7 +236,8 @@ ALTER TABLE payment
 		)
 		REFERENCES member (
 			m_no
-		);
+		)
+		ON DELETE CASCADE;
 
 
 ALTER TABLE grade
@@ -243,7 +248,8 @@ ALTER TABLE grade
 		)
 		REFERENCES member (
 			m_no
-		);
+		)
+		ON DELETE CASCADE;
 
 ALTER TABLE grade
 	ADD
@@ -253,7 +259,8 @@ ALTER TABLE grade
 		)
 		REFERENCES game (
 			g_no
-		);
+		)
+		ON DELETE CASCADE;
 
 ALTER TABLE order
 	ADD
@@ -263,7 +270,8 @@ ALTER TABLE order
 		)
 		REFERENCES member (
 			m_no
-		);
+		)
+		ON DELETE CASCADE;
 
 ALTER TABLE order
 	ADD
@@ -273,4 +281,5 @@ ALTER TABLE order
 		)
 		REFERENCES game (
 			g_no
-		);
+		)
+		ON DELETE CASCADE;
