@@ -91,7 +91,7 @@
 				<!-- Nested Row within Card Body -->
 				<div class="row">
 					<div class="col-lg-5 d-none d-lg-block bg-register-image">
-						<p style="font-size: 23px">로그인과 차별화를 위한 이미지 변경 어때요?</p>
+						<p style="font-size: 23px"></p>
 					</div>
 					<div class="col-lg-7">
 						<div class="p-5">

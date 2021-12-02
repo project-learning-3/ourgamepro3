@@ -20,4 +20,10 @@ public class MemberService {
 	public MemberVO selectByEmail(String m_email) throws SQLException {
 		return dao.selectByEmail(m_email);
 	}
+	public boolean checkPwd(String m_pwd) throws SQLException {
+		return dao.checkPwd(m_pwd);
+	}
+	public int updateMember(MemberVO vo) throws SQLException {
+		return dao.updateMember(vo);
+	}
 }
