@@ -17,28 +17,25 @@ public class GameDAO {
 		pool=ConnectionPoolMgr.getInstance();
 	}
 	/*게임등록 메서드*/
-	public int insertGame(GameVO vo) throws SQLException{
-		Connection con=null;
-		PreparedStatement ps=null;
-
+	public int insertGame(GameVO vo) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
 		try {
-			con=pool.getConnection();
-
-			String sql="insert into game(g_no, gname, price, gtext, notice, d_no)"
-					+ "values(game_seq.nextval, ?,?,?,?,?)";
-			ps=con.prepareStatement(sql);
-
+			con = pool.getConnection();
+			String sql = "insert into game(g_no, gname, price, gtext, d_no, c_no) "
+					+ "values(game_seq.nextval, ?, ?, ?, ?, ?)";
+			ps = con.prepareStatement(sql);
 			ps.setString(1, vo.getGname());
 			ps.setInt(2, vo.getPrice());
 			ps.setString(3, vo.getGtext());
-			ps.setString(4, vo.getNotice());
-			ps.setInt(5, vo.getD_no());
-
-			int cnt=ps.executeUpdate();
-			System.out.println("게임등록 결과 cnt="+cnt+", 매개변수 vo="+vo);
-
+			ps.setInt(4, vo.getD_no());
+			ps.setInt(5, vo.getC_no());
+			
+			int cnt = ps.executeUpdate();
+			
 			return cnt;
-		}finally {
+		} finally {
 			pool.dbClose(ps, con);
 		}
 	}
@@ -62,9 +59,10 @@ public class GameDAO {
 				String gtext=rs.getString("gtext");
 				String notice=rs.getString("notice");
 				int d_no=rs.getInt("d_no");
+				int c_no=rs.getInt("c_no");
 
 				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, 
-						notice, d_no);
+						notice, d_no, c_no);
 				list.add(vo);
 			}
 			System.out.println("게임등록 결과 list.size="+list.size());

@@ -25,14 +25,14 @@
 	
 	String check = request.getParameter("customCheck");
 	if(check == null) check = "";
-	boolean ck = false;
+	String ck = "f";
 	
 	System.out.println(check);
 	String msg = "로그인 실패", url ="login.jsp";
 	try{
 		if(check != null && !check.isEmpty()){
-			ck = true;
-			if(ck == true){
+			ck = "t";
+			if(ck.equals("t")){
 				int result = ds.loginCheck(m_email, m_pwd);
 				if(result == DeveloperService.LOGIN_OK){
 					DeveloperVO d_vo = ds.selectByEmail(m_email);
@@ -49,8 +49,8 @@
 				}				
 			}
 		} else {
-			ck = false;
-			if(ck != true){
+			ck = "f";
+			if(ck.equals("f")){
 				int result = ms.loginCheck(m_email, m_pwd);
 				if(result == MemberService.LOGIN_OK){
 					MemberVO vo = ms.selectByEmail(m_email);

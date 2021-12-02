@@ -9,11 +9,12 @@ public class MemberVO {
 	private String m_name; /* 이름 */
 	private Timestamp m_birth; /* 생년월 */
 	private String m_phone; /* 연락처 */
+	private int c_no;	/* 장르번호 */
 	public MemberVO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public MemberVO(int m_no, String m_email, String m_pwd, String m_name, Timestamp m_birth, String m_phone) {
+		super();
 		this.m_no = m_no;
 		this.m_email = m_email;
 		this.m_pwd = m_pwd;
@@ -62,5 +63,4 @@ public class MemberVO {
 		return "MemberVO [m_no=" + m_no + ", m_email=" + m_email + ", m_pwd=" + m_pwd + ", m_name=" + m_name
 				+ ", m_birth=" + m_birth + ", m_phone=" + m_phone + "]";
 	}
-	
 }

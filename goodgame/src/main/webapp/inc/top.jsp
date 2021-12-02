@@ -4,8 +4,9 @@
 
 <%
 	String name = "";
-	boolean ck = (boolean)session.getAttribute("ck");
-	if(ck == true){
+	String ck = (String)session.getAttribute("ck");
+	if(ck == null) ck ="";
+	if(ck.equals("t") && ck != null && !ck.isEmpty()){
 		name = (String)session.getAttribute("seller");
 	} else {
 		name = (String)session.getAttribute("m_name");
@@ -87,6 +88,13 @@
 	function add(){
 		$('#container').prepend("<div class='ng'>"+""+"</div>");
 	}
+	
+	$(function(){
+		$('#dev-item').hide();
+<%		if(ck.equals("t")){		%>
+			$('#dev-item').show();
+<%		}	%>
+	});
 </script>
 <head>
 
@@ -240,29 +248,55 @@
 						<!-- 이건 대충 창으로-->
 					</div>
 				</div> <!--  --></li>
-			<li class="nav-item"><a class="nav-link collapsed" href="#"
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseuser"
-				aria-expanded="true" aria-controls="collapseuser"> <i
-					class="fas fa-fw fa-table"></i> <span>계정</span>
-			</a>
+				aria-expanded="true" aria-controls="collapseuser"> 
+					<i class="fas fa-fw fa-table"></i> 
+					<span>계정</span>
+				</a>
 				<div id="collapseuser" class="collapse"
 					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Login</h6>
 						<a class="collapse-item" href="blank.html">프로필 수정</a>
 						<!-- 계정변경 html로 연결 -->
-						<a class="collapse-item" href="blank.html">프로필 정보</a> <a
-							class="collapse-item1" href="logout.jsp">로그아웃</a>
+						<a class="collapse-item" href="blank.html">프로필 정보</a> 
+						<a class="collapse-item1" href="logout.jsp">로그아웃</a>
 						<a class="collapse-item" href="blank.html">프로필 정보</a> 
 						<a class="collapse-item1" href="login.jsp" data-toggle="modal" data-target="#logoutModal">
                         	<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                        로그아웃</a>
+                        	로그아웃
+                        </a>
 					</div>
-				</div></li>
+				</div>
+			</li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
-
+			
+			<!-- 개발자 메뉴 -->
+			<li class="nav-item" id="dev-item">
+				<a class="nav-link collapsed" href="#"
+					data-toggle="collapse" data-target="#collapsedev"
+					aria-expanded="true" aria-controls="collapsedev"> 
+					<i class="fas fa-fw fa-table"></i> 
+					<span>개발자메뉴</span>
+				</a>
+				<div id="collapsedev" class="collapse"
+				aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">개발자</h6>
+						<a class="collapse-item" href="gameInsert_before.jsp">게임등록</a>
+						<!-- 계정변경 html로 연결 -->
+						<a class="collapse-item" href="#">게임등록 현황</a> 
+						<a class="collapse-item" href="#">넣고싶은 값</a>
+						<a class="collapse-item" href="#">1</a> 
+						<a class="collapse-item" href="#">2</a>
+					</div>
+				</div>
+			</li>
+						
 			<!-- Sidebar Toggler (Sidebar) -->
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
