@@ -30,12 +30,6 @@
 <style type="text/css">
 /* 틀 다 잡히면 집어 넣을거에요~~ */
 
-#content-wrapper{
-    background-color: #0D0D09;
-    background-image: linear-gradient(
-180deg,#0D0D09 10%,#545D90 100%);
-    background-size: cover;
-}
 </style>
 </head>
 <style>
@@ -97,7 +91,7 @@
 						</tr>
 					</table>
 					<div class=rating>
-						<p>별점 넣는곳 근데 어떻게 넣을꺼에요??</p>
+						<p></p>
 					</div>
 				</div>
 				<!-- /.container-fluid -->

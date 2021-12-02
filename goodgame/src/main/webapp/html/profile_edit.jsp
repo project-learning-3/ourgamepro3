@@ -66,14 +66,14 @@ String pwd = "";
 String name = "";
 String phone = "";
 String number = ""; //birth or businessNumber
-
+Timestamp birth=null;
 try {
 	if (m_email != null && !m_email.isEmpty()) {
 		vo1 = memberSevice.selectByEmail(m_email);
 		email = vo1.getM_email();
 		pwd = vo1.getM_pwd();
 		name = vo1.getM_name();
-		number = sdf.format(vo1.getM_birth());
+		birth = vo1.getM_birth();
 		phone = vo1.getM_phone();
 	} else if (d_email != null && !d_email.isEmpty()) {
 
@@ -114,21 +114,20 @@ try {
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
 							</div>
-							<form class="user">
-								<input type="hidden" name="no" value="<%=2%>">
+							<form class="user" name="wap" method="post" action="profile_edit_ok.jsp">
+							 	<%-- <input type="hidden" name="no" value="<%=2%>">  --%>
 								<!-- 기본적으로 본인의 정보가 입력된 상태에서 수정 하게끔 -->
 								<!-- 이메일 -->
 								<div class="form-group">
 									<input type="email" class="form-control form-control-user"
-										id="exampleInputEmail" name="email" value="<%=email%>"
-										disabled>
+										id="exampleInputEmail" name="email" value="<%=email%>" readonly="readonly">
 								</div>
 
 								<!-- 비밀번호, 비밀번호확인 -->
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="password" class="form-control form-control-user"
-											id="exampleInputPassword" name="pwd" value="<%=pwd%>" disabled>
+											id="exampleInputPassword" name="pwd" value="<%=pwd%>" readonly="readonly">
 									</div>
 									<div class="col-sm-6">
 										<input type="password" class="form-control form-control-user"
@@ -153,15 +152,18 @@ try {
 								<div class="form-group" id="bn">
 									<input type="text" class="form-control form-control-user"
 										id="businessNumber" placeholder="Business Number"
-										name="number" value="<%=number%>">
+										name="number" 
+										value=<%if(m_email != null && !m_email.isEmpty()) {
+											%>"<%=birth %>"<% 
+										}else{
+											%>"<%=number%>"<% 
+										}%>>
 								</div>
 
 								<!-- 등록버튼 -->
-								<a id="regbtn" href="profile_edit_ok.jsp"
+								<input type="submit" id="regbtn" value="Profile Edit"
 									class="btn btn-primary btn-user btn-block" onclick="regbtn()">
-									Profile Edit </a>
-
-
+									
 							</form>
 							<hr>
 							<div class="text-center">

@@ -101,29 +101,29 @@
 							<form class="user">
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user"
-										id="name" value="name : <%=name%>" disabled>
+										id="name" value="name : <%=name%>" readonly="readonly">
 									<!-- 이름 -->
 								</div>
 								<div class="form-group">
 									<input type="email" class="form-control form-control-user"
 										id="exampleInputEmail"
-										placeholder="email : <%=email%>" disabled>
+										placeholder="email : <%=email%>" readonly="readonly">
 									<!-- 이메일 -->
 								</div>
 								<div class="form-group">
 									<input type="number" class="form-control form-control-user"
-										id="birth" placeholder="birth : <%=number %>" disabled>
+										id="birth" placeholder="birth : <%=number %>" readonly="readonly">
 									<!-- 생년월일 -->
 								</div>
 								<div class="form-group">
 									<input type="number" class="form-control form-control-user"
 										id="phoneNumber" placeholder="phone : <%=phone%>"
-										disabled>
+										readonly="readonly">
 									<!-- 핸드폰번호 -->
 								</div>
 								<div class="form-group">
 									<input type="number" class="form-control form-control-user"
-										id="point" placeholder="point : 나오는 곳" disabled>
+										id="point" placeholder="point : 나오는 곳"  readonly="readonly">
 									<!-- 핸드폰번호 -->
 								</div>
 
