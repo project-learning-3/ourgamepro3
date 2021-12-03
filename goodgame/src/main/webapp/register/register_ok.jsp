@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="com.game.developer.model.DeveloperVO"%>
@@ -13,7 +15,6 @@
 <title>register_ok</title>
 </head>
 <body>
-<!--  -->
 <%
 //1. 요청 파라미터 읽어오기
 	String no=request.getParameter("no");
@@ -23,20 +24,27 @@
 	String phone=request.getParameter("phone");
 	String birth=request.getParameter("birth");
 	String businessNo=request.getParameter("businessNo");
-	System.out.println(no);
+	
+	System.out.println("birth="+birth);
 	
 	//2. db작업
 	try{
 		int cnt=0;
-		if(no=="1"){
+		if(Integer.parseInt(no)==1){
 			MemberDAO dao = new MemberDAO();
 			MemberVO vo = new MemberVO();
 			vo.setM_email(email);
 			vo.setM_pwd(pwd);
 			vo.setM_name(name);
 			vo.setM_phone(phone);
-			vo.setM_birth(Timestamp.valueOf(birth));
 			
+			if(!birth.isEmpty()){
+				birth +=" 00:00:00.000";
+				SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd hh:mm:ss.SSS");
+				Date parsedDate = sdf.parse(birth);
+				Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+				vo.setM_birth(timestamp);
+			}
 			cnt=dao.insertMember(vo);
 			//
 		}else if(Integer.parseInt(no)==2){
@@ -52,10 +60,11 @@
 		}
 	
 		//3. 결과 처리  
-		if(cnt>0){	%>
+		if(cnt>0){
+%>
 			<script type="text/javascript">
 				alert("계정을 생성했습니다. 로그인 화면으로 이동합니다.");
-				location.href="login.jsp";
+				location.href="../login/login.jsp";
 			</script>
 	<%  }else{ %>
 			<script type="text/javascript">
@@ -66,6 +75,8 @@
 	}catch(SQLException e){
 		e.printStackTrace();
 	}	
+	
+	
 %>
 </body>
 </html>

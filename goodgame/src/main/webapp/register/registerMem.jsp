@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>sing up for member</title>
+<title>sign up for member</title>
 
 <!-- Custom fonts for this template-->
 <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -28,6 +28,7 @@
 	border-bottom-right-radius: 5px;
 	margin-right: -4px;
 	width: 50%;
+	opacity: 0.5;
 }
 
 #test_btn2 {
@@ -35,78 +36,91 @@
 	border-bottom-left-radius: 5px;
 	margin-left: -3px;
 	width: 50%;
-	opacity: 0.5;
 }
 
-.opa {
-	opacity: 0.5;
+form.user .form-control-user {
+	font-size: 0.85rem;
 }
+
+form.user .btn-user {
+	font-size: 0.9rem;
+}
+
+#exampleInputEmail{
+	width: 150%;
+}
+
+#btnChkEmail{
+vertical-align:middle;
+	float: right;
+	width: 50%;
+	height:100%;
+}
+
 </style>
-<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" 
+	src="<%=request.getContextPath()%>/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
- 
-	function regbtn() {
-		if ($('#name').val().length < 1) {
-			alert("이름을(를) 입력하세요");
-			$('#name').focus();
-			event.preventDefault();
-		} else if ($('#exampleInputEmail').val().length < 1) {
-			alert("이메일을(를) 입력하세요");
-			$('#exampleInputEmail').focus();
-			event.preventDefault();
-		} else if ($('#birth').val().length < 1) {
-			alert("생일을(를) 입력하세요");
-			$('#birth').focus();
-			event.preventDefault();
-		} else if ($('#birth').val().length != 6) {
-			alert("생일은 6자리입니다");
-			$('#birth').focus();
-			event.preventDefault();
-		} else if ($('#phoneNumber').val().length < 1) {
-			alert("휴대폰번호을(를) 입력하세요");
-			$('#phoneNumber').focus();
-			event.preventDefault();
-		} else if ($('#phoneNumber').val().length != 11) {
-			alert("휴대폰번호는 11자리입니다");
-			$('#phoneNumber').focus();
-			event.preventDefault();
-		} else if ($('#exampleInputPassword').val().length < 1) {
-			alert("비밀번호을(를) 입력하세요");
-			$('#exampleInputPassword').focus();
-			event.preventDefault();
-		} else if ($('#exampleRepeatPassword').val().length < 1) {
-			alert("비밀번호확인을(를) 입력하세요");
-			$('#exampleRepeatPassword').focus();
-			event.preventDefault();
-		} else if ($('#exampleRepeatPassword').val() != $(
-				'#exampleInputPassword').val()) {
-			alert("비밀번호가 일치하지 않습니다.");
-			event.preventDefault();
-		}
+
+		$(function(){
+			$('#regbtn').click(function(){
+				if ($('#exampleInputEmail').val().length < 1) {
+					alert("이메일을(를) 입력하세요");
+					$('#exampleInputEmail').focus();
+					event.preventDefault();
+				} else if ($('#exampleInputPassword').val().length < 1) {
+					alert("비밀번호을(를) 입력하세요");
+					$('#exampleInputPassword').focus();
+					event.preventDefault();
+				} else if ($('#exampleRepeatPassword').val().length < 1) {
+					alert("비밀번호확인을(를) 입력하세요");
+					$('#exampleRepeatPassword').focus();
+					event.preventDefault();
+				} else if ($('#name').val().length < 1) {
+					alert("이름을(를) 입력하세요");
+					$('#name').focus();
+					event.preventDefault();
+				}else if($('#chkEmail').val()!='Y'){
+					alert('이메일 중복확인을 하세요!');
+					$('#btnChkEmail').focus();
+					event.preventDefault();
+				} else if ($('#exampleRepeatPassword').val() != $(
+					'#exampleInputPassword').val()) {
+					alert("비밀번호가 일치하지 않습니다.");
+					event.preventDefault();
+				} else if ($('#birth').val().length!=0 && $('#birth').val().length!=6) {
+					alert("생년월일 6자리를 입력해주세요(YYMMDD)");
+					$('#birth').focus();
+					event.preventDefault();
+				} else if ($('#birth').val().length!=0 && $('#birth').val().length==6) {
+					if($('#birth').val().substr(2, 2)>12||$('#birth').val().substr(2, 2)<1){
+						alert("월은 1~12의 숫자만 입력가능합니다.");
+						$('#birth').focus();
+						event.preventDefault();
+					}
+					if($('#birth').val().substr(4, 2)>31||$('#birth').val().substr(4, 2)<1){
+						alert("일은 1~31의 숫자만 입력가능합니다.");
+						$('#birth').focus();
+						event.preventDefault();
+					}
+				} 
+			});
+	});
+	
+	function emailChk(){
+	    var width = '800';
+	    var height = '500';
+	    var left = Math.ceil(( window.screen.width - width )/2);
+	    var top = Math.ceil(( window.screen.height - height )/2);
+
+		var email=$('#exampleInputEmail').val();
+		open('checkUserEmail.jsp?email='+email,'dup',
+		 'width='+width+',height='+height+',left='+left+',top='+top+',location=yes,resizable=yes');
+
 	}
-	
-	/* function selbtn1(){
-		location.href="register2.html"; */
-		/* $("test_btn1").addClass("opa"); */
-		/* $('#bn').attr('disabled', true); */
-		/* $('#bn').hide(); */
-		/* $('#bn').css('display','none'); */
-		/* $('#bn').css('display','block'); */
-		/* $("#bn").hide(); */
-		/* document.getElementById("bn").style.display = "none"; */
-	/* } */
-	
-	
 </script>
 </head>
 </head>
-
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
-<!-- test -->
 <body class="bg-gradient-primary">
 	<div class="container">
 		<div class="card o-hidden border-0 shadow-lg my-5">
@@ -119,25 +133,28 @@
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
 							</div>
-							<form class="user">
+							<form class="user" name="frm1" method="post" action="register_ok.jsp">
 								<input type="hidden" name="no" value="<%=1%>">
 								<div class="form-group">
-									<a id="test_btn1" class="btn btn-primary btn-user"
-										onclick="selbtn1()">for member</a> <a id="test_btn2"
-										href="registerDev.jsp" class="btn btn-primary btn-user">for
-										developer</a>
+									<a id="test_btn1" href="registerMem.jsp"
+										class="btn btn-primary btn-user">for member</a> 
+									<a id="test_btn2" class="btn btn-primary btn-user">for developer</a>
 								</div>
 
 								<!-- 이메일 -->
-								<div class="form-group">
-									<input type="email" class="form-control form-control-user"
-										id="exampleInputEmail" placeholder="Email Address"
-										name="email" value="G-">
+								<div class="form-group row">
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<input type="email" class="form-control form-control-user"
+										id="exampleInputEmail" placeholder="Email Address" name="email">
+									</div>
+									<div class="col-sm-6">
+										<input type="button" value="Check" id="btnChkEmail" 
+									class="btn btn-primary btn-user btn-block" onclick="emailChk()" title="새창열림">
+									</div>
 								</div>
 
 								<!-- 비밀번호, 비밀번호확인 -->
 								<div class="form-group row">
-									-
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="password" class="form-control form-control-user"
 											id="exampleInputPassword" placeholder="Password" name="pwd">
@@ -163,20 +180,16 @@
 								<!-- 생일 -->
 								<div class="form-group">
 									<input type="number" class="form-control form-control-user"
-										id="birth" placeholder="Date of Birth" name="birth">
+										id="birth" placeholder="Date of Birth(YYMMDD)" name="birth">
 								</div>
 
 								<!-- 등록버튼 -->
-								<a id="regbtn" href="register_ok.jsp"
-									class="btn btn-primary btn-user btn-block" onclick="regbtn()">
-									Register Account </a>
-
-
+								<input type="submit" class="btn btn-primary btn-user btn-block" id="regbtn" value="Register Account">
+								
 							</form>
 							<hr>
 							<div class="text-center">
-								<a class="small" href="forgot-password.jsp">Forgot
-									Password?</a>
+								<a class="small" href="forgot-password.jsp">Forgot Password?</a>
 							</div>
 							<div class="text-center">
 								<a class="small" href="login.jsp">Already have an account?
@@ -187,9 +200,9 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
-
+	
+	<input type ="hidden" name="chkEmail" id="chkEmail">
 	<!-- Bootstrap core JavaScript-->
 	<script src="../vendor/jquery/jquery.min.js"></script>
 	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
