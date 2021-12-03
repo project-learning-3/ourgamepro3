@@ -13,6 +13,7 @@
 <title>register_ok</title>
 </head>
 <body>
+<!--  -->
 <%
 //1. 요청 파라미터 읽어오기
 	String no=request.getParameter("no");
