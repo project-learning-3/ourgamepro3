@@ -79,10 +79,10 @@ $(function(){
 									</form>
 									<hr>
 									<div class="text-center">
-										<a class="small" href="forgot-password.jsp">비밀번호 찾기</a>
+										<a class="small" href="../htmlforgot-password.jsp">비밀번호 찾기</a>
 									</div>
 									<div class="text-center">
-										<a class="small" href="registerMem.jsp">회원가입</a>
+										<a class="small" href="../register/membershipTerms.jsp">회원가입</a>
 									</div>
 								</div>
 							</div>

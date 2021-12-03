@@ -33,7 +33,7 @@
 		
 		if(result > 0){
 			msg = "게임등록성공";
-			url = "home.jsp";
+			url = "../html/home.jsp";
 		}
 	} catch(SQLException e){
 		e.printStackTrace();

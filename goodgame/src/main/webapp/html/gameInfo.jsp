@@ -1,5 +1,5 @@
 <%@page import="java.sql.SQLException"%>
-<%@page import="com.game.game.model.gameVO"%>
+<%@page import="com.game.game.model.GameVO"%>
 <%@page import="com.game.game.model.GameDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

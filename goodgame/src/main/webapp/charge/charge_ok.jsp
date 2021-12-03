@@ -58,7 +58,7 @@
 			%>
 	<script type="text/javascript">
 		alter('충전이 완료되었습니다.');
-		location.href('mypay.jsp');
+		location.href('../html/mypay.jsp');
 	</script>
 	<%}else{%>
 	<script type="text/javascript">
