@@ -45,7 +45,7 @@
 	String pwd="";
 	String name="";
 	String phone="";
-	String number=""; //birth or businessNumber
+	String number=""; //birth or 
 	
 	
 	try {
