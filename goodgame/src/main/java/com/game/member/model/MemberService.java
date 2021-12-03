@@ -27,7 +27,10 @@ public class MemberService {
 	public MemberVO selectByEmail(String m_email) throws SQLException {
 		return dao.selectByEmail(m_email);
 	}
+	public int duplicateEmail(String email) throws SQLException {
+		return dao.duplicateEmail(email);
+	}
 	public int withdrawMember(String email) throws SQLException {
-		return dao.withdrawMember(email);
+		return dao.deleteMember(email);
 	}
 }
