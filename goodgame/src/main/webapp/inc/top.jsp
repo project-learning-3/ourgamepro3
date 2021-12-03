@@ -211,23 +211,23 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header"><%=m_name %> 님, 무엇을 도와드릴까요?</h6>
 						<a class="collapse-item" id="CSupport1"
-							href="utilities-color.html">고객지원</a>
+							href="../question/customerSupport.jsp">고객지원</a>
 						<div id="CSupport2" style="font-size: 11px; font-family: fantasy; font-style: italic; font-weight: bold;">
 							<div>
 								<a class="collapse-item" href="blank.html">게임,소프트웨어,기타</a>
 							</div>
 							<div>
-								<a class="collapse-item" href="blank.html">구매</a>
+								<a class="collapse-item" href="../question/PurchaseSupport.jsp">구매</a>
 							</div>
 							<div>
 								<a class="collapse-item" href="blank.html">나의계정</a>
 							</div>
 							<div>
-								<a class="collapse-item" href="blank.html">포인트</a>
+								<a class="collapse-item" href="../question/pointSupport.jsp">포인트</a>
 							</div>
 						</div>
 						<!--이용약관 html만 만듭시다-->
-						<a class="collapse-item" href="utilities-border.html">이용약관</a>
+						<a class="collapse-item" href="#">이용약관</a>
 						<!-- 이용약관 만들어주게 -->
 						<a class="collapse-item" href="utilities-animation.html">시스템정보</a>
 						<!-- 컴퓨터 사양나오게 둘 다-->
