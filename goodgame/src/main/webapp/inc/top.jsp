@@ -492,9 +492,9 @@
 								aria-labelledby="userDropdown">
 								<a class="dropdown-item" href="#"> <i
 									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> 프로필
-								</a> <a class="dropdown-item" href="../html/charge_before.jsp"> <i
+								</a> <a class="dropdown-item" href="../charge/charge_before.jsp"> <i
 									class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> 포인트 충전
-								</a> <a class="dropdown-item" href="#"> <i
+								</a> <a class="dropdown-item" href="../html/mypay.jsp"> <i
 									class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 라이브러리
 								</a>
 								<div class="dropdown-divider"></div>
