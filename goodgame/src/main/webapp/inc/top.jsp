@@ -22,7 +22,7 @@
 		name = "";	%>
 		<script type="text/javascript">
 			alert('로그인 후 이용가능한 페이지입니다.');
-			location.href="login.jsp";	
+			location.href="../login/login.jsp";	
 		</script>	
 <%		
 	}
@@ -67,7 +67,7 @@
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-				<a class="btn btn-primary" href="login.jsp">로그아웃</a>
+				<a class="btn btn-primary" href="../login/logout.jsp">로그아웃</a>
 			</div>
 		</div>
 	</div>
@@ -262,9 +262,9 @@
 						<a class="collapse-item" href="blank.html">프로필 수정</a>
 						<!-- 계정변경 html로 연결 -->
 						<a class="collapse-item" href="blank.html">프로필 정보</a> 
-						<a class="collapse-item1" href="logout.jsp">로그아웃</a>
+						<a class="collapse-item1" href="../login/logout.jsp">로그아웃</a>
 						<a class="collapse-item" href="blank.html">프로필 정보</a> 
-						<a class="collapse-item1" href="login.jsp" data-toggle="modal" data-target="#logoutModal">
+						<a class="collapse-item1" href="../login/logout.jsp" data-toggle="modal" data-target="#logoutModal">
                         	<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         	로그아웃
                         </a>

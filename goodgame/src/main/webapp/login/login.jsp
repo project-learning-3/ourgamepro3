@@ -83,10 +83,6 @@ $(function(){
 									</div>
 									<div class="text-center">
 										<a class="small" href="registerMem.jsp">회원가입</a>
-										<!--  -->
-										<!--  -->
-										<!--  -->									
-										<!--  -->
 									</div>
 								</div>
 							</div>
