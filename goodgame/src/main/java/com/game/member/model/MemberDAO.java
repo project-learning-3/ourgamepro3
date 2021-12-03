@@ -180,36 +180,6 @@ public class MemberDAO {
 		}
 	}
 	
-	/**
-	 * 고객번호 추출 ->비밀번호로
-	 * @param m_pwd
-	 * @return
-	 * @throws SQLException
-	 */
-	public int checkM_no(String m_pwd) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
-		ResultSet rs=null;
-		
-		MemberVO vo=new MemberVO();
-		try {
-			int m_no=0;
-			con= pool.getConnection();
-			String sql="select m_no from member where m_pwd=?";
-			
-			ps=con.prepareStatement(sql);
-			ps.setString(1, m_pwd);
-			
-			rs=ps.executeQuery();
-			if(rs.next()) {
-				m_no=Integer.parseInt(rs.getString(1));
-			}
-			return m_no;
-			
-		}finally {
-			pool.dbClose(ps, con);
-		}
-	}
 	
 	public int updateMember(MemberVO vo) throws SQLException {
 		Connection con = null;
@@ -218,14 +188,12 @@ public class MemberDAO {
 		try {
 			con=pool.getConnection();
 			String sql = "update member\r\n"
-					+ "set m_email = ?, m_name=?, m_pwd=? , m_phone=?, m_birth=? where m_no = ?";
+					+ "set  m_name=?, m_phone=?, m_birth=? where m_email = ?";
 			ps=con.prepareStatement(sql);
-			ps.setString(1, vo.getM_email());
-			ps.setString(2, vo.getM_name());
-			ps.setString(3, vo.getM_pwd());
-			ps.setString(4, vo.getM_phone());
-			ps.setTimestamp(5, vo.getM_birth());
-			ps.setInt(6, vo.getM_no());
+			ps.setString(1, vo.getM_name());
+			ps.setString(2, vo.getM_phone());
+			ps.setTimestamp(3, vo.getM_birth());
+			ps.setString(4, vo.getM_email());
 			
 			int cnt = ps.executeUpdate();
 			System.out.println("수정결과 cnt="+cnt+", vo="+vo);
@@ -268,4 +236,74 @@ public class MemberDAO {
 			pool.dbClose(rs, ps, con);
 		}
 	}
+	
+	//아이디 중복 체크
+		public int duplicateEmail(String email) throws SQLException {
+			Connection con=null;
+			PreparedStatement ps=null;
+			ResultSet rs=null;
+			int result=0;
+			try {
+				//1,2
+				con=pool.getConnection();
+				
+				//3
+				String sql="select m_email as \"email\" from member"
+						+" where m_email=?"
+						+" union all"
+						+" select seller_email as \"email\" from developer"
+						+" where seller_email=?";
+				ps=con.prepareStatement(sql);
+				ps.setString(1, email);
+				ps.setString(2, email);
+				
+				//4
+				rs=ps.executeQuery();
+				System.out.println(result);
+				if(rs.next()) {
+					result=MemberService.EXIST_ID;
+				}else {
+					result=MemberService.NON_EXIST_ID;
+			
+					/*
+					System.out.println("테스트");
+					String count=rs.getString("email");
+					System.out.println("check count="+count);
+					if(count != null) {  //이미 존재-사용불가
+						result=MemberService.EXIST_ID;
+					}else {  //존재하지 않음-사용가능
+						result=MemberService.NON_EXIST_ID;
+					}
+					*/
+				}
+				
+				System.out.println("아이디 중복확인 결과 result="+result
+						+", 매개변수 email="+email);
+				return result;
+			}finally {
+				pool.dbClose(rs, ps, con);
+			}
+		}
+		
+		public int withdrawMember(String email) throws SQLException {
+			Connection con = null;
+			PreparedStatement ps = null;
+			
+			try {
+				con = pool.getConnection();		
+				
+				String sql = "delete form member where m_email=?";
+				ps = con.prepareStatement(sql);
+				
+				ps.setString(1, email);
+				
+				int cnt = ps.executeUpdate();
+				System.out.println("회원 탈퇴 결과 cnt = "+cnt+"아이디 = "+email);
+				
+				return cnt;
+			} finally {
+				pool.dbClose(ps, con);
+				// TODO: handle finally clause
+			}
+		}
 }

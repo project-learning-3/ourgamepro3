@@ -1,9 +1,16 @@
+<%@page import="com.game.developer.model.DeveloperService"%>
+<%@page import="java.sql.Time"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
+<%@page import="com.game.member.model.MemberVO"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.game.developer.model.DeveloperVO"%>
 <%@page import="com.game.developer.model.DeveloperDAO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<!-- jsp:usebean으로 서비스 가져오기 -->
+<jsp:useBean id="memberService" class="com.game.member.model.MemberService" scope="session"></jsp:useBean>
+<jsp:useBean id="developerService" class="com.game.developer.model.DeveloperService" scope="session"></jsp:useBean>
+<%-- <jsp:useBean id="developerService" class="com.game.member.model.DeveloperService" scope="session"></jsp:useBean> --%>
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">
@@ -29,20 +36,39 @@
 	String m_email = (String) session.getAttribute("m_email");
 	String d_email = (String) session.getAttribute("d_email");
 
-/*  공통된 테이블에 들어가서 찾고, 수정같은 경운 공통 테이블을 통해서 개별 테이블도 수정 */
+/*  세션으로 가져온 아이디로 각각 검사하고 int 나오면 그걸로 들어가자  */
 
-	DeveloperDAO dao = new DeveloperDAO();
-	DeveloperVO vo = null;
+	SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");		
+
+	MemberVO vo1 = null;
+	DeveloperVO vo2 = null;
+	
+	String email ="";
+	String pwd="";
+	String name="";
+	String phone="";
+	String number=""; //birth or businessNumber
+	
+	
 	try {
 		if (m_email != null && !m_email.isEmpty()) {
-		//	vo = dao.selectDByNo(m_email);
+			vo1 = memberService.selectByEmail(m_email);
+			email=vo1.getM_email();
+			pwd=vo1.getM_pwd();
+			name=vo1.getM_name();
+			number= sdf.format(vo1.getM_birth()); 
+			phone=vo1.getM_phone();
 		}else if(d_email != null && !d_email.isEmpty()){
-		//	vo = dao.selectDByNo(d_email);
-			
+			vo2 = developerService.selectByEmail(d_email);
+			email=vo2.getSeller_email();
+			pwd=vo2.getD_pwd();
+			name=vo2.getSeller();
+			number= vo2.getBusiness_no(); 
+			phone=vo2.getSeller_phone();
 		}
 	} catch (SQLException e) {
 		e.printStackTrace();
-	}
+	}  
 %>
 
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
@@ -71,7 +97,7 @@
 				<!-- Nested Row within Card Body -->
 				<div class="row">
 					<div class="col-lg-5 d-none d-lg-block bg-register-image">
-						<p style="font-size: 23px">로그인과 차별화를 위한 이미지 변경 어때요?</p>
+						<p style="font-size: 23px"></p>
 					</div>
 					<div class="col-lg-7">
 						<div class="p-5">
@@ -81,44 +107,44 @@
 							<form class="user">
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user"
-										id="name" value="<%=vo.getSeller()%>" disabled>
+										id="name" value="name : <%=name%>" readonly="readonly">
 									<!-- 이름 -->
 								</div>
 								<div class="form-group">
 									<input type="email" class="form-control form-control-user"
 										id="exampleInputEmail"
-										placeholder="<%=vo.getSeller_email()%>" disabled>
+										placeholder="email : <%=email%>" readonly="readonly">
 									<!-- 이메일 -->
 								</div>
 								<div class="form-group">
 									<input type="number" class="form-control form-control-user"
-										id="birth" placeholder="<%=vo.getBusiness_no()%>" disabled>
+										id="birth" placeholder="birth : <%=number %>" readonly="readonly">
 									<!-- 생년월일 -->
 								</div>
 								<div class="form-group">
 									<input type="number" class="form-control form-control-user"
-										id="phoneNumber" placeholder="<%=vo.getSeller_phone()%>"
-										disabled>
+										id="phoneNumber" placeholder="phone : <%=phone%>"
+										readonly="readonly">
 									<!-- 핸드폰번호 -->
 								</div>
 								<div class="form-group">
 									<input type="number" class="form-control form-control-user"
-										id="point" placeholder="point 나오는 곳" disabled>
+										id="point" placeholder="point : 나오는 곳"  readonly="readonly">
 									<!-- 핸드폰번호 -->
 								</div>
 
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
-										<a id="regbtn" href="main.jsp"
+										<a id="regbtn" href="home.jsp"
 											class="btn btn-primary btn-user btn-block" onclick="regbtn()">
 											Go Main </a>
 
 									</div>
-									<div class="col-sm-6">
-										<a id="regbtn" href="profile_edit.jsp?no=<%=vo.getD_no()%>"
+									 <div class="col-sm-6">
+										<a id="regbtn" href="profile_edit.jsp"
 											class="btn btn-primary btn-user btn-block" onclick="regbtn()">
 											Edit-Profile </a>
-									</div>
+									</div> 
 								</div>
 							</form>
 						</div>

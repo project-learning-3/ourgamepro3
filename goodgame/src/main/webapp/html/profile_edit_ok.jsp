@@ -1,9 +1,17 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Formatter"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
+<%@page import="com.game.member.model.MemberVO"%>
 <%@page import="com.game.developer.model.DeveloperVO"%>
 <%@page import="com.game.developer.model.DeveloperDAO"%>
 <%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- jsp:usebean -->
+<jsp:useBean id="memberService"
+	class="com.game.member.model.MemberService" scope="session"></jsp:useBean>
+<jsp:useBean id="developerService"
+	class="com.game.developer.model.DeveloperService" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,52 +21,67 @@
 <body>
 	<%
 	request.setCharacterEncoding("utf-8");
-	
-	
+	String m_email = (String) session.getAttribute("m_email");
+	String d_email = (String) session.getAttribute("d_email");
+
+	/* 	String email = request.getParameter("email");
 	String pwd = request.getParameter("pwd");
-	String pwdRepeat = request.getParameter("pwdRepeat");
 	String name = request.getParameter("name");
 	String phone = request.getParameter("phone");
-	String businessNo = request.getParameter("businessNo"); //이거 개발자랑, 회원이랑 구분 해야함
-	String no = request.getParameter("no");
+	String no = request.getParameter("m_no");  */
 
-	DeveloperDAO dao = new DeveloperDAO();
 	try {
-		DeveloperVO vo = new DeveloperVO();
-		vo.setD_pwd(pwd);
-		vo.setSeller(name);
-		vo.setSeller_phone(phone);
-		vo.setBusiness_no(businessNo);
-		vo.setD_no(Integer.parseInt(no));
+		if (m_email != null && !m_email.isEmpty()) { //멤버일떄
+			MemberVO vo1 = new MemberVO();
+			vo1.setM_pwd(request.getParameter("pwd"));
+			vo1.setM_name(request.getParameter("name"));
+			vo1.setM_phone(request.getParameter("phone"));
+			vo1.setM_email(request.getParameter("email"));
+			vo1.setM_birth(Timestamp.valueOf(request.getParameter("number")));
 
-		if (dao.checkPwd(vo)) {
-			int cnt = dao.updateDeveloper(vo);
+			if (memberService.checkPwd(request.getParameter("pwd"))) {
+				int cnt = memberService.updateMember(vo1);
+				if (cnt > 0) {
+					%>
+					<script type="text/javascript">
+						alert("프로필이 수정되었습니다.");
+						location.href = "Proflie.jsp";
+					</script>
+					<%} else {%>
+					<script type="text/javascript">
+						alert("프로필 수정이 실패했습니다");
+						/* history.back(); */
+					</script>
+					<%
+				}
+		 	}  
+		} else { //개발자일때
+		DeveloperVO vo2 = new DeveloperVO();
+		vo2.setD_pwd(request.getParameter("pwd"));
+		vo2.setSeller(request.getParameter("name"));
+		vo2.setSeller_phone(request.getParameter("phone"));
+		vo2.setSeller_email(request.getParameter("email"));
+		vo2.setBusiness_no(request.getParameter("number"));
 
-			if (cnt > 0) {
-	%>
-	<script type="text/javascript">
-					alert("회원정보가 수정되었습니다.");
-					location.href="profile.jsp"
-	</script>
-	<%
-	} else {
-	%>
-	<script type="text/javascript">
-		alert("회원정보 수정에 실패했습니다.");
-		history.go(-1);
-	</script>
-	<%
-	}
-	} else {
-	%>
-	<script type="text/javascript">
-		alert("비밀번호가 일치하지 않습니다.");
-		history.go(-1);
-	</script>
-	<%
-	}
+			if (memberService.checkPwd(request.getParameter("pwd"))) {
+				int cnt = memberService.updateMember(vo2);
+					if (cnt > 0) {
+					%>
+						<script type="text/javascript">
+							alert("프로필이 수정되었습니다.");
+							location.href = "Proflie.jsp";
+						</script>
+					<%} else { %>
+					<script type="text/javascript">
+						alert("프로필 수정이 실패했습니다");
+						/* history.back(); */
+					</script>
+					<%
+					}	
+			}
+		}
 	} catch (SQLException e) {
-	e.printStackTrace();
+		e.printStackTrace();
 	}
 	%>
 </body>

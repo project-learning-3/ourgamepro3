@@ -99,12 +99,6 @@ table#comment {
     margin-bottom: 4px;
 }
 
-.container-fluid {
-    clear: both;
-    margin-left: 260px;
-    margin-top: 74px;
-}
-
 .gameInfo div:last-child {
     text-align: center;
     }

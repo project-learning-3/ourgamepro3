@@ -38,13 +38,13 @@
 
 <body>
 <%
-/* 	//charge_ok 에서 get방식으로 이동 -> 고객넘 세션이용해서 불러오기
+	//charge_ok 에서 get방식으로 이동 -> 고객넘 세션이용해서 불러오기
 	String Sm_no=request.getParameter("m_no");
 	int m_no=Integer.parseInt(Sm_no);	
 
 	PaymentDAO dao=new PaymentDAO();
-	*/
-	int m_no = 2;//테스트용
+ 
+//	int m_no = 2;//테스트용
 	List<PaymentVO> list=null;
 	try{
 		list=payDao.selectbyNo(m_no);
@@ -92,16 +92,15 @@
 						<%
 							for(int i=0;i<list.size();i++){
 								payVo =list.get(i);
-							}
 						%>
 							<tr>
 								<td><%=payVo.getPayno() %></td>
-								<td><%=payVo.getPayprice() %></td>
-								<td><%=payVo.getPaydate() %></td>
 								<td><%=payVo.getBalance() %></td>
+								<td><%=payVo.getPayprice() %></td> <!-- 잔액테이블만들어서 추가해야함 -->
+								<td><%=payVo.getPaydate() %></td>
 								<td><%=payVo.getCancle() %></td>
 							</tr>
-
+						<%} %>
 						</tbody>
 					</table>
 				</div>
