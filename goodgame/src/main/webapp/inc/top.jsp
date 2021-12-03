@@ -240,7 +240,7 @@
 							</div>
 						</div>
 						<!--이용약관 html만 만듭시다-->
-						<a class="collapse-item" href="utilities-border.html">이용약관</a>
+						<a class="collapse-item" href="TermsAndConditions.jsp">이용약관</a>
 						<!-- 이용약관 만들어주게 -->
 						<a class="collapse-item" href="utilities-animation.html">시스템정보</a>
 						<!-- 컴퓨터 사양나오게 둘 다-->
@@ -262,7 +262,7 @@
 						<a class="collapse-item" href="blank.html">프로필 수정</a>
 						<!-- 계정변경 html로 연결 -->
 						<a class="collapse-item" href="blank.html">프로필 정보</a> 
-						<a class="collapse-item1" href="#">다른거 넣기</a>
+						<a class="collapse-item1" href="../login/logout.jsp">로그아웃</a>
 						<a class="collapse-item" href="blank.html">프로필 정보</a> 
 						<a class="collapse-item1" href="../login/logout.jsp" data-toggle="modal" data-target="#logoutModal">
                         	<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -287,7 +287,7 @@
 				aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">개발자</h6>
-						<a class="collapse-item" href="../gameInsert/gameInsert_before.jsp">게임등록</a>
+						<a class="collapse-item" href="gameInsert_before.jsp">게임등록</a>
 						<!-- 계정변경 html로 연결 -->
 						<a class="collapse-item" href="#">게임등록 현황</a> 
 						<a class="collapse-item" href="#">넣고싶은 값</a>
@@ -492,11 +492,9 @@
 								aria-labelledby="userDropdown">
 								<a class="dropdown-item" href="#"> <i
 									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> 프로필
-								</a> 
-								<a class="dropdown-item" href="../charge/charge_before.jsp"> <i
+								</a> <a class="dropdown-item" href="../html/charge_before.jsp"> <i
 									class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> 포인트 충전
-								</a> 
-								<a class="dropdown-item" href="#"> <i
+								</a> <a class="dropdown-item" href="#"> <i
 									class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 라이브러리
 								</a>
 								<div class="dropdown-divider"></div>
