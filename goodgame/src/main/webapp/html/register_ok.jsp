@@ -51,8 +51,7 @@
 		}
 	
 		//3. 결과 처리  
-		if(cnt>0){
-%>
+		if(cnt>0){	%>
 			<script type="text/javascript">
 				alert("계정을 생성했습니다. 로그인 화면으로 이동합니다.");
 				location.href="login.jsp";
@@ -66,8 +65,6 @@
 	}catch(SQLException e){
 		e.printStackTrace();
 	}	
-	
-	
 %>
 </body>
 </html>
