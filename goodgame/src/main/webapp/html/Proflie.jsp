@@ -1,3 +1,4 @@
+<%@page import="com.game.developer.model.DeveloperService"%>
 <%@page import="java.sql.Time"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.Timestamp"%>
@@ -8,6 +9,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <jsp:useBean id="memberService" class="com.game.member.model.MemberService" scope="session"></jsp:useBean>
+<jsp:useBean id="developerService" class="com.game.developer.model.DeveloperService" scope="session"></jsp:useBean>
 <%-- <jsp:useBean id="developerService" class="com.game.member.model.DeveloperService" scope="session"></jsp:useBean> --%>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +47,7 @@
 	String pwd="";
 	String name="";
 	String phone="";
-	String number=""; //birth or 
+	String number=""; //birth or businessNumber
 	
 	
 	try {
@@ -57,8 +59,12 @@
 			number= sdf.format(vo1.getM_birth()); 
 			phone=vo1.getM_phone();
 		}else if(d_email != null && !d_email.isEmpty()){
-			//	vo = dao.selectDByNo(d_email);
-			
+			vo2 = developerService.selectByEmail(d_email);
+			email=vo2.getSeller_email();
+			pwd=vo2.getD_pwd();
+			name=vo2.getSeller();
+			number= vo2.getBusiness_no(); 
+			phone=vo2.getSeller_phone();
 		}
 	} catch (SQLException e) {
 		e.printStackTrace();

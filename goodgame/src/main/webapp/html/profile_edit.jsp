@@ -1,14 +1,13 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.Timestamp"%>
-<%@page import="com.game.member.model.MemberService"%>
 <%@page import="com.game.member.model.MemberVO"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.game.developer.model.DeveloperVO"%>
 <%@page import="com.game.developer.model.DeveloperDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="memberSevice"
-	class="com.game.member.model.MemberService" scope="session"></jsp:useBean>
+<jsp:useBean id="memberSevice" class="com.game.member.model.MemberService" scope="session"></jsp:useBean>
+<jsp:useBean id="developerService" class="com.game.developer.model.DeveloperService" scope=""></jsp:useBean>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,7 +75,12 @@ try {
 		birth = vo1.getM_birth();
 		phone = vo1.getM_phone();
 	} else if (d_email != null && !d_email.isEmpty()) {
-
+		vo2= developerService.selectByEmail(d_email);
+		email=vo2.getSeller_email();
+		pwd=vo2.getD_pwd();
+		name=vo2.getSeller();
+		number= vo2.getBusiness_no(); 
+		phone=vo2.getSeller_phone();
 	}
 } catch (SQLException e) {
 	e.printStackTrace();
