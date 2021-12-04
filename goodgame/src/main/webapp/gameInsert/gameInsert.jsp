@@ -44,6 +44,10 @@ $(function(){
 			alert('게임설명을 입력하세요');
 			$('#gtext').focus();
 			event.preventDefault();
+		}else if($('#src').val().length<1){
+			alert('게임이미지를 등록하세요');
+			$('#src').focus();
+			event.preventDefault();
 		}else if(!validate_num($('#price').val())){
 			alert('가격은 숫자만 가능합니다.');
 			$('#price').focus();
@@ -92,16 +96,20 @@ function validate_num(num){
 										<input type="text" class="form-control form-control-user"
 											id="price" name="price" placeholder="게임가격">
 									</div>
-
+								</div>
+								<div class="form-group row">
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<input type="text" class="form-control form-control-user"
+											id="gtext" name="gtext" placeholder="간단한 게임 설명">
+									</div>
+									<div class="col-sm-6">
+										<input type="text" class="form-control form-control-user"
+											id="c_no" name="c_no" placeholder="장르번호">
+									</div>
 								</div>
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user"
-										id="c_no" name="c_no" placeholder="장르번호">
-								</div>
-								<div class="form-group">
-									<textarea rows="1" cols="20"
-										class="form-control form-control-user" name="gtext"
-										placeholder="게임설명" id="gtext" style="border-radius: 10px;"></textarea>
+									<input class="form-control form-control-user" name="src"
+										placeholder="게임이미지 등록" id="src" style="border-radius: 10px;"></input>
 								</div>
 								<input type="submit" value="등록하기"
 									class="btn btn-primary btn-user btn-block">

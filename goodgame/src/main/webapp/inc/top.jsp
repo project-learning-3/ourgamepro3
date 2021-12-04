@@ -5,11 +5,15 @@
 <%
 	String name = "";
 	String ck = (String)session.getAttribute("ck");
+	int d_no = 0;
+	int m_no = 0;
 	if(ck == null) ck ="";
 	if(ck.equals("t") && ck != null && !ck.isEmpty()){
 		name = (String)session.getAttribute("seller");
+		d_no = (int)session.getAttribute("d_no");
 	} else {
 		name = (String)session.getAttribute("m_name");
+		m_no = (int)session.getAttribute("m_no");
 	}
 	//String m_name = (String)session.getAttribute("m_name");
 	
@@ -17,17 +21,13 @@
 	System.out.print(m_no); */
 	//사용자번호 불러오는 방법 로그인 안하고 사용자넘버 불러올경우 널포인트 에러 뜸 
 	//=> 인트값에 널이 들어갈 수 없어서 if로 처리 불가능
-	System.out.print(name+" ");
-	if(name==null){	
-		name = "";	%>
-		<script type="text/javascript">
-			alert('로그인 후 이용가능한 페이지입니다.');
-			location.href="../login/login.jsp";	
-		</script>	
-<%		
-	}
+	System.out.println(name+" : name");
+	System.out.println(d_no+" : d_no");
+	System.out.println(m_no+" : m_no");
+
 
 	request.setCharacterEncoding("utf-8");
+	
 	
 %>
 <!DOCTYPE html>
@@ -116,8 +116,9 @@
 
 <!-- Custom styles for this template-->
 <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-<link href="../css/ziu.css" rel="stylesheet">
-
+<link href="../css/styles.css" rel="stylesheet" />
+<link rel="icon" type="image/x-icon" href="../css/assets/favicon.ico" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -129,7 +130,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="MainMenu.jsp">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../html/home.jsp">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <img alt="메인이미지" src="../img/Gg.png" style="width: 59px; height: 59px;">
                 </div>
@@ -140,7 +141,7 @@
             <hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item"><a class="nav-link" href="mypage.jsp">
+			<li class="nav-item"><a class="nav-link" href="../html/mypage.jsp">
 					<i class="fas fa-fw fa-tachometer-alt"></i> <span>마이페이지</span>
 			</a></li>
 			<!-- Divider -->
@@ -160,7 +161,7 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a href="#" data-toggle="collapse" data-target="#collapsePages1_1"
 							style="text-decoration: none"><h6 class="collapse-header"
-								style="font-size: 13px;">장르</h6></a>
+								style="font-size: 13px; color:#333333;">장르</h6></a>
 						<div id="collapsePages1_1" class="collapse">
 							<a class="collapse-item" href="blank.html"
 								style="background: white;">FPS</a> <a class="collapse-item"
@@ -177,7 +178,7 @@
 						<div class="bg-white py-2 collapse-inner rounded">
 							<a href="#" data-toggle="collapse"
 								data-target="#collapsePages1_2" style="text-decoration: none">
-								<h6 class="collapse-header" style="font-size: 13px;">추천 게임</h6>
+								<h6 class="collapse-header" style="font-size: 13px; color:#333333;">추천 게임</h6>
 							</a>
 							<div id="collapsePages1_2" class="collapse">
 								<a class="collapse-item" href="blank.html"
@@ -192,26 +193,8 @@
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
-			<!-- Heading -->
-			<div class="sidebar-heading">환경설정</div>
 
 			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseTwo"
-				aria-expanded="true" aria-controls="collapseTwo"> <i
-					class="fas fa-fw fa-cog"></i> <span>설정</span>
-			</a>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-					data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header"><%=name %></h6>
-						<!-- 로그인 하면 이름 나오게 -->
-						<a class="collapse-item" href="">환경 설정</a>
-						<!-- 환경설정 페이지 나오게 -->
-						<a class="collapse-item" href="cards.html">쿠키 및 검색</a>
-						<!-- 쿠키 값 가져오자 -->
-					</div>
-				</div></li>
 
 			<!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
@@ -223,29 +206,19 @@
 					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header"><%=name %> 님, 무엇을 도와드릴까요?</h6>
-						<a class="collapse-item" id="CSupport1"
-							href="utilities-color.html">고객지원</a>
-						<div id="CSupport2" style="font-size: 11px; font-family: fantasy; font-style: italic; font-weight: bold;">
-							<div>
-								<a class="collapse-item" href="blank.html">게임,소프트웨어,기타</a>
-							</div>
-							<div>
-								<a class="collapse-item" href="blank.html">구매</a>
-							</div>
-							<div>
-								<a class="collapse-item" href="blank.html">나의계정</a>
-							</div>
-							<div>
-								<a class="collapse-item" href="blank.html">포인트</a>
-							</div>
+						<a href="#" data-toggle="collapse" data-target="#collapsePages1_1"
+							style="text-decoration: none"><h6 class="collapse-header"
+								style="font-size: 13px; color:#333333;">고객지원</h6></a>
+						<div id="collapsePages1_1" class="collapse" style="font-size: 11px; font-family: fantasy; font-style: italic; font-weight: bold;">
+								<a class="collapse-item" href="../question/customerSupport.jsp">계정</a>
+								<a class="collapse-item" href="../question/purchaseSupport.jsp">구매</a>
+								<a class="collapse-item" href="../question/pointSupport.jsp">포인트</a>
+								<a class="collapse-item" href="../question/TermsOfUse.jsp">데이터</a>
 						</div>
 						<!--이용약관 html만 만듭시다-->
 						<a class="collapse-item" href="TermsAndConditions.jsp">이용약관</a>
 						<!-- 이용약관 만들어주게 -->
-						<a class="collapse-item" href="utilities-animation.html">시스템정보</a>
-						<!-- 컴퓨터 사양나오게 둘 다-->
-						<a class="collapse-item" href="utilities-other.html">[증기]정보</a>
-						<!-- 이건 대충 창으로-->
+
 					</div>
 				</div> <!--  --></li>
 			<li class="nav-item">
@@ -261,8 +234,6 @@
 						<h6 class="collapse-header">Login</h6>
 						<a class="collapse-item" href="blank.html">프로필 수정</a>
 						<!-- 계정변경 html로 연결 -->
-						<a class="collapse-item" href="blank.html">프로필 정보</a> 
-						<a class="collapse-item1" href="../login/logout.jsp">로그아웃</a>
 						<a class="collapse-item" href="blank.html">프로필 정보</a> 
 						<a class="collapse-item1" href="../login/logout.jsp" data-toggle="modal" data-target="#logoutModal">
                         	<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -287,12 +258,10 @@
 				aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">개발자</h6>
-						<a class="collapse-item" href="gameInsert_before.jsp">게임등록</a>
+						<a class="collapse-item" href="../gameInsert/gameInsert_before.jsp">게임등록</a>
 						<!-- 계정변경 html로 연결 -->
-						<a class="collapse-item" href="#">게임등록 현황</a> 
-						<a class="collapse-item" href="#">넣고싶은 값</a>
-						<a class="collapse-item" href="#">1</a> 
-						<a class="collapse-item" href="#">2</a>
+						<a class="collapse-item" href="../gameList/gameListDev.jsp?d_no=<%=d_no%>">게임등록 현황</a> 
+						<a class="collapse-item" href="#">게임판매 현황</a>
 					</div>
 				</div>
 			</li>
@@ -360,121 +329,7 @@
                         </li>
 
                         <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter"><!-- 알람갯수 --></span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    알 람
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500"><!-- December 12, 2019 --></div>
-                                        <span class="font-weight-bold"><!-- A new monthly report is ready to download! --></span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500"><!-- December 7, 2019 --></div>
-                                        <!-- $290.29 has been deposited into your account! -->
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500"><!-- December 2, 2019 --></div>
-                                        <!-- Spending Alert: We've noticed unusually high spending for your account. -->
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">모든 알람 보기</a>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter"><!-- 메세지 갯수 --></span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    받은 메세지
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate"><!-- Hi there! I am wondering if you can help me with a
-                                            problem I've been having. --></div>
-                                        <div class="small text-gray-500"><!-- Emily Fowler · 58m --></div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate"><!-- I have the photos that you ordered last month, how
-                                            would you like them sent to you? --></div>
-                                        <div class="small text-gray-500"><!-- Jae Chun · 1d --></div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate"><!-- Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work! --></div>
-                                        <div class="small text-gray-500"><!-- Morgan Alvarez · 2d --></div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate"><!-- Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good... --></div>
-                                        <div class="small text-gray-500"><!-- Chicken the Dog · 2w --></div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">메세지 더 읽기..</a>
-                            </div>
-                        </li>
+                   
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -490,17 +345,21 @@
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 								aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="#"> <i
-									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> 프로필
-								</a> <a class="dropdown-item" href="../charge/charge_before.jsp"> <i
-									class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> 포인트 충전
-								</a> <a class="dropdown-item" href="../html/mypay.jsp"> <i
-									class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 라이브러리
+								<a class="dropdown-item" href="#"> 
+									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> 프로필
+								</a> 
+				<%				if(m_no > 0){	 %>
+									<a class="dropdown-item" href="../charge/charge_before.jsp"> 
+										<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> 포인트 충전
+									</a> 
+				<%				}				 %>
+								<a class="dropdown-item" href="../html/mypay.jsp"> 
+									<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 거래내역
 								</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#" data-toggle="modal"
-									data-target="#logoutModal"> <i
-									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									data-target="#logoutModal"> 
+									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									로그아웃
 								</a>
 							</div></li>

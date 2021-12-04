@@ -138,7 +138,7 @@ vertical-align:middle;
 								<div class="form-group">
 									<a id="test_btn1" href="registerMem.jsp"
 										class="btn btn-primary btn-user">for member</a> 
-									<a id="test_btn2" class="btn btn-primary btn-user">for developer</a>
+									<a id="test_btn2" class="btn btn-primary btn-user" href="registerDev.jsp">for developer</a>
 								</div>
 
 								<!-- 이메일 -->
@@ -192,7 +192,7 @@ vertical-align:middle;
 								<a class="small" href="forgot-password.jsp">Forgot Password?</a>
 							</div>
 							<div class="text-center">
-								<a class="small" href="login.jsp">Already have an account?
+								<a class="small" href="../login/login.jsp">Already have an account?
 									Login!</a>
 							</div>
 						</div>
