@@ -43,7 +43,7 @@ $(function(){
 						<!-- Nested Row within Card Body -->
 						<div class="row">
 							<div class="col-lg-6 d-none d-lg-block">
-								<img alt="로그인 이미지" src="../img/Gg.png" style="width: 500px; background: black;"> 
+								<a href="../html/home.jsp"><img alt="로그인 이미지" src="../img/Gg.png" style="width: 500px; background: black;"></a>
 							</div>
 							<div class="col-lg-6">
 								<div class="p-5">

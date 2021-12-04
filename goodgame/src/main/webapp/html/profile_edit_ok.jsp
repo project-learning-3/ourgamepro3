@@ -56,15 +56,15 @@
 				}
 		 	}  
 		} else { //개발자일때
-		DeveloperVO vo2 = new DeveloperVO();
-		vo2.setD_pwd(request.getParameter("pwd"));
-		vo2.setSeller(request.getParameter("name"));
-		vo2.setSeller_phone(request.getParameter("phone"));
-		vo2.setSeller_email(request.getParameter("email"));
-		vo2.setBusiness_no(request.getParameter("number"));
+			DeveloperVO vo2 = new DeveloperVO();
+			vo2.setD_pwd(request.getParameter("pwd"));
+			vo2.setSeller(request.getParameter("name"));
+			vo2.setSeller_phone(request.getParameter("phone"));
+			vo2.setSeller_email(request.getParameter("email"));
+			vo2.setBusiness_no(request.getParameter("number"));
 
-			if (memberService.checkPwd(request.getParameter("pwd"))) {
-				int cnt = memberService.updateMember(vo2);
+			if (developerService.checkPwd(vo2)) {
+				int cnt = developerService.updateDeveloper(vo2);
 					if (cnt > 0) {
 					%>
 						<script type="text/javascript">

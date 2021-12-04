@@ -23,14 +23,15 @@ public class GameDAO {
 		
 		try {
 			con = pool.getConnection();
-			String sql = "insert into game(g_no, gname, price, gtext, d_no, c_no) "
-					+ "values(game_seq.nextval, ?, ?, ?, ?, ?)";
+			String sql = "insert into game(g_no, gname, price, gtext, d_no, c_no, src) "
+					+ "values(game_seq.nextval, ?, ?, ?, ?, ?, ?)";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, vo.getGname());
 			ps.setInt(2, vo.getPrice());
 			ps.setString(3, vo.getGtext());
 			ps.setInt(4, vo.getD_no());
 			ps.setInt(5, vo.getC_no());
+			ps.setString(6, vo.getSrc());
 			
 			int cnt = ps.executeUpdate();
 			
@@ -47,7 +48,8 @@ public class GameDAO {
 		List<GameVO> list=new ArrayList<GameVO>();
 
 		try {
-			String sql="select * from game";
+			con = pool.getConnection();
+			String sql="select * from game order by g_no desc ";
 			ps=con.prepareStatement(sql);
 
 			rs=ps.executeQuery();
@@ -60,54 +62,15 @@ public class GameDAO {
 				String notice=rs.getString("notice");
 				int d_no=rs.getInt("d_no");
 				int c_no=rs.getInt("c_no");
+				String src=rs.getString("src");
+				
 
-				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, 
-						notice, d_no, c_no);
+				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, c_no, src);
 				list.add(vo);
 			}
 			System.out.println("게임등록 결과 list.size="+list.size());
 
 			return list;
-		}finally {
-			pool.dbClose(rs, ps, con);
-		}
-	}
-
-	/*게임상세보기 - 번호로 조회*/
-	public GameVO selectByNo(int g_no) throws SQLException{
-		Connection con=null;
-		PreparedStatement ps=null;
-		ResultSet rs=null;
-
-		GameVO vo=new GameVO();
-
-		try {
-			con=pool.getConnection();
-
-			String sql="select * from where g_no=?";
-			ps=con.prepareStatement(sql);
-			ps.setInt(1, g_no);
-
-			rs=ps.executeQuery();
-			if(rs.next()) {
-				String gname=rs.getString("gname");
-				int price=rs.getInt("price");
-				Timestamp gdate=rs.getTimestamp("gdate");
-				String gtext=rs.getString("gtext");
-				String notice=rs.getString("notice");
-				int d_no=rs.getInt("d_no");
-
-				vo.setD_no(d_no);
-				vo.setG_no(g_no);
-				vo.setGname(gname);
-				vo.setPrice(price);
-				vo.setGtext(gtext);
-				vo.setGdate(gdate);
-				vo.setNotice(notice);
-			}
-			System.out.println("게임상세보기 vo="+vo+ ", 매개변수 g_no="+g_no);
-
-			return vo;
 		}finally {
 			pool.dbClose(rs, ps, con);
 		}
@@ -164,6 +127,45 @@ public class GameDAO {
 			return cnt;
 		}finally {
 			pool.dbClose(ps, con);
+		}
+	}
+	
+	/**
+	 * 개발자 번호로 조회 
+	 * 개발자별 게임등록 리스트
+	 * @throws SQLException 
+	 */
+	public List<GameVO> selectByDno(int d_no) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		List<GameVO> list = new ArrayList<GameVO>();
+		try {
+			con = pool.getConnection();
+			String sql ="select * from game "
+					+ "where d_no = ? "
+					+ "order by g_no desc";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, d_no);
+			
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				int g_no = rs.getInt("g_no");
+				String gname = rs.getString("gname");
+				int price = rs.getInt("price");
+				Timestamp gdate = rs.getTimestamp("gdate");
+				String gtext = rs.getString("gtext");
+				String notice = rs.getString("notice");
+				int c_no = rs.getInt("c_no");
+				String src = rs.getString("src");
+				
+				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, c_no, src);
+				list.add(vo);
+			}
+			return list;
+		} finally {
+			pool.dbClose(rs, ps, con);
 		}
 	}
 }
