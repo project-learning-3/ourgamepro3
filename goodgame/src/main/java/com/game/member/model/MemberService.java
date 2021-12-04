@@ -2,6 +2,7 @@ package com.game.member.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -33,4 +34,12 @@ public class MemberService {
 	public int withdrawMember(String email) throws SQLException {
 		return dao.deleteMember(email);
 	}
+	
+	public boolean checkPwd(String m_pwd) throws SQLException {
+		return dao.checkPwd(m_pwd);
+	}
+	public int updateMember(MemberVO vo) throws SQLException {
+		return dao.updateMember(vo);
+	}
+	
 }

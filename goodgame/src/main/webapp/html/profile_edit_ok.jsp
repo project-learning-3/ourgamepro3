@@ -63,8 +63,8 @@
 		vo2.setSeller_email(request.getParameter("email"));
 		vo2.setBusiness_no(request.getParameter("number"));
 
-			if (memberService.checkPwd(request.getParameter("pwd"))) {
-				int cnt = memberService.updateMember(vo2);
+			if (developerService.checkPwd(vo2)) {
+				int cnt = developerService.updateDeveloper(vo2);
 					if (cnt > 0) {
 					%>
 						<script type="text/javascript">
