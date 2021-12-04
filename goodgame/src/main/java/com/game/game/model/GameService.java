@@ -16,15 +16,14 @@ public class GameService {
 		return dao.selectAll();
 	}
 
-	public GameVO selectByNo(int g_no) throws SQLException{
-		return dao.selectByNo(g_no);
-	}
-
 	public int updateGame(GameVO vo) throws SQLException{
 		return dao.deletGame(vo);
 	}
 	
 	public int deletGame(GameVO vo) throws SQLException{
 		return dao.deletGame(vo);
+	}
+	public List<GameVO> selectByDno(int d_no) throws SQLException {
+		return dao.selectByDno(d_no);
 	}
 }

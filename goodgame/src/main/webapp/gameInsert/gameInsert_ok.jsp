@@ -18,17 +18,19 @@
 <%
 	String gname = request.getParameter("gname");
 	String price = request.getParameter("price");
-	String c_no = request.getParameter("c_no");
 	String gtext = request.getParameter("gtext");
+	String c_no = request.getParameter("c_no");
+	String src = request.getParameter("src");
 	
 	
 	String msg = "등록실패", url = "gameInsert_before.jsp";
 	try{
-		gv.setC_no(Integer.parseInt(c_no));
 		gv.setD_no(d_no);
 		gv.setGname(gname);
 		gv.setGtext(gtext);
 		gv.setPrice(Integer.parseInt(price));
+		gv.setC_no(Integer.parseInt(c_no));
+		gv.setSrc(src);
 		int result = gs.insertGame(gv);
 		
 		if(result > 0){

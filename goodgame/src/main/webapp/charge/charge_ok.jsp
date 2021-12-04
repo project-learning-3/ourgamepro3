@@ -8,11 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <title>충전확인</title>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <%
 	request.setCharacterEncoding("utf-8");
 	
+	int m_no=(int)session.getAttribute("m_no"); 
 	String m_pwd=request.getParameter("m_pwd");
 	String ch_pwd=request.getParameter("ch_pwd");
 
@@ -24,7 +26,7 @@
 	System.out.println(s_charge);
 
 	int charge=Integer.parseInt(s_charge);
-	
+	String msg="",url="";
 	
 	if(m_pwd == null || m_pwd=="" || m_pwd.isEmpty()){ 	%>
 	<script type="text/javascript">
@@ -48,26 +50,28 @@
 			boolean check=m_dao.checkPwd(m_pwd);
 	
 			if(check){ //비밀번호 맞으면
-				String m_no=(String)session.getAttribute(m_no); 
 				System.out.print(m_no);
-				int member_no=Integer.parseInt(m_no);
 				
 				PaymentDAO p_dao=new PaymentDAO();
-				int cnt=p_dao.AddBalance(member_no,charge); //잔액충전
+				int cnt=p_dao.AddBalance(m_no,charge); //잔액충전
 				//balance 도 유동적으로 바뀌게 만들어야함
-			%>
-	<script type="text/javascript">
-		alter('충전이 완료되었습니다.');
-		location.href('../html/mypay.jsp');
-	</script>
-	<%}else{%>
-	<script type="text/javascript">
-		alter('비밀번호를 다시 확인해주세요');
-		history.back();
-	</script>
-	<%}
+				
+				msg="충전이 완료되었습니다.";
+				url="../html/mypay.jsp";
+				
+			}else{
+				
+				msg="충전실패";
+				url="charge.jsp";
+				
+			}
 		
-}
+	}
+	request.setAttribute("msg", msg);
+	request.setAttribute("url", url);
+	
+	
 %>
+<jsp:forward page="../common/message.jsp"/>
 </body>
 </html>

@@ -179,7 +179,7 @@ vertical-align:middle;
 								<a class="small" href="forgot-password.jsp">Forgot Password?</a>
 							</div>
 							<div class="text-center">
-								<a class="small" href="login.jsp">Already have an account?
+								<a class="small" href="../login/login.jsp">Already have an account?
 									Login!</a>
 							</div>
 						</div>
