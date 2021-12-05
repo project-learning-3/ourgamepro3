@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="memberSevice" class="com.game.member.model.MemberService" scope="session"></jsp:useBean>
-<jsp:useBean id="developerService" class="com.game.developer.model.DeveloperService" scope=""></jsp:useBean>
+<jsp:useBean id="developerService" class="com.game.developer.model.DeveloperService" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 <html lang="en">
 
