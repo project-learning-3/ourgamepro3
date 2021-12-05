@@ -11,7 +11,7 @@
 <jsp:useBean id="payDao" class="com.game.payment.model.PaymentDAO" scope="page"/>
 <%
 	//charge_ok 에서 get방식으로 이동 -> 고객넘 세션이용해서 불러오기
-	int m_no=(int)session.getAttribute("m_no"); 
+	m_no=(int)session.getAttribute("m_no"); 
 
 	PaymentDAO dao=new PaymentDAO();
  

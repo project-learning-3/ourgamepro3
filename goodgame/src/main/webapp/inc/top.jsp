@@ -211,7 +211,7 @@
 								<a class="collapse-item" href="../question/TermsOfUse.jsp">데이터</a>
 						</div>
 						<!--이용약관 html만 만듭시다-->
-						<a class="collapse-item" href="TermsAndConditions.jsp">이용약관</a>
+						<a class="collapse-item" href="../html/TermsAndConditions.jsp">이용약관</a>
 						<!-- 이용약관 만들어주게 -->
 					</div>
 				</div>
