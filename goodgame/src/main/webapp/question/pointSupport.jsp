@@ -70,7 +70,7 @@ GoodGame에서 게임을 검색/선택하여 원하는 소프트웨어를 구매
                                 
                             </form>
                              <div class="text-center">
-                                <a class="small" href="home.jsp">메인으로 돌아가기</a>
+                                <a class="small" href="../html/home.jsp">메인으로 돌아가기</a>
                             </div>
                         </div>
                     </div>

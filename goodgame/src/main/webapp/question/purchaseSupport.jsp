@@ -78,7 +78,7 @@ GoodGame 페이지 내 추천게임 탭에서 구입하고 싶은 게임을 클�
                                 
                             </form>
                              <div class="text-center">
-                                <a class="small" href="home.jsp">메인으로 돌아가기</a>
+                                <a class="small" href="../html/home.jsp">메인으로 돌아가기</a>
                             </div>
                         </div>
                     </div>

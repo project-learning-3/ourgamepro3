@@ -148,7 +148,7 @@ GoodGame 사용자 계정을 생성할 수 있는 최소 연령은 13세입니�
                                 
                             </form>
                              <div class="text-center">
-                                <a class="small" href="home.jsp">메인으로 돌아가기</a>
+                                <a class="small" href="../html/home.jsp">메인으로 돌아가기</a>
                             </div>
                         </div>
                     </div>
