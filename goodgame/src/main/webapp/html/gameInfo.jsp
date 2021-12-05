@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.List"%>
 <%@page import="com.game.gameUrl.model.GameUrlVO"%>
 <%@page import="java.util.Scanner"%>
 <%@page import="java.sql.SQLException"%>
@@ -73,27 +75,19 @@ footer.sticky-footer {
 			window.open('buyGame.jsp', '안뇽', 'width=680, height=450');
 		}); 
 	});
+	
 </script>
 </head>
 <style>
 </style>
 <%
 //할 것 페이징 처리, 한줄평 테이블 불러오는것
-	String g_no =request.getParameter("g_no");
+ 	String g_no =request.getParameter("g_no"); 
+	SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
 
-	if(g_no==null || !g_no.isEmpty()){ %>
-<!-- 	<script type="text/javascript">
-			alert("잘못된 url입니다.");
-			location.href="list.jsp";
-		</script> -->
-<%	}return;
-	
-	GameVO vo = null;
-	GameUrlVO urlvo = null;
+	GameVO vo = new GameVO();
 	try{
-		vo=gameService.selectByNo(Integer.parseInt(g_no));
-		urlvo=gameUrlService.IVSelect(Integer.parseInt(g_no));
-		
+		vo=gameService.selectByNo(1);
 	}catch(SQLException e){
 		e.printStackTrace();
 	}
@@ -103,10 +97,9 @@ footer.sticky-footer {
 		notice= notice.replace("\r\n", "<br>");
 	}else{
 		notice="";
-	}
-
-	
+	} 
 %>
+
 <%@ include file="../inc/topGInfo.jsp"%>
 
 <!-- Begin Page Content -->
@@ -131,21 +124,21 @@ footer.sticky-footer {
 	</section>
 	<aside class="gameInfo">
 		<div>
-			<p>게임명 넣어주세요</p>
+			<p><%=vo.getGname() %></p>
 			<!-- 여기다 이름불러오는거 -->
 		</div>
 		<div>
-			<p>가격자리 넣어주세요</p>
+			<p><%=vo.getPrice() %></p>
 		</div>
 		<div>
-			<p>등록일시자리 넣어주세요</p>
+			<p><%=sdf.format(vo.getGdate()) %></p>
 		</div>
 
 		<div id="notice">
-			<input type=text id="noticeM" value="게임설명">
+			<input type=text id="noticeM" value="<%=vo.getNotice() %>">
 		</div>
 		<div>
-			<input type="submit" value="게임명구매하기" id="buyGame">
+			<input type="submit" value="<%=vo.getGname() %>구매하기" id="buyGame">
 		</div>
 	</aside>
 	<table id="comment">
@@ -155,12 +148,15 @@ footer.sticky-footer {
 			<td>내용</td>
 			<td>게시일자</td>
 		</tr>
+
 		<tr>
-			<th></th>
-			<th></th>
-			<th></th>
+			<th>김준영입니다</th>
+			<th>내용이라우아루아루우라</th>
+			<th>2012-12-05</th>
 		</tr>
+	
 	</table>
+	
 	<div class="rationg">
 		<div class="star1" data-rate="3">
 			<i class="fas fa-star"></i>
@@ -171,5 +167,6 @@ footer.sticky-footer {
 		</div>
 	</div>	
 </div>
+
 
 <%@ include file="../inc/bottom.jsp"%>

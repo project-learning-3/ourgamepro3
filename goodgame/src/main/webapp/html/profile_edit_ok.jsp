@@ -22,13 +22,8 @@
 	<%
 	request.setCharacterEncoding("utf-8");
 	String m_email = (String) session.getAttribute("m_email");
-	String d_email = (String) session.getAttribute("d_email");
+	String d_email = (String) session.getAttribute("seller_email");
 
-	/* 	String email = request.getParameter("email");
-	String pwd = request.getParameter("pwd");
-	String name = request.getParameter("name");
-	String phone = request.getParameter("phone");
-	String no = request.getParameter("m_no");  */
 
 	try {
 		if (m_email != null && !m_email.isEmpty()) { //멤버일떄
@@ -37,10 +32,8 @@
 			vo1.setM_name(request.getParameter("name"));
 			vo1.setM_phone(request.getParameter("phone"));
 			vo1.setM_email(request.getParameter("email"));
-			vo1.setM_birth(Timestamp.valueOf(request.getParameter("number")));
-
-			if (memberService.checkPwd(request.getParameter("pwd"))) {
-				int cnt = memberService.updateMember(vo1);
+		
+			int cnt = memberService.updateMember(vo1);
 				if (cnt > 0) {
 					%>
 					<script type="text/javascript">
@@ -50,36 +43,38 @@
 					<%} else {%>
 					<script type="text/javascript">
 						alert("프로필 수정이 실패했습니다");
-						/* history.back(); */
+						 history.back(); 
 					</script>
 					<%
-				}
-		 	}  
-		} else { //개발자일때
+					}
+		 	
+		} else if(d_email != null && !d_email.isEmpty()){ //개발자일때
 		DeveloperVO vo2 = new DeveloperVO();
-		vo2.setD_pwd(request.getParameter("pwd"));
+		vo2.setD_pwd(request.getParameter("pwd2"));
 		vo2.setSeller(request.getParameter("name"));
 		vo2.setSeller_phone(request.getParameter("phone"));
 		vo2.setSeller_email(request.getParameter("email"));
 		vo2.setBusiness_no(request.getParameter("number"));
 
-			if (developerService.checkPwd(vo2)) {
+		vo2.setD_no((int)session.getAttribute("d_no"));
+		 	if (developerService.checkPwd(vo2))  { 
 				int cnt = developerService.updateDeveloper(vo2);
-					if (cnt > 0) {
+				if (cnt > 0) {
+
 					%>
-						<script type="text/javascript">
-							alert("프로필이 수정되었습니다.");
-							location.href = "Proflie.jsp";
-						</script>
-					<%} else { %>
 					<script type="text/javascript">
-						alert("프로필 수정이 실패했습니다");
-						/* history.back(); */
+						alert("프로필이 수정되었습니다.");
+						location.href = "Proflie.jsp";
 					</script>
+				<%} else { %>
+				<script type="text/javascript">
+					alert("프로필 수정이 실패했습니다");
+					 history.back(); 
+				</script>
 					<%
-					}	
+				}	
 			}
-		}
+	 	} 
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
