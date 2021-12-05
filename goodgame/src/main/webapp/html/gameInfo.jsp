@@ -1,8 +1,10 @@
+<%@page import="java.util.Scanner"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.game.game.model.GameVO"%>
 <%@page import="com.game.game.model.GameDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<jsp:useBean id="gameService" class="com.game.game.model.GameService" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 
 <html lang="ko">
@@ -12,8 +14,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+<!-- <meta name="description" content="">
+<meta name="author" content=""> -->
 
 <title>SB Admin 2 - Blank</title>
 
@@ -29,14 +31,100 @@
 <link href="../css/gameInfo.css" rel="stylesheet">
 <style type="text/css">
 /* 틀 다 잡히면 집어 넣을거에요~~ */
+/* aside.gameInfo>* {
+    border: 1px solid #2f334b;
+    font-weight: bold;
+    font-size: larger;
+    border-radius: 0px;
+    background: #a9acc1;
+    color: black;
+}
+.gameInfo div:last-child {
+    text-align: center;
+    font-size: inherit;
+}
+#comment tbody tr >* {
+    border: 1px solid black;
+    font-weight: bold;
+} 
+aside.gameInfo div:nth-child(n+1):nth-child(-n+4) {
+    border-bottom: 3px solid #2f334b;
+}
 
+aside.gameInfo {
+    margin-top: -736px;
+    margin-left: 682px;
+    width: 329px;
+    height: 428px;
+    border: 3px solid #2f334b;
+}
+
+input#noticeM {
+    margin-left: 4px;
+    margin-block: 4px;
+    width: 313px;
+    height: 200px;
+    border-radius: 7px;
+    background: #dddee6;
+    font-weight: bold;
+}
+
+input#buyGame {
+    background: #dddee6;
+    font-weight: bold;
+    margin-top: 4px;
+}
+*/
+ #star a{
+   text-decoration: none;
+   color: gray;
+  }
+  #star a.on{
+   color: yellow;
+  } 
 </style>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#buyGame').click(function(){
+			window.open('buyGame.jsp','안뇽','width=680, height=450');
+		});
+		$('#star a').click(function(){ 
+			 $(this).parent().children("a").removeClass("on");    
+			 $(this).addClass("on").prevAll("a").addClass("on");
+			 console.log($(this).attr("value"));
+		 });
+	});
+</script>
 </head>
 <style>
 </style>
 <%
 //게임 동영상, 이미지 테이블에서 가져오기
+	/* if(no==null || no.is) */
+/*	String g_no =request.getParameter("g_no");
 
+	if(g_no==null || !g_no.isEmpty()){ %>		
+	<!-- 	<script type="text/javascript">
+			alert("잘못된 url입니다.");
+			location.href="list.jsp";
+		</script> -->
+<%	}return;
+	
+	GameVO vo = null;
+	
+	try{
+		vo=gameService.selectByNo(Integer.parseInt(g_no));
+	}catch(SQLException e){
+		e.printStackTrace();
+	}
+	
+	String notice = vo.getNotice();
+	if(notice!=null){
+		notice= notice.replace("\r\n", "<br>");
+	}else{
+		notice="";
+	}*/
 %>
 <%@ include file="../inc/topGInfo.jsp" %>
 
@@ -74,7 +162,7 @@
 							<input type=text id="noticeM" value="게임설명">
 						</div>
 						<div>
-							<input type="button" value="게임명구매하기" href="#">
+							<input type="submit" value="게임명구매하기" id="buyGame">
 						</div>
 					</aside>
 					<table id="comment">
@@ -91,7 +179,13 @@
 						</tr>
 					</table>
 					<div class=rating>
-						<p></p>
+						  <P id="star"> <!-- 부모 -->
+							   <a href="#" value="1">★</a> <!-- 자식들-->
+							   <a href="#" value="2">★</a>
+							   <a href="#" value="3">★</a>
+							   <a href="#" value="4">★</a>
+							   <a href="#" value="5">★</a>
+						<p>
 					</div>
 				</div>
 				<!-- /.container-fluid -->
