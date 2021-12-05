@@ -294,4 +294,6 @@ public class MemberDAO {
 				// TODO: handle finally clause
 			}
 		}
+	
+
 }
