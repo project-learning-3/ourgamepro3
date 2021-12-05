@@ -115,7 +115,7 @@
                                 </div>
                    
                                 
-                                <a id="regbtn" href="jsp/change.jsp" class="btn btn-primary btn-user btn-block">
+                                <a id="regbtn" href="registerMem.jsp" class="btn btn-primary btn-user btn-block">
                                     동의합니다
                                 </a>
                                 

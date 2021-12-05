@@ -231,4 +231,26 @@ public class DeveloperDAO {
     		pool.dbClose(rs, ps, con);
     	}
     }
+    
+    public int withdrawDevelop(String email) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		try {
+			con = pool.getConnection();		
+			
+			String sql = "delete form DEVELOPER where SELLER_EMAIL=?";
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, email);
+			
+			int cnt = ps.executeUpdate();
+			System.out.println("회원 탈퇴 결과 cnt = "+cnt+"아이디 = "+email);
+			
+			return cnt;
+		} finally {
+			pool.dbClose(ps, con);
+			// TODO: handle finally clause
+		}
+	}
 }
