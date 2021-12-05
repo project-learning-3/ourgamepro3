@@ -10,13 +10,13 @@
 	System.out.print(m_no); */
 	//사용자번호 불러오는 방법 로그인 안하고 사용자넘버 불러올경우 널포인트 에러 뜸 
 	//=> 인트값에 널이 들어갈 수 없어서 if로 처리 불가능
-	System.out.print(m_name);
+ 	System.out.print(m_name);
 	if(m_name==null){	
 		m_name = "";	%>
-		<script type="text/javascript">
+	<!-- 	<script type="text/javascript">
 			alert('로그인 후 이용가능한 페이지입니다.');
 			location.href="login.jsp";	
-		</script>	
+		</script>	 -->
 <%		
 	}
 
