@@ -22,7 +22,7 @@
 
 <!-- Custom styles for this template-->
 <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-
+<script src="https://kit.fontawesome.com/fb21a5c3b2.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
@@ -58,6 +58,14 @@ $(function(){
 			event.preventDefault();
 		}
 	});
+	$('#gameImg').html('<i class="fas fa-times"></i>');
+	$('#src').on('change', function(){
+		if($('#src').val().length > 1){
+			$('#gameImg').html('<i class="fas fa-check"></i>');
+		} else if($('#src').val().length < 1){
+			$('#gameImg').html('<i class="fas fa-times"></i>');
+		}
+	});
 });
 function validate_num(num){
 	var pattern = new RegExp(/^[0-9]*$/g);
@@ -86,7 +94,7 @@ function validate_num(num){
 								<p>* 당신의 게임을 회원들과 함께 즐겨요.</p>
 								<br>
 							</div>
-							<form class="user" action="gameInsert_ok.jsp" method="post">
+							<form class="user" action="gameInsert_ok.jsp" enctype="multipart/form-data" method="post">
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="text" class="form-control form-control-user"
@@ -108,8 +116,13 @@ function validate_num(num){
 									</div>
 								</div>
 								<div class="form-group">
-									<input class="form-control form-control-user" name="src"
-										placeholder="게임이미지 등록" id="src" style="border-radius: 10px;"></input>
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<label for="src" class="btn-user">
+											게임이미지선택
+										</label>
+										<input type="file" id="src" name="src" style="display: none"> 
+										<span id="gameImg"></span>
+									</div>
 								</div>
 								<input type="submit" value="등록하기"
 									class="btn btn-primary btn-user btn-block">
