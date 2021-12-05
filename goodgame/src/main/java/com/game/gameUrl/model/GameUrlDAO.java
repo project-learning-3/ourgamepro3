@@ -14,7 +14,7 @@ public class GameUrlDAO {
 		pool=ConnectionPoolMgr.getInstance();
 	}
 
-	/*이미지 select*/
+	/*이미지  select*/
 	public GameUrlVO imageSelect(int g_no) throws SQLException{
 		Connection con=null;
 		PreparedStatement ps=null;
