@@ -24,7 +24,7 @@
 	//이미지 업로드
 	String saveDir = application.getRealPath(Utility.UPLOAD_PATH);
 	System.out.println(saveDir);
-	int maxSize=2*1024*1024;  //업로드파일의 최대 크기, 2M
+	int maxSize=100*1024*1024;  //업로드파일의 최대 크기, 100M
 	String encoding="utf-8";
 	
 	System.out.println(saveDir);
@@ -38,31 +38,27 @@
 		System.out.println("업로드 완료!");
 		//업로드파일정보
 		String fileName=mr.getFilesystemName("src");
-		long fileSize=0;
-		String originalFName="";
-		if(fileName!=null){  //파일이 첨부된 경우만
-			File file=mr.getFile("src");
-			fileSize=file.length();
-			
-			originalFName=mr.getOriginalFileName("src");
-		}
+		String fileName2=mr.getFilesystemName("src2");
+		String fileName3=mr.getFilesystemName("video");
 		
 		//요청파라미터 읽어오기
 		String gname = mr.getParameter("gname");
 		String price = mr.getParameter("price");
 		String gtext = mr.getParameter("gtext");
-		String c_no = mr.getParameter("c_no");
 		String src = fileName;
+		String src2 = fileName2;
+		String video = fileName3;
 		
-		System.out.println(gname+" "+price+" "+gtext+" "+c_no+" "+src);
+		System.out.println(gname+"gname\n"+price+"price\n"+gtext+"gtext\n "+src+"src\n"+src2+"src2\n"+video+"video\n");
 		
 		//db
 		gv.setD_no(d_no);
 		gv.setGname(gname);
 		gv.setGtext(gtext);
 		gv.setPrice(Integer.parseInt(price));
-		gv.setC_no(Integer.parseInt(c_no));
 		gv.setSrc(src);
+		gv.setSrc2(src2);
+		gv.setVideo(video);
 		int result = gs.insertGame(gv);
 		
 		if(result > 0){

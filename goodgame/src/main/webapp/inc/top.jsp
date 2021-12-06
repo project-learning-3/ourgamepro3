@@ -263,6 +263,7 @@
 						<!-- 계정변경 html로 연결 -->
 						<a class="collapse-item" href="../gameList/gameListDev.jsp?d_no=<%=d_no%>">게임등록 현황</a> 
 						<a class="collapse-item" href="#">게임판매 현황</a>
+						<a class="collapse-item" href="../gameDelete/gameDeleteList.jsp?d_no=<%=d_no%>">게임삭제</a>
 					</div>
 				</div>
 			</li>
