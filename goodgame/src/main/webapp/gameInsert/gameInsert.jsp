@@ -45,25 +45,45 @@ $(function(){
 			$('#gtext').focus();
 			event.preventDefault();
 		}else if($('#src').val().length<1){
-			alert('게임이미지를 등록하세요');
+			alert('게임이미지[1]을 등록하세요');
+			$('#src').focus();
+			event.preventDefault();
+		}else if($('#src2').val().length<1){
+			alert('게임이미지[2]를 등록하세요');
+			$('#src').focus();
+			event.preventDefault();
+		}else if($('#video').val().length<1){
+			alert('게임영상을 등록하세요');
 			$('#src').focus();
 			event.preventDefault();
 		}else if(!validate_num($('#price').val())){
 			alert('가격은 숫자만 가능합니다.');
 			$('#price').focus();
 			event.preventDefault();
-		}else if(!validate_num($('#c_no').val())){
-			alert('장르번호는 숫자만 가능합니다.');
-			$('#c_no').focus();
-			event.preventDefault();
 		}
 	});
-	$('#gameImg').html('<i class="fas fa-times"></i>');
+	$('#gameimg1').html('<i class="fas fa-times"></i>');
+	$('#gameimg2').html('<i class="fas fa-times"></i>');
+	$('#gameimg3').html('<i class="fas fa-times"></i>');
 	$('#src').on('change', function(){
 		if($('#src').val().length > 1){
-			$('#gameImg').html('<i class="fas fa-check"></i>');
+			$('#gameimg1').html('<i class="fas fa-check"></i>');
 		} else if($('#src').val().length < 1){
-			$('#gameImg').html('<i class="fas fa-times"></i>');
+			$('#gameimg1').html('<i class="fas fa-times"></i>');
+		}
+	});
+	$('#src2').on('change', function(){
+		if($('#src2').val().length > 1){
+			$('#gameimg2').html('<i class="fas fa-check"></i>');
+		} else if($('#src2').val().length < 1){
+			$('#gameimg2').html('<i class="fas fa-times"></i>');
+		}
+	});
+	$('#video').on('change', function(){
+		if($('#video').val().length > 1){
+			$('#gameimg3').html('<i class="fas fa-check"></i>');
+		} else if($('#video').val().length < 1){
+			$('#gameimg3').html('<i class="fas fa-times"></i>');
 		}
 	});
 });
@@ -105,23 +125,31 @@ function validate_num(num){
 											id="price" name="price" placeholder="게임가격">
 									</div>
 								</div>
-								<div class="form-group row">
-									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="text" class="form-control form-control-user"
-											id="gtext" name="gtext" placeholder="간단한 게임 설명">
-									</div>
-									<div class="col-sm-6">
-										<input type="text" class="form-control form-control-user"
-											id="c_no" name="c_no" placeholder="장르번호">
-									</div>
+								<div class="form-group">
+									<input type="text" class="form-control form-control-user"
+										id="gtext" name="gtext" placeholder="게임설명">
 								</div>
 								<div class="form-group">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="src" class="btn-user">
-											게임이미지선택
+											게임이미지선택[1]
 										</label>
 										<input type="file" id="src" name="src" style="display: none"> 
-										<span id="gameImg"></span>
+										<span id="gameimg1"></span>
+									</div>
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<label for="src2" class="btn-user">
+											게임이미지선택[2]
+										</label>
+										<input type="file" id="src2" name="src2" style="display: none"> 
+										<span id="gameimg2"></span>
+									</div>
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<label for="video" class="btn-user">
+											영상선택
+										</label>
+										<input type="file" id="video" name="video" style="display: none"> 
+										<span id="gameimg3"></span>
 									</div>
 								</div>
 								<input type="submit" value="등록하기"
