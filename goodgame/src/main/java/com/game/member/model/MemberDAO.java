@@ -273,20 +273,21 @@ public class MemberDAO {
 		}
 	}
 		
-		public int deleteMember(String email) throws SQLException {
+		public int deleteMember(String email , String pwd) throws SQLException {
 			Connection con = null;
 			PreparedStatement ps = null;
 			
 			try {
 				con = pool.getConnection();		
 				
-				String sql = "delete from member where m_email=?";
+				String sql = "delete from member where m_email=? and m_pwd = ?";
 				ps = con.prepareStatement(sql);
 				
 				ps.setString(1, email);
+				ps.setString(2, pwd);
 				
 				int cnt = ps.executeUpdate();
-				System.out.println("회원 탈퇴 결과 cnt = "+cnt+"아이디 = "+email);
+				System.out.println("회원 탈퇴 결과 cnt = "+cnt+"아이디 = "+email+"");
 				
 				return cnt;
 			} finally {
