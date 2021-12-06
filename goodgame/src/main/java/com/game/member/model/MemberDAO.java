@@ -188,12 +188,11 @@ public class MemberDAO {
 		try {
 			con=pool.getConnection();
 			String sql = "update member\r\n"
-					+ "set  m_name=?, m_phone=?, m_birth=? where m_email = ?";
+					+ "set  m_name=?, m_phone=? where m_email = ?";
 			ps=con.prepareStatement(sql);
 			ps.setString(1, vo.getM_name());
 			ps.setString(2, vo.getM_phone());
-			ps.setTimestamp(3, vo.getM_birth());
-			ps.setString(4, vo.getM_email());
+			ps.setString(3, vo.getM_email());
 			
 			int cnt = ps.executeUpdate();
 			System.out.println("수정결과 cnt="+cnt+", vo="+vo);
