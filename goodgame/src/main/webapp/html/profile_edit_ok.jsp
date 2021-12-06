@@ -26,7 +26,7 @@
 
 
 	try {
-		if (m_email != null && !m_email.isEmpty()) { //멤버일떄
+		if (m_email != null && !m_email.isEmpty()) { //멤버일떄 
 			MemberVO vo1 = new MemberVO();
 			vo1.setM_pwd(request.getParameter("pwd"));
 			vo1.setM_name(request.getParameter("name"));

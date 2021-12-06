@@ -51,6 +51,7 @@
 	String name="";
 	String phone="";
 	String number=""; //birth or businessNumber
+	Timestamp birth=null;
 	int balance=0;
 	
 	try {
@@ -59,10 +60,10 @@
 			email=vo1.getM_email();
 			pwd=vo1.getM_pwd();
 			name=vo1.getM_name();
-			number= sdf.format(vo1.getM_birth()); 
+			number= sdf.format(vo1.getM_birth());
 			phone=vo1.getM_phone();
 			
-			pVo=paymentDAO.selectPoint((int)session.getAttribute("m_no"));
+			pVo=paymentDAO.selectbypayment((int)session.getAttribute("m_no"));
 			balance=pVo.getBalance();
 		}else if(d_email != null && !d_email.isEmpty()){
 			vo2 = developerService.selectByEmail(d_email);
@@ -126,7 +127,12 @@
 								</div>
 								<div class="form-group">
 									<input type="number" class="form-control form-control-user"
-										id="birth" placeholder="birth : <%=number %>" readonly="readonly">
+										id="birth" placeholder= 
+										<%if(m_email != null && !m_email.isEmpty()){%>
+													"birth :<%=number%>"
+										   	<%}else{ %>
+													"businessnumber :<%=number %>"
+											<%	} %> " readonly="readonly">
 									<!-- 생년월일 -->
 								</div>
 								<div class="form-group">
@@ -160,7 +166,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 	<!-- Bootstrap core JavaScript-->

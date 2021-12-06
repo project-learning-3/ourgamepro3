@@ -120,4 +120,47 @@ public class PaymentDAO {
 			pool.dbClose(rs, ps, con);
 		}
 	}
+	/**
+	 * 번호로 개별 검색
+	 * @param m_no
+	 * @return vo
+	 * @throws SQLException
+	 */
+	public PaymentVO selectbypayment(int m_no) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		
+		PaymentVO vo = new PaymentVO();
+		try {
+			con=pool.getConnection();
+			String sql="select * from payment where m_no=?";
+			ps=con.prepareStatement(sql);
+			
+			ps.setInt(1, m_no);
+			
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				int payno=rs.getInt("payno");
+				int payprice=rs.getInt("payprice");
+				Timestamp paydate=rs.getTimestamp("paydate");
+				int balance =rs.getInt("balance");
+				String cancle=rs.getString("cancle");
+				
+				vo.setPayno(payno);
+				vo.setBalance(balance);
+				vo.setCancle(cancle);
+				vo.setPaydate(paydate);
+				vo.setPayprice(payprice);
+
+				vo=new PaymentVO(payno, payprice, paydate, balance, cancle, m_no);
+			}
+			System.out.println("조회결과 : vo"+vo);
+			return vo;
+			
+		}finally {
+			pool.dbClose(rs, ps, con);
+		}
+	}
 }

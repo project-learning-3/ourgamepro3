@@ -225,9 +225,9 @@
 				<div id="collapseuser" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Login</h6>
-						<a class="collapse-item" href="blank.html">프로필 수정</a>
+						<a class="collapse-item" href="profile_edit.jsp">프로필 수정</a>
 						<!-- 계정변경 html로 연결 -->
-						<a class="collapse-item" href="blank.html">프로필 정보</a> 
+						<a class="collapse-item" href="Proflie.jsp">프로필 정보</a> 
 						<a class="collapse-item1" href="../login/logout.jsp" data-toggle="modal" data-target="#logoutModal">
                         	<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         	로그아웃
