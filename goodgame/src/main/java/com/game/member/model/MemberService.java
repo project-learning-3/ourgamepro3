@@ -31,8 +31,8 @@ public class MemberService {
 	public int duplicateEmail(String email) throws SQLException {
 		return dao.duplicateEmail(email);
 	}
-	public int withdrawMember(String email) throws SQLException {
-		return dao.deleteMember(email);
+	public int deleteMember(String email , String pwd) throws SQLException {
+		return dao.deleteMember(email , pwd);
 	}
 	
 	public boolean checkPwd(String m_pwd) throws SQLException {

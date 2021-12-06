@@ -93,7 +93,7 @@ public class DeveloperDAO {
 			while(rs.next()) {
 				int d_no = rs.getInt("d_no");
 				String seller = rs.getString("seller");
-				String d_pwd = rs.getString("d_no");
+				String d_pwd = rs.getString("d_pwd");
 				String seller_phone = rs.getString("seller_phone");
 				String business_no = rs.getString("business_no");
 				
@@ -232,18 +232,18 @@ public class DeveloperDAO {
     	}
     }
     
-    public int withdrawDevelop(String email) throws SQLException {
+    public int deleteDeveloper(String email , String pwd) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
 		try {
 			con = pool.getConnection();		
 			
-			String sql = "delete form DEVELOPER where SELLER_EMAIL=?";
+			String sql = "delete from developer where SELLER_EMAIL=? and d_pwd = ?";
 			ps = con.prepareStatement(sql);
 			
 			ps.setString(1, email);
-			
+			ps.setString(2, pwd);
 			int cnt = ps.executeUpdate();
 			System.out.println("회원 탈퇴 결과 cnt = "+cnt+"아이디 = "+email);
 			
@@ -253,4 +253,5 @@ public class DeveloperDAO {
 			// TODO: handle finally clause
 		}
 	}
+
 }

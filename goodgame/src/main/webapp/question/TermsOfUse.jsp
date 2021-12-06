@@ -14,7 +14,7 @@
                             <form class="user">
                                 <div class="form-group">
 <h5>제한된 사용자 계정</h5>
-<pre class="question">
+<pre class="question" style="white-space: pre-wrap">
 Valve는 온라인 방문자와 제품 및 서비스 고객의 개인 정보를 존중하며 캘리포니아 소비자 개인 정보 보호법("CCPA"), 유럽 연합 일반 데이터 보호 규정을 포함하되 이에 국한되지 않는 귀하의 개인 정보 보호 관련 법률을 준수합니다. ("GDPR"), 스위스 및 EU 프라이버시 실드 프레임워크.
 
 1. 정의

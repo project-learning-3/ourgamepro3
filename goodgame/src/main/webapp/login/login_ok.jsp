@@ -24,10 +24,11 @@
 	String m_pwd = request.getParameter("m_pwd");
 	
 	String check = request.getParameter("customCheck");
+	session.setAttribute("check",check );
 	if(check == null) check = "";
 	String ck = "f";
 	
-	System.out.println(check);
+	System.out.println("login check = "+check);
 	String msg = "로그인 실패", url ="login.jsp";
 	try{
 		if(check != null && !check.isEmpty()){

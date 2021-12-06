@@ -14,7 +14,7 @@
                             <form class="user">
                                 <div class="form-group">
 <h5>구매</h5>
-<pre class="question">
+<pre class="question" style="white-space: pre-wrap">
 GoodGame 에서는 고객별 충전금에 등록된 잔액으로 다운로드 소프트웨어 등을 구입할 수 있습니다.
 GoodGame 게임 구매는 게임 메뉴의 구매하기 에서 시작할 수 있습니다.
 
@@ -44,7 +44,7 @@ GoodGame 페이지 내 추천게임 탭에서 구입하고 싶은 게임을 클�
 구입을 완료하면 해당 게임을 소유하고 플레이 하실 수 있습니다.
 
 </pre>
-<pre class="question">
+<pre class="question" style="white-space: pre-wrap">
  ◼ 자주 묻는 질문
  
  ▻ 게임(들) 을 선물로 받았습니다. 모든 기능을 사용할 수 있나요?

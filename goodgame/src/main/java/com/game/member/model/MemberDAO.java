@@ -188,12 +188,11 @@ public class MemberDAO {
 		try {
 			con=pool.getConnection();
 			String sql = "update member\r\n"
-					+ "set  m_name=?, m_phone=?, m_birth=? where m_email = ?";
+					+ "set  m_name=?, m_phone=? where m_email = ?";
 			ps=con.prepareStatement(sql);
 			ps.setString(1, vo.getM_name());
 			ps.setString(2, vo.getM_phone());
-			ps.setTimestamp(3, vo.getM_birth());
-			ps.setString(4, vo.getM_email());
+			ps.setString(3, vo.getM_email());
 			
 			int cnt = ps.executeUpdate();
 			System.out.println("수정결과 cnt="+cnt+", vo="+vo);
@@ -273,20 +272,21 @@ public class MemberDAO {
 		}
 	}
 		
-		public int deleteMember(String email) throws SQLException {
+		public int deleteMember(String email , String pwd) throws SQLException {
 			Connection con = null;
 			PreparedStatement ps = null;
 			
 			try {
 				con = pool.getConnection();		
 				
-				String sql = "delete from member where m_email=?";
+				String sql = "delete from member where m_email=? and m_pwd = ?";
 				ps = con.prepareStatement(sql);
 				
 				ps.setString(1, email);
+				ps.setString(2, pwd);
 				
 				int cnt = ps.executeUpdate();
-				System.out.println("회원 탈퇴 결과 cnt = "+cnt+"아이디 = "+email);
+				System.out.println("회원 탈퇴 결과 cnt = "+cnt+"아이디 = "+email+"");
 				
 				return cnt;
 			} finally {
@@ -295,5 +295,6 @@ public class MemberDAO {
 			}
 		}
 	
+
 
 }

@@ -8,10 +8,16 @@
    height: 600px;
    text-align: right;
    display: flex;
-     justify-content: center;
+   justify-content: center;
 }
 
 </style>
+<%
+	String check = (String)session.getAttribute("check");
+	if(check == null){
+		check = "";
+	}
+%>
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -33,7 +39,7 @@
 				return false;
 			}else{
 				if(confirm("정말로 탈퇴 하시겠습니까?") == true){
-					alert("탈퇴 되었습니다");
+					
 					return true;
 				}else{
 					return false;
@@ -52,19 +58,19 @@
          <div class="text-center">
             <h1 class="h4 text-gray-900 mb-4">회원 탈퇴</h1>
          </div>
-         <form class="user" name="delete" method="post" action="login.jsp">
+         <form class="user" name="delete" method="post" action="withdrawMem_ok.jsp">
             <div class="form-group">
                <input type="email" class="form-control form-control-user"
                   id="exampleInputEmail" aria-describedby="emailHelp"
-                  placeholder="아이디(이메일) 입력..." name="m_email">
+                  placeholder="아이디(이메일) 입력..." name="email">
             </div>
             <div class="form-group">
                <input type="password" class="form-control form-control-user"
-                  id="exampleInputPassword" placeholder="비밀번호" name="m_pwd">
+                  id="exampleInputPassword" placeholder="비밀번호" name="pwd">
             </div>
             <div class="form-group">
                <input type="password" class="form-control form-control-user"
-                  id="exampleInputPassword2" placeholder="비밀번호 재입력" name="m_pwd">
+                  id="exampleInputPassword2" placeholder="비밀번호 재입력" name="pwd">
             </div>
             <div class="form-group">
                <div class="custom-control custom-checkbox small">

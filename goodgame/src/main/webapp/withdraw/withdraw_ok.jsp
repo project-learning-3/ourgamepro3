@@ -1,3 +1,4 @@
+
 <%@page import="com.game.developer.model.DeveloperVO"%>
 <%@page import="com.game.payment.model.PaymentDAO"%>
 <%@page import="com.game.developer.model.DeveloperDAO"%>
@@ -50,7 +51,7 @@ if(d_pwd == null || d_pwd=="" || d_pwd.isEmpty()){ 	%>
 				int member_no=Integer.parseInt(d_no);
 				
 				PaymentDAO p_dao=new PaymentDAO();
-				int cnt=p_dao.Withdraw(d_no,charge); /////////
+		//		int cnt=p_dao.Withdraw(d_no,charge); /////////
 				//저장할 테이블이없는디.. 만드렁야함 ㅠㅠㅠㅠ
 				//+) 개발자의잔액넣을거도 만들어야함,
 			%>

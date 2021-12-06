@@ -1,3 +1,4 @@
+<%@page import="com.game.payment.model.PaymentVO"%>
 <%@page import="com.game.developer.model.DeveloperService"%>
 <%@page import="java.sql.Time"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -10,6 +11,7 @@
 	pageEncoding="utf-8"%>
 <jsp:useBean id="memberService" class="com.game.member.model.MemberService" scope="session"></jsp:useBean>
 <jsp:useBean id="developerService" class="com.game.developer.model.DeveloperService" scope="session"></jsp:useBean>
+<jsp:useBean id="paymentDAO" class="com.game.payment.model.PaymentDAO" scope="session"></jsp:useBean>
 <%-- <jsp:useBean id="developerService" class="com.game.member.model.DeveloperService" scope="session"></jsp:useBean> --%>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +36,7 @@
 
 <%
 	String m_email = (String) session.getAttribute("m_email");
-	String d_email = (String) session.getAttribute("d_email");
+	String d_email = (String) session.getAttribute("seller_email");
 
 /*  세션으로 가져온 아이디로 각각 검사하고 int 나오면 그걸로 들어가자  */
 
@@ -42,13 +44,15 @@
 
 	MemberVO vo1 = null;
 	DeveloperVO vo2 = null;
+	PaymentVO pVo=null;
 	
 	String email ="";
 	String pwd="";
 	String name="";
 	String phone="";
 	String number=""; //birth or businessNumber
-	
+	Timestamp birth=null;
+	int balance=0;
 	
 	try {
 		if (m_email != null && !m_email.isEmpty()) {
@@ -56,8 +60,11 @@
 			email=vo1.getM_email();
 			pwd=vo1.getM_pwd();
 			name=vo1.getM_name();
-			number= sdf.format(vo1.getM_birth()); 
+			number= sdf.format(vo1.getM_birth());
 			phone=vo1.getM_phone();
+			
+			pVo=paymentDAO.selectbypayment((int)session.getAttribute("m_no"));
+			balance=pVo.getBalance();
 		}else if(d_email != null && !d_email.isEmpty()){
 			vo2 = developerService.selectByEmail(d_email);
 			email=vo2.getSeller_email();
@@ -69,6 +76,8 @@
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}  
+	
+	
 %>
 
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
@@ -118,7 +127,12 @@
 								</div>
 								<div class="form-group">
 									<input type="number" class="form-control form-control-user"
-										id="birth" placeholder="birth : <%=number %>" readonly="readonly">
+										id="birth" placeholder= 
+										<%if(m_email != null && !m_email.isEmpty()){%>
+													"birth :<%=number%>"
+										   	<%}else{ %>
+													"businessnumber :<%=number %>"
+											<%	} %> " readonly="readonly">
 									<!-- 생년월일 -->
 								</div>
 								<div class="form-group">
@@ -129,7 +143,7 @@
 								</div>
 								<div class="form-group">
 									<input type="number" class="form-control form-control-user"
-										id="point" placeholder="point : 나오는 곳"  readonly="readonly">
+										id="point" placeholder="point : <%=balance %>"  readonly="readonly">
 									<!-- 핸드폰번호 -->
 								</div>
 
@@ -152,7 +166,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 	<!-- Bootstrap core JavaScript-->
