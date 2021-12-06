@@ -53,7 +53,7 @@
 						<div class="card-body p-4">
 							<div class="text-center">
 								<!-- Product name-->
-								<h5 class="fw-bolder"><a href="#"><%=g_vo.getGname() %></a></h5>
+								<h5 class="fw-bolder"><a href="gameInfo.jsp"><%=g_vo.getGname() %></a></h5>
 								<!-- Product reviews-->
 								<div class="d-flex justify-content-center small text-warning mb-2">
 									<div class="bi-star-fill"></div>

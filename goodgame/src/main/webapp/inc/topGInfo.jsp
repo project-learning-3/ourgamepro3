@@ -1,27 +1,17 @@
 <%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<%
-
-	String m_name = (String)session.getAttribute("m_name");
-	
-	/* int m_no = (int)session.getAttribute("m_no");
-	System.out.print(m_no); */
-	//사용자번호 불러오는 방법 로그인 안하고 사용자넘버 불러올경우 널포인트 에러 뜸 
-	//=> 인트값에 널이 들어갈 수 없어서 if로 처리 불가능
-	System.out.print(m_name);
-	if(m_name==null){	
-		m_name = "";	%>
-		<script type="text/javascript">
-			alert('로그인 후 이용가능한 페이지입니다.');
-			location.href="login.jsp";	
-		</script>	
-<%		
-	}
-
+<%@ include file="../html/sessionLogin.jsp" %>
+<%	
 	request.setCharacterEncoding("utf-8");
-	
+	String name = "";
+	String ck = (String)session.getAttribute("ck");
+	if(ck == null) ck = "";
+	if(ck.equals("t")){
+		name = (String)session.getAttribute("seller");
+	} else if(ck.equals("f")){
+		name = (String)session.getAttribute("m_name");
+	}
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -191,7 +181,7 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header"><%=m_name %></h6>
+						<h6 class="collapse-header"><%=name %></h6>
 						<!-- 로그인 하면 이름 나오게 -->
 						<a class="collapse-item" href="">환경 설정</a>
 						<!-- 환경설정 페이지 나오게 -->
@@ -209,7 +199,7 @@
 				<div id="collapseUtilities" class="collapse"
 					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header"><%=m_name %> 님, 무엇을 도와드릴까요?</h6>
+						<h6 class="collapse-header"><%=name %> 님, 무엇을 도와드릴까요?</h6>
 						<a class="collapse-item" id="CSupport1"
 							href="utilities-color.html">고객지원</a>
 						<div id="CSupport2" style="font-size: 11px; font-family: fantasy; font-style: italic; font-weight: bold;">
@@ -444,7 +434,7 @@
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"><%=m_name %></span>
+								class="mr-2 d-none d-lg-inline text-gray-600 small"><%=name %></span>
 								<img class="img-profile rounded-circle"
 								src="../img/undraw_profile.svg">
 						</a> <!-- Dropdown - User Information -->
