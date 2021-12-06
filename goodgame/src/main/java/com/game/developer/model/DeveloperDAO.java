@@ -232,18 +232,18 @@ public class DeveloperDAO {
     	}
     }
     
-    public int withdrawDevelop(String email) throws SQLException {
+    public int deleteDeveloper(String email , String pwd) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
 		try {
 			con = pool.getConnection();		
 			
-			String sql = "delete form DEVELOPER where SELLER_EMAIL=?";
+			String sql = "delete from developer where SELLER_EMAIL=? and d_pwd = ?";
 			ps = con.prepareStatement(sql);
 			
 			ps.setString(1, email);
-			
+			ps.setString(2, pwd);
 			int cnt = ps.executeUpdate();
 			System.out.println("회원 탈퇴 결과 cnt = "+cnt+"아이디 = "+email);
 			
@@ -253,4 +253,5 @@ public class DeveloperDAO {
 			// TODO: handle finally clause
 		}
 	}
+
 }

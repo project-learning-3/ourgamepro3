@@ -23,15 +23,16 @@ public class GameDAO {
 		
 		try {
 			con = pool.getConnection();
-			String sql = "insert into game(g_no, gname, price, gtext, d_no, c_no, src) "
-					+ "values(game_seq.nextval, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into game(g_no, gname, price, gtext, d_no, src, src2, video) "
+					+ "values(game_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, vo.getGname());
 			ps.setInt(2, vo.getPrice());
 			ps.setString(3, vo.getGtext());
 			ps.setInt(4, vo.getD_no());
-			ps.setInt(5, vo.getC_no());
-			ps.setString(6, vo.getSrc());
+			ps.setString(5, vo.getSrc());
+			ps.setString(6, vo.getSrc2());
+			ps.setString(7, vo.getVideo());
 			
 			int cnt = ps.executeUpdate();
 			
@@ -61,14 +62,15 @@ public class GameDAO {
 				String gtext=rs.getString("gtext");
 				String notice=rs.getString("notice");
 				int d_no=rs.getInt("d_no");
-				int c_no=rs.getInt("c_no");
 				String src=rs.getString("src");
+				String src2=rs.getString("src2");
+				String video=rs.getString("video");
 				
 
-				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, c_no, src);
+				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, src, src2, video);
 				list.add(vo);
 			}
-			System.out.println("게임등록 결과 list.size="+list.size());
+			System.out.println("게임조회 결과 list.size="+list.size());
 
 			return list;
 		}finally {
@@ -109,20 +111,19 @@ public class GameDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public int deletGame(GameVO vo) throws SQLException{
+	public int deletGame(int g_no) throws SQLException{
 		Connection con=null;
 		PreparedStatement ps=null;
 		
 		try {
 			con=pool.getConnection();
 			
-			String sql="delete game"
+			String sql="delete game "
 							+"where g_no=?";
 			ps=con.prepareStatement(sql);
-			ps.setInt(1, vo.getG_no());
+			ps.setInt(1, g_no);
 			
 			int cnt=ps.executeUpdate();
-			System.out.println("게임 삭제 결과 cnt="+cnt+", 매개변수 vo"+vo);
 			
 			return cnt;
 		}finally {
@@ -157,10 +158,11 @@ public class GameDAO {
 				Timestamp gdate = rs.getTimestamp("gdate");
 				String gtext = rs.getString("gtext");
 				String notice = rs.getString("notice");
-				int c_no = rs.getInt("c_no");
 				String src = rs.getString("src");
+				String src2 = rs.getString("src2");
+				String video = rs.getString("video");
 				
-				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, c_no, src);
+				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, src, src2, video);
 				list.add(vo);
 			}
 			return list;
@@ -168,6 +170,7 @@ public class GameDAO {
 			pool.dbClose(rs, ps, con);
 		}
 	}
+
 	/**
 	 * 게임상세시 g_no으로 검색
 	 * @param d_no
@@ -198,8 +201,7 @@ public class GameDAO {
 				String src = rs.getString("src");
 				String src2 = rs.getString("src2");
 				String video = rs.getString("video");
-				int star= rs.getInt("star");
-				
+				int star= rs.getInt("star");				
 				vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, d_no, src, src2, video, star);
 
 			}

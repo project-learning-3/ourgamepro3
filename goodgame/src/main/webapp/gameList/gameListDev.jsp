@@ -63,7 +63,7 @@
             	<td><%=df.format(g_vo.getPrice()) %></td>   
             	<td><%=sdf.format(g_vo.getGdate()) %></td>   
             	<td><%=g_vo.getGtext() %></td>
-            	<td><%=g_vo.getC_no() %></td>
+            	<td></td>
          	</tr>
 <%		}	 %>
 	</table>

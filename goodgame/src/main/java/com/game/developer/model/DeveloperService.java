@@ -41,7 +41,7 @@ public class DeveloperService{
     public boolean checkPwd(DeveloperVO vo) throws SQLException {
     	return dao.checkPwd(vo);
     }
-    public int withdrawDevelop(String email) throws SQLException {
-		return dao.withdrawDevelop(email);
+    public int deleteDeveloper(String email , String pwd) throws SQLException {
+		return dao.deleteDeveloper(email , pwd);
 	}
 }

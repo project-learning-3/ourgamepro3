@@ -17,13 +17,16 @@ public class GameService {
 	}
 
 	public int updateGame(GameVO vo) throws SQLException{
-		return dao.deletGame(vo);
+		return dao.updateGame(vo);
 	}
 	
-	public int deletGame(GameVO vo) throws SQLException{
-		return dao.deletGame(vo);
+	public int deletGame(int g_no) throws SQLException{
+		return dao.deletGame(g_no);
 	}
 	public List<GameVO> selectByDno(int d_no) throws SQLException {
 		return dao.selectByDno(d_no);
+	}
+	public GameVO selectByGno(int g_no) throws SQLException {
+		return dao.selectByGno(g_no);
 	}
 }
