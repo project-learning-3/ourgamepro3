@@ -11,7 +11,6 @@ public class GameVO {
 	private String notice; /*게임공지사항*/
 	private int d_no; /* 개발자 번호 */
 	private String src; /*게임이미지*/
-
 	private String src2; /*게임이미지*/
 	private String video; /*게임이미지*/
 	private int star;
@@ -133,12 +132,13 @@ public class GameVO {
 	}
 
 
+
 	@Override
 	public String toString() {
 		return "GameVO [g_no=" + g_no + ", gname=" + gname + ", price=" + price + ", gdate=" + gdate + ", gtext="
-
-				+ gtext + ", notice=" + notice + ", d_no=" + d_no + ", c_no=" + c_no + ", src=" + src + ", src2=" + src2
-				+ ", video=" + video + ", star=" + star + "]";
-
+				+ gtext + ", notice=" + notice + ", d_no=" + d_no + ", src=" + src + ", src2=" + src2 + ", video="
+				+ video + ", star=" + star + "]";
 	}
+
+	
 }

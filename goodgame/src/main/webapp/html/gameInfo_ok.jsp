@@ -21,7 +21,7 @@
 		vo.setM_no(Integer.parseInt(m_no));
 		vo.setG_no(Integer.parseInt(g_no));
 		vo.setReview(review);
-		
+		 
 		int cnt = gradeService.insertGrade(vo);
 		if(cnt>0){ %>
 			<script type="text/javascript">

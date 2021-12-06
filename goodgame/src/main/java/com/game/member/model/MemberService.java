@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 
 public class MemberService {	
@@ -41,5 +42,7 @@ public class MemberService {
 	public int updateMember(MemberVO vo) throws SQLException {
 		return dao.updateMember(vo);
 	}
-	
+	public MemberVO selectMByNo(int no) throws SQLException {
+		return dao.selectMByNo(no);
+	}
 }

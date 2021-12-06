@@ -58,7 +58,7 @@
 		currentPage=Integer.parseInt(request.getParameter("currentPage"));
 	}
 	
-	int totalRecord=list.size(); 
+	int totalRecord= list.size();
 	int pageSize=5;  
 	int totalPage=(int)Math.ceil((float)totalRecord/pageSize); 
 	int blockSize=10;  

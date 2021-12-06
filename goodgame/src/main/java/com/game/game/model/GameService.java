@@ -26,7 +26,7 @@ public class GameService {
 	public List<GameVO> selectByDno(int d_no) throws SQLException {
 		return dao.selectByDno(d_no);
 	}
-	public GameVO selectByGno(int g_no) throws SQLException {
-		return dao.selectByGno(g_no);
+	public GameVO selectByGame(int g_no) throws SQLException {
+		return dao.selectByGame(g_no);
 	}
 }
