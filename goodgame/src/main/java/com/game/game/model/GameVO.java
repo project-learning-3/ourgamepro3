@@ -12,13 +12,17 @@ public class GameVO {
 	private int d_no; /* 개발자 번호 */
 	private int c_no; /* 장르 번호 */
 	private String src; /*게임이미지*/
+	private String src2; /*게임이미지*/
+	private String video; /*게임이미지*/
+	private int star;
 	
 	public GameVO() {
 		super();
 	}
+	
 
 	public GameVO(int g_no, String gname, int price, Timestamp gdate, String gtext, String notice, int d_no, int c_no,
-			String src) {
+			String src, String src2, String video, int star) {
 		super();
 		this.g_no = g_no;
 		this.gname = gname;
@@ -29,7 +33,11 @@ public class GameVO {
 		this.d_no = d_no;
 		this.c_no = c_no;
 		this.src = src;
+		this.src2 = src2;
+		this.video = video;
+		this.star = star;
 	}
+
 
 	public int getG_no() {
 		return g_no;
@@ -103,10 +111,41 @@ public class GameVO {
 		this.src = src;
 	}
 
+
+	public String getSrc2() {
+		return src2;
+	}
+
+
+	public void setSrc2(String src2) {
+		this.src2 = src2;
+	}
+
+
+	public String getVideo() {
+		return video;
+	}
+
+
+	public void setVideo(String video) {
+		this.video = video;
+	}
+	
+	public int getStar() {
+		return star;
+	}
+
+
+	public void setStar(int star) {
+		this.star = star;
+	}
+
+
 	@Override
 	public String toString() {
 		return "GameVO [g_no=" + g_no + ", gname=" + gname + ", price=" + price + ", gdate=" + gdate + ", gtext="
-				+ gtext + ", notice=" + notice + ", d_no=" + d_no + ", c_no=" + c_no + ", src=" + src + "]";
+				+ gtext + ", notice=" + notice + ", d_no=" + d_no + ", c_no=" + c_no + ", src=" + src + ", src2=" + src2
+				+ ", video=" + video + ", star=" + star + "]";
 	}
 	
 }
