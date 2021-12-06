@@ -55,6 +55,7 @@
 				PaymentDAO p_dao=new PaymentDAO();
 				int cnt=p_dao.AddBalance(m_no,charge); //잔액충전
 				//balance 도 유동적으로 바뀌게 만들어야함
+				cnt=p_dao.updateBalance(m_no);
 				
 				msg="충전이 완료되었습니다.";
 				url="../html/mypay.jsp";

@@ -1,11 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <!-- Footer -->
+<script type="text/javascript" 
+	src="<%=request.getContextPath()%>/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	function showPopup(){
+		window.open("../html/map.jsp","map","width=500,height=500,left=100,top=50");
+	}
+</script>
             <footer class="sticky-footer bg-white">
             
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; GoodGame</span>
+                    </div>
+                    <br>
+                    <div class="copyright text-center my-auto">
+                    	<a onclick="showPopup();">
+                    	서울특별시 강남구 역삼1동 635-10
+                    	</a>
                     </div>
                 </div>
             </footer>

@@ -23,6 +23,7 @@
 		e.printStackTrace();
 	} 
 	
+	String balance = request.getParameter("balance");
 	
 	//페이징처리
 	int currentPage=1;
@@ -32,7 +33,7 @@
 	}
 	
 	int totalRecord=list.size();
-	int pageSize=15; //15개씩보여줌
+	int pageSize=5; //15개씩보여줌
 	int totalPage=(int)Math.ceil((float)totalRecord/pageSize);
 	int blockSize=5;
 	
@@ -70,14 +71,7 @@
 								<th>취소여부</th>
 							</tr>
 						</thead>
-						<tfoot>
-							<tr>
-								<th>거래순서</th>
-								<th>거래금액</th>
-								<th>거래일자</th>
-								<th>취소여부</th>
-							</tr>
-						</tfoot>
+				
 						<tbody>
 						<%
 							for(int i=0;i<pageSize;i++){
@@ -93,27 +87,33 @@
 							</tr>
 						<%} %>
 						</tbody>
+						<%-- <tfoot>
+							<tr>
+								<td  colspan="4"><%=payVo.getBalance() %></td>
+							</tr>
+						</tfoot> --%>
 					</table>
-					<p style="font-size:20px;text-align:right;color:midnightblue">잔액 : <%=payVo.getBalance() %></p>
+					<p style="font-size:20px;text-align:right;color:midnightblue" name="balance">잔액 : <%=payVo.getBalance() %></p>
 				
 				<!-- 페이지 번호 추가 -->
-				<!-- 이전 블럭으로 이동 -->
-				<%if(firstPage>1){%>
-				<a href="mypay.jsp?currentPage=<%=firstPage-1 %>">이전</a>
-				<%}%>
-				<% for(int i=firstPage;i<=lastPage;i++){
-					if(i>totalPage) break;
-					if(i==currentPage){%>
-					<p style="text-align:center;color:midnightblue;">	<span><%=i %></span>	</p>
-					<%}else{%>
-						<a href="mypay.jsp?currentPage=<%=i%>">&nbsp;<%=i %>&nbsp;</a>
-					<%}
-				}
-				%>
-				<%if(lastPage<totalPage){%>
-				<a href="mypay.jsp?currentPage=<%=lastPage+1%>">다음</a>
-				<%} %>
-				
+					<div style="text-align:center; padding:5px 0;">
+						<!-- 이전 블럭으로 이동 -->
+						<%if(firstPage>1){%>
+						<a href="mypay.jsp?currentPage=<%=firstPage-1 %>&balance=<%=payVo.getBalance()%>"><img src="../img/first.JPG" alt="이전블럭"></a>
+						<%}%>
+						<% for(int i=firstPage;i<=lastPage;i++){
+							if(i>totalPage) break;
+							if(i==currentPage){%>
+							<span>[<%=i %>]</span>
+							<%}else{%>
+								<a href="mypay.jsp?currentPage=<%=i%>">&nbsp;[<%=i %>]&nbsp;</a>
+							<%}
+						}
+						%>
+						<%if(lastPage<totalPage){%>
+						<a href="mypay.jsp?currentPage=<%=lastPage+1%>&balance=<%=payVo.getBalance()%>"><img src="../img/last.JPG" alt="다음블럭"></a>
+						<%} %>
+					</div>
 				</div>
 			</div>
 		</div>
