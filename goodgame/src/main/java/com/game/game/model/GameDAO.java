@@ -170,30 +170,40 @@ public class GameDAO {
 			pool.dbClose(rs, ps, con);
 		}
 	}
-	public GameVO selectByGno(int g_no) throws SQLException {
+
+	/**
+	 * 게임상세시 g_no으로 검색
+	 * @param d_no
+	 * @return
+	 * @throws SQLException
+	 */
+	public GameVO selectByGame(int g_no) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		GameVO vo = null;
+		
+		GameVO vo = new GameVO();
 		try {
 			con = pool.getConnection();
-			String sql = "select * from game "
-					+ "where g_no = ?";
+			String sql ="select * from game where g_no = ? ";
+
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, g_no);
 			
 			rs = ps.executeQuery();
-			if(rs.next()) {
+			while(rs.next()) {
 				String gname = rs.getString("gname");
 				int price = rs.getInt("price");
 				Timestamp gdate = rs.getTimestamp("gdate");
 				String gtext = rs.getString("gtext");
 				String notice = rs.getString("notice");
+				int d_no = rs.getInt("d_no");
 				String src = rs.getString("src");
 				String src2 = rs.getString("src2");
 				String video = rs.getString("video");
-				
-				vo = new GameVO(g_no, gname, price, gdate, gtext, notice, g_no, src, src2, video);
+				int star= rs.getInt("star");				
+				vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, d_no, src, src2, video, star);
+
 			}
 			return vo;
 		} finally {

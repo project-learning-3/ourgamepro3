@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="com.game.gameUrl.model.GameUrlVO"%>
@@ -9,7 +10,6 @@
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="gameService" class="com.game.game.model.GameService"
 	scope="session"></jsp:useBean>
-<jsp:useBean id="gameUrlService" class="com.game.gameUrl.model.GameUrlService" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 
 <html lang="ko">
@@ -84,10 +84,11 @@ footer.sticky-footer {
 //할 것 페이징 처리, 한줄평 테이블 불러오는것
  	String g_no =request.getParameter("g_no"); 
 	SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-
+	DecimalFormat df = new DecimalFormat("#,###");
+	
 	GameVO vo = new GameVO();
 	try{
-		vo=gameService.selectByNo(1);
+		vo=gameService.selectByGame(1);
 	}catch(SQLException e){
 		e.printStackTrace();
 	}
@@ -105,20 +106,20 @@ footer.sticky-footer {
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-	<h1>게임명 넣는곳</h1>
+	<h1><%=vo.getGname() %></h1>
 	<section id="video-image">
 		<div id="game-video">
-			<iframe src="https://www.youtube.com/embed/c0i88t0Kacs"></iframe>
+			<iframe src="<%=vo.getVideo()%>"></iframe>
 			<!-- 이것도 테이블에서 가져와야 -->
 		</div>
 		<div id="game-image">
 			<div>
 				<img alt="임시이미지"
-					src="https://image.zdnet.co.kr/2015/08/27/firstblood_oHA56Yn7s.jpg">
+					src="<%=vo.getSrc()%>">
 			</div>
 			<div>
 				<img alt="임시이미지"
-					src="http://cdn.playwares.com/upload_images/users/1445062261_a3eda06190583fc1e9190b0beb0793c6.png">
+					src="<%=vo.getSrc2()%>">
 			</div>
 		</div>
 	</section>
@@ -128,7 +129,7 @@ footer.sticky-footer {
 			<!-- 여기다 이름불러오는거 -->
 		</div>
 		<div>
-			<p><%=vo.getPrice() %></p>
+			<p><%=df.format(vo.getPrice()) %></p>
 		</div>
 		<div>
 			<p><%=sdf.format(vo.getGdate()) %></p>
