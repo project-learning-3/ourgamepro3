@@ -41,8 +41,9 @@ ALTER TABLE member
 		PRIMARY KEY (
 			m_no
 		);
+/*게임 테이블 수정*/
+drop table game;
 
-/* 게임  */
 CREATE TABLE game (
 	g_no NUMBER NOT NULL, /* 게임번호 */
 	gname VARCHAR2(20) NOT NULL, /* 게임명 */
@@ -50,7 +51,8 @@ CREATE TABLE game (
 	gdate DATE, /* 등록일시 */
 	gtext VARCHAR2(200), /* 게임설명 */
 	notice VARCHAR2(200), /* 공지사항 */
-	d_no NUMBER /* 개발자번호 */
+	d_no NUMBER, /* 개발자번호 */
+	rating number /* 별점 */
 );
 
 CREATE UNIQUE INDEX PK_game
