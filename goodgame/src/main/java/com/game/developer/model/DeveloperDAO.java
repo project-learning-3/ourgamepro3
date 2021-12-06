@@ -93,7 +93,7 @@ public class DeveloperDAO {
 			while(rs.next()) {
 				int d_no = rs.getInt("d_no");
 				String seller = rs.getString("seller");
-				String d_pwd = rs.getString("d_no");
+				String d_pwd = rs.getString("d_pwd");
 				String seller_phone = rs.getString("seller_phone");
 				String business_no = rs.getString("business_no");
 				

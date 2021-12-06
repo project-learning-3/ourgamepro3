@@ -1,30 +1,105 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+<jsp:include page="../html/sessionLogin.jsp"/>
+<!-- 테스트 -->
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title> 
-<style>
-#video {
-     position: absolute;
-     top: 0px;
-     left: 0px;
-     min-width: 100%;
-     min-height: 100%;
-     width: auto;
-     height: auto;
-     z-index: -1;
-     overflow: hidden;
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Goodgame - 구매페이지</title>
+    
+    <!-- Custom fonts for this template-->
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+window.onload=function(){
+	onlyNumber(document.getElementById("chargeMoney"));
 }
 
-</style>
+function onlyNumber(o) {
+	var num=/[^0-9]/gi;
+	p.onkeyup = function(e){
+		var v = this.value;
+		this.value=v.replace(num,'');
+	}	
+} 
+
+</script>
 </head>
-<body><!-- 아직 밑에 비디오는 제가 그냥 하려고 했던건데 누님 편하실 대로 마음껏 만들어주세요 감사합니다!! -->
-<div>
-<video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
-      <source src="https://www.youtube.com/embed/c0i88t0Kacs">
-</video>
-</div>
+<body class="bg-gradient-primary">
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-charge-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Enjoy our service!</h1>
+                            </div>
+                            <div>
+                            	<p>* 구매하실 상품을 한번 더 확인해주세요<br>
+                            		* 구매 후 24시간이 지나면 환불이 불가합니다.
+                            	</p>
+                            	<!-- 게임이름 + 가격 넘어와야함~~~~~~-->
+                            </div>
+							<form class="user" action="buygame_ok.jsp" name="buygame"
+								method="post">
+								<div class="form-group row">
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<input type="password" class="form-control form-control-user"
+											id="exampleInputPassword" name="m_pwd" placeholder="비밀번호">
+									</div>
+									<div class="col-sm-6">
+										<input type="password" class="form-control form-control-user"
+											id="exampleRepeatPassword" name="ch_pwd" placeholder="비밀번호 확인">
+									</div>
+
+								</div>
+
+           						<input type="submit" value="구매하기" class="btn btn-primary btn-user btn-block" onclick="regbtn()">
+
+
+							</form>
+							<hr>
+                            <div class="text-center">
+                                <a class="small" href="#">게임상세보기로 돌아가기</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="../html/home.jsp">메인으로 돌아가기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
 </body>
+
 </html>
