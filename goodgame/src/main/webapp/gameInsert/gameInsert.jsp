@@ -22,7 +22,7 @@
 
 <!-- Custom styles for this template-->
 <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-
+<script src="https://kit.fontawesome.com/fb21a5c3b2.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
@@ -44,6 +44,10 @@ $(function(){
 			alert('게임설명을 입력하세요');
 			$('#gtext').focus();
 			event.preventDefault();
+		}else if($('#src').val().length<1){
+			alert('게임이미지를 등록하세요');
+			$('#src').focus();
+			event.preventDefault();
 		}else if(!validate_num($('#price').val())){
 			alert('가격은 숫자만 가능합니다.');
 			$('#price').focus();
@@ -52,6 +56,14 @@ $(function(){
 			alert('장르번호는 숫자만 가능합니다.');
 			$('#c_no').focus();
 			event.preventDefault();
+		}
+	});
+	$('#gameImg').html('<i class="fas fa-times"></i>');
+	$('#src').on('change', function(){
+		if($('#src').val().length > 1){
+			$('#gameImg').html('<i class="fas fa-check"></i>');
+		} else if($('#src').val().length < 1){
+			$('#gameImg').html('<i class="fas fa-times"></i>');
 		}
 	});
 });
@@ -82,7 +94,7 @@ function validate_num(num){
 								<p>* 당신의 게임을 회원들과 함께 즐겨요.</p>
 								<br>
 							</div>
-							<form class="user" action="gameInsert_ok.jsp" method="post">
+							<form class="user" action="gameInsert_ok.jsp" enctype="multipart/form-data" method="post">
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="text" class="form-control form-control-user"
@@ -92,16 +104,25 @@ function validate_num(num){
 										<input type="text" class="form-control form-control-user"
 											id="price" name="price" placeholder="게임가격">
 									</div>
-
+								</div>
+								<div class="form-group row">
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<input type="text" class="form-control form-control-user"
+											id="gtext" name="gtext" placeholder="간단한 게임 설명">
+									</div>
+									<div class="col-sm-6">
+										<input type="text" class="form-control form-control-user"
+											id="c_no" name="c_no" placeholder="장르번호">
+									</div>
 								</div>
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user"
-										id="c_no" name="c_no" placeholder="장르번호">
-								</div>
-								<div class="form-group">
-									<textarea rows="1" cols="20"
-										class="form-control form-control-user" name="gtext"
-										placeholder="게임설명" id="gtext" style="border-radius: 10px;"></textarea>
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<label for="src" class="btn-user">
+											게임이미지선택
+										</label>
+										<input type="file" id="src" name="src" style="display: none"> 
+										<span id="gameImg"></span>
+									</div>
 								</div>
 								<input type="submit" value="등록하기"
 									class="btn btn-primary btn-user btn-block">
@@ -111,7 +132,7 @@ function validate_num(num){
 								<a class="small" href="gameInsert_before.jsp">이용약관</a>
 							</div>
 							<div class="text-center">
-								<a class="small" href="home.jsp">메인으로 돌아가기</a>
+								<a class="small" href="../html/home.jsp">메인으로 돌아가기</a>
 							</div>
 						</div>
 					</div>

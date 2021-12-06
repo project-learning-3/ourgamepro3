@@ -55,10 +55,12 @@
 		vo2.setSeller_phone(request.getParameter("phone"));
 		vo2.setSeller_email(request.getParameter("email"));
 		vo2.setBusiness_no(request.getParameter("number"));
+
 		vo2.setD_no((int)session.getAttribute("d_no"));
 		 	if (developerService.checkPwd(vo2))  { 
 				int cnt = developerService.updateDeveloper(vo2);
 				if (cnt > 0) {
+
 					%>
 					<script type="text/javascript">
 						alert("프로필이 수정되었습니다.");

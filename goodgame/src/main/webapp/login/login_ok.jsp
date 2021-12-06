@@ -39,9 +39,9 @@
 					session.setAttribute("seller_email", m_email);
 					session.setAttribute("seller", d_vo.getSeller());
 					session.setAttribute("d_no", d_vo.getD_no());
-					
+					session.setAttribute("name", d_vo.getSeller());
 					msg = d_vo.getSeller()+" 개발자님 환영합니다.";
-					url = "home.jsp";
+					url = "../html/home.jsp";
 				} else if(result == DeveloperService.DISAGREE_PWD){
 					msg = "패스워드가 다릅니다.";
 				} else if(result == DeveloperService.USERID_NONE){
@@ -57,9 +57,9 @@
 					session.setAttribute("m_email", m_email);
 					session.setAttribute("m_name", vo.getM_name());
 					session.setAttribute("m_no", vo.getM_no());
-					
+					session.setAttribute("name", vo.getM_name());
 					msg = vo.getM_name()+" 고객님 환영합니다.";
-					url = "home.jsp";
+					url = "../html/home.jsp";
 				} else if(result == MemberService.DISAGREE_PWD){
 					msg = "패스워드가 다릅니다.";
 				} else if(result == MemberService.USERID_NONE){

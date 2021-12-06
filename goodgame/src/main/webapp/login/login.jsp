@@ -43,7 +43,7 @@ $(function(){
 						<!-- Nested Row within Card Body -->
 						<div class="row">
 							<div class="col-lg-6 d-none d-lg-block">
-								<img alt="로그인 이미지" src="../img/Gg.png" style="width: 500px; background: black;"> 
+								<a href="../html/home.jsp"><img alt="로그인 이미지" src="../img/Gg.png" style="width: 500px; background: black;"></a>
 							</div>
 							<div class="col-lg-6">
 								<div class="p-5">
@@ -79,14 +79,10 @@ $(function(){
 									</form>
 									<hr>
 									<div class="text-center">
-										<a class="small" href="forgot-password.jsp">비밀번호 찾기</a>
+										<a class="small" href="../htmlforgot-password.jsp">비밀번호 찾기</a>
 									</div>
 									<div class="text-center">
-										<a class="small" href="registerMem.jsp">회원가입</a>
-										<!--  -->
-										<!--  -->
-										<!--  -->									
-										<!--  -->
+										<a class="small" href="../register/membershipTerms.jsp">회원가입</a>
 									</div>
 								</div>
 							</div>

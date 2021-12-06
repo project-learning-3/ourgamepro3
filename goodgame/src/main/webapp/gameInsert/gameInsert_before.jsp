@@ -302,7 +302,7 @@ Good game에 게임을 등록하고 판매합니다.
 
 							</form>
 							<div class="text-center">
-								<a class="small" href="home.jsp">메인으로 돌아가기</a>
+								<a class="small" href="../html/home.jsp">메인으로 돌아가기</a>
 							</div>
 						</div>
 					</div>
