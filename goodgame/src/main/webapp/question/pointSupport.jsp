@@ -14,7 +14,7 @@
                             <form class="user">
                                 <div class="form-group">
 <h5>포인트</h5>
-<pre class="question">
+<pre class="question" style="white-space: pre-wrap">
 GoodGame 메인홈페이지에 로그인을하면 오른쪽 상단에 나의 계정정보를 볼 수 있습니다
 
  ✔ 충전은 어떻게 하나요?
@@ -36,7 +36,7 @@ GoodGame에서 게임을 검색/선택하여 원하는 소프트웨어를 구매
 자세한 거래사항은 나의 계정 거래내역 페이지를 이용해 주십시오.
 
 </pre>
-<pre class="question">
+<pre class="question" style="white-space: pre-wrap">
  ◼ 자주 묻는 질문
  
  ▻ 게임(들) 을 선물로 받았습니다. 모든 기능을 사용할 수 있나요?
