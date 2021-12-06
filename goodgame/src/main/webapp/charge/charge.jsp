@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="ko">
+<jsp:include page="../html/sessionLogin.jsp"/>
 <!-- 테스트 -->
 <head>
     <meta charset="utf-8">

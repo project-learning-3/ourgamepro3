@@ -14,7 +14,7 @@
                             <form class="user">
                                 <div class="form-group">
 <h5>제한된 사용자 계정</h5>
-<pre class="question">
+<pre class="question" style="white-space: pre-wrap">
 GoodGame은 스팸, 피싱 및 기타 악용에 일반적으로 사용되는 특정 커뮤니티 및 소셜 기능에 일부 계정이 접근하지 못하도록 차단합니다.
 
  ✔ 왜 이런 기능을 사용할 수 없나요?
@@ -52,7 +52,7 @@ GoodGame 공개 가이드 만들기
 공개 아트워크 및 스크린샷 추가하기
 거래 제안에 메시지 추가하기
 </pre>
-<pre class="question">
+<pre class="question"  style="white-space: pre-wrap">
  ◼ 자주 묻는 질문
  
  ▻ 게임(들) 을 선물로 받았습니다. 모든 기능을 사용할 수 있나요?
