@@ -23,8 +23,8 @@ public class GameDAO {
 		
 		try {
 			con = pool.getConnection();
-			String sql = "insert into game(g_no, gname, price, gtext, d_no, src, src2, video) "
-					+ "values(game_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into game(g_no, gname, price, gtext, d_no, src, src2, video, star) "
+					+ "values(game_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, vo.getGname());
 			ps.setInt(2, vo.getPrice());
@@ -33,7 +33,7 @@ public class GameDAO {
 			ps.setString(5, vo.getSrc());
 			ps.setString(6, vo.getSrc2());
 			ps.setString(7, vo.getVideo());
-			
+			ps.setInt(7, vo.getStar());
 			int cnt = ps.executeUpdate();
 			
 			return cnt;
@@ -68,6 +68,7 @@ public class GameDAO {
 				int star=rs.getInt("star");
 
 				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, src, src2, video,star);
+
 				list.add(vo);
 			}
 			System.out.println("게임조회 결과 list.size="+list.size());
@@ -164,6 +165,7 @@ public class GameDAO {
 				int star= rs.getInt("star");
 				
 				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, src, src2, video, star);
+
 				list.add(vo);
 			}
 			return list;

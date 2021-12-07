@@ -15,11 +15,11 @@ div#game-video {
     border: 3px solid #2f334b;
     border-radius: 10px;
 }
-
+ 
 div#game-image {
     margin-top: 40px;
     width: 667px;
-    height: 192px;
+    height: 183px;
     background: #babdcd;
     border-radius: 10px;
     border: 3px solid #2f334b;
@@ -31,7 +31,7 @@ aside.gameInfo>* {
 }
 
 aside.gameInfo {
-    margin-top: -652px;
+    margin-top: -643px;
     margin-left: 696px;
     width: 328px;
     height: 412px;
@@ -41,21 +41,24 @@ aside.gameInfo {
 
 aside.gameInfo div p {
 	height: 37px;
+	font-size: 25px;
+    text-align: center;
 }
 
-input#noticeM {
+textarea#noticeM {
     margin-left: 4px;
     margin-block: 4px;
     width: 313px;
-    height: 190px;
+    height: 184px;
     border-radius: 7px;
     background: #dddee6;
     font-weight: bold;
+    white-space: normal;
 }
 
 table#comment {
     width: 667px;
-    margin-top: 282px;
+    margin-top: 158px;
     border: 2px solid #2f334b;
 }
 
@@ -67,14 +70,6 @@ table#comment {
 	width: 15%;
 }
 
-.rating {
-	border: 1px solid red;
-	width: 329px;
-	height: 329px;
-	margin-left: 697px;
-	margin-top: -269px;
-	border-radius: 100%;
-}
 
 #game-image div:first-child {
 	width: 48%;
@@ -83,10 +78,10 @@ table#comment {
 }
 
 #game-image div:last-child {
-	width: 317px;
-    height: 166px;
+    width: 317px;
+    height: 157px;
     margin-left: 334px;
-    margin-top: -176px;
+    margin-top: -168px;
 }
 
 div#game-image div:first-child img {
@@ -164,4 +159,39 @@ table#comment tbody tr:last-child {
 }
 div#content {
     background: #ebebf0;
+}
+.rationg {
+	margin-top: 49px;
+	margin-left: 697px;
+	border: 3px solid #212121;
+	border-radius: 10px;
+	width: 328px;
+	height: 63px;
+}
+
+.star1>* {
+	font-size: -webkit-xxx-large;
+	margin: 3px;
+}
+
+.star1 {
+	width: inherit;
+	height: inherit;
+} 
+.container-fluid {
+	overflow: auto;
+}
+footer.sticky-footer {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    overflow: visible;
+}
+.container-fluid {
+    height: 100%;
+}
+.divPage {
+    margin-left: 317px;
 }
