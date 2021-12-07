@@ -65,9 +65,9 @@ public class GameDAO {
 				String src=rs.getString("src");
 				String src2=rs.getString("src2");
 				String video=rs.getString("video");
-				
+				int star=rs.getInt("star");
 
-				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, src, src2, video);
+				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, src, src2, video,star);
 				list.add(vo);
 			}
 			System.out.println("게임조회 결과 list.size="+list.size());
@@ -161,8 +161,9 @@ public class GameDAO {
 				String src = rs.getString("src");
 				String src2 = rs.getString("src2");
 				String video = rs.getString("video");
+				int star= rs.getInt("star");
 				
-				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, src, src2, video);
+				GameVO vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, src, src2, video, star);
 				list.add(vo);
 			}
 			return list;
@@ -202,7 +203,7 @@ public class GameDAO {
 				String src2 = rs.getString("src2");
 				String video = rs.getString("video");
 				int star= rs.getInt("star");				
-				vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, d_no, src, src2, video, star);
+				vo = new GameVO(g_no, gname, price, gdate, gtext, notice, d_no, src, src2, video, star);
 
 			}
 			return vo;
