@@ -13,6 +13,7 @@
 <jsp:useBean id="developerService" class="com.game.developer.model.DeveloperService" scope="session"></jsp:useBean>
 <jsp:useBean id="paymentDAO" class="com.game.payment.model.PaymentDAO" scope="session"></jsp:useBean>
 <%-- <jsp:useBean id="developerService" class="com.game.member.model.DeveloperService" scope="session"></jsp:useBean> --%>
+<jsp:include page="sessionLogin.jsp"/>
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">

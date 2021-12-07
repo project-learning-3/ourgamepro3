@@ -8,6 +8,7 @@
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="memberSevice" class="com.game.member.model.MemberService" scope="session"></jsp:useBean>
 <jsp:useBean id="developerService" class="com.game.developer.model.DeveloperService" scope="session"></jsp:useBean>
+<jsp:include page="sessionLogin.jsp"/>
 <!DOCTYPE html>
 <html>
 
