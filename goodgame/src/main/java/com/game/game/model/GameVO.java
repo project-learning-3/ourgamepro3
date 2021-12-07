@@ -3,26 +3,26 @@ package com.game.game.model;
 import java.sql.Timestamp;
 
 public class GameVO {
-	private int g_no; /*게임번호*/
-	private String gname; /*게임이름*/
-	private int price; /*게임가격*/
-	private Timestamp gdate; /*등록일시*/
-	private String gtext; /*게임설명*/
-	private String notice; /*게임공지사항*/
+	private int g_no; /* 게임번호 */
+	private String gname; /* 게임이름 */
+	private int price; /* 게임가격 */
+	private Timestamp gdate; /* 등록일시 */
+	private String gtext; /* 게임설명 */
+	private String notice; /* 게임공지사항 */
 	private int d_no; /* 개발자 번호 */
-	private String src; /*게임이미지*/
-	private String src2; /*게임이미지*/
-	private String video; /*게임이미지*/
+	private String src; /* 게임이미지 */
+	private String src2; /* 게임이미지 */
+	private String video; /* 게임이미지 */
 	private int star;
-	
+
 	public GameVO() {
 		super();
 	}
+
 	
 
-
-	public GameVO(int g_no, String gname, int price, Timestamp gdate, String gtext, String notice, int d_no, int c_no,
-			String src, String src2, String video, int star) {
+	public GameVO(int g_no, String gname, int price, Timestamp gdate, String gtext, String notice, int d_no, String src,
+			String src2, String video, int star) {
 		super();
 		this.g_no = g_no;
 		this.gname = gname;
@@ -34,10 +34,9 @@ public class GameVO {
 		this.src = src;
 		this.src2 = src2;
 		this.video = video;
-
 		this.star = star;
-
 	}
+
 
 
 	public int getG_no() {
@@ -116,22 +115,17 @@ public class GameVO {
 		return video;
 	}
 
-
-
 	public void setVideo(String video) {
 		this.video = video;
 	}
-	
+
 	public int getStar() {
 		return star;
 	}
 
-
 	public void setStar(int star) {
 		this.star = star;
 	}
-
-
 
 	@Override
 	public String toString() {
